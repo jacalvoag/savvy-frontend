@@ -13,6 +13,21 @@ import Avatar from '@/components/ui/Avatar'
 import { SkeletonCard } from '@/components/ui/Skeleton'
 import type { Goal } from '@/types'
 
+// ─── Goal Status Badge ────────────────────────────────────────────────────────
+
+function GoalBadge({ goal }: { goal: Goal }) {
+  if (goal.completada) {
+    return (
+      <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-lime-400 text-black">
+        Completed ✓
+      </span>
+    )
+  }
+  if (goal.archivada) {
+    return (
+      <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-transparent border border-gray-600 text-gray-500">
+        Archived
+      </span>
                         variant="primary"
                         size="sm"
                         className="flex-1"
