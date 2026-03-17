@@ -28,6 +28,21 @@
 
   const resetMovForm = () => {
     setMovAmount('')
+                  {Math.abs(portfolio.variacion).toFixed(1)}% vs last month
+                </div>
+              )}
+            </>
+          )}
+
+          {/* Mini donut or info */}
+          <div className="mt-auto pt-2 border-t border-[#2a2a2a]">
+            <p className="text-xs text-gray-500">Updated just now</p>
+          </div>
+        </div>
+
+        {/* Performance Chart */}
+        <div className="lg:col-span-2 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4">
+          <div className="flex items-center justify-between flex-wrap gap-3">
             />
 
             <div className="flex flex-col gap-1.5">

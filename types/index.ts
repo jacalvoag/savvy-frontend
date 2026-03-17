@@ -28,3 +28,16 @@ export interface GroupDetail extends Group {
 
 export interface Notification {
   id: string
+  updateUser: (partial: Partial<User>) => void
+  clearAuth: () => void
+}
+
+// ─── API Response Wrappers ────────────────────────────────────────────────────
+
+export interface ApiError {
+  message: string
+  statusCode?: number
+}
+
+export type Period = '1D' | '1W' | '1M' | '1Y'
+
