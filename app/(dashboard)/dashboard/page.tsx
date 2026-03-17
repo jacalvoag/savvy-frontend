@@ -1,3 +1,18 @@
+        categoria: movCategory,
+        descripcion: movDesc || undefined,
+        fecha: movDate,
+      })
+      setMovementModal(null)
+      resetMovForm()
+    } catch {
+      setMovError('Error al guardar el movimiento.')
+    } finally {
+      setMovLoading(false)
+    }
+  }
+
+  const resetMovForm = () => {
+    setMovAmount('')
             />
 
             <div className="flex flex-col gap-1.5">

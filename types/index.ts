@@ -1,3 +1,18 @@
+  }
+
+  export interface Group {
+    id: string
+    nombre: string
+    metaAhorro: number
+    inviteCode: string
+    liderId: string
+    createdAt: string
+  }
+
+  export interface LeaderboardEntry {
+    rank: number
+    usuarioId: string
+    nombre: string
   avatarUrl?: string
   contribucion: number
   porcentaje: number
