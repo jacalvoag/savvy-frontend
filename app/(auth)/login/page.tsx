@@ -1,3 +1,18 @@
+    const [loginPassword, setLoginPassword] = useState('')
+
+    // Register form
+    const [regName, setRegName] = useState('')
+    const [regEmail, setRegEmail] = useState('')
+    const [regPassword, setRegPassword] = useState('')
+
+    const handleTabChange = (t: Tab) => {
+      setTab(t)
+      setError(null)
+    }
+
+    const handleLogin = async (e: React.FormEvent) => {
+      e.preventDefault()
+      await login(loginEmail, loginPassword)
               background: 'linear-gradient(145deg, #ff6b35 0%, #e8420a 35%, #8b1200 70%, #1a0a0a 100%)',
             }}
           />
@@ -13,3 +28,8 @@
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-lime-400 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        </div>
+      </div>
+    )
+  }
+
