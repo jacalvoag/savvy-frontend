@@ -1,3 +1,18 @@
+    const { portfolio, performance, insight, portfolioLoading, performanceLoading, insightLoading, fetchPortfolio, fetchPerformance, fetchInsight } = useMetrics()
+    const { movements, fetchMovements, createMovement } = useMovements()
+
+    const [period, setPeriod] = useState<Period>('1M')
+    const [currency, setCurrency] = useState<'USD' | 'MXN'>('USD')
+
+    // Create movement modal state
+    const [movementModal, setMovementModal] = useState<'income' | 'expense' | null>(null)
+    const [movAmount, setMovAmount] = useState('')
+    const [movCategory, setMovCategory] = useState<MovementCategory>('other')
+    const [movDesc, setMovDesc] = useState('')
+    const [movDate, setMovDate] = useState(() => new Date().toISOString().split('T')[0])
+    const [movLoading, setMovLoading] = useState(false)
+    const [movError, setMovError] = useState<string | null>(null)
+
         categoria: movCategory,
         descripcion: movDesc || undefined,
         fecha: movDate,
