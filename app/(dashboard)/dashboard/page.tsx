@@ -73,6 +73,21 @@
                     <linearGradient id="limeGradient" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#a3e635" stopOpacity={0.35} />
                       <stop offset="95%" stopColor="#a3e635" stopOpacity={0} />
+            ) : insight ? (
+              <>
+                <p className="text-sm text-gray-300 leading-relaxed">{insight.mensaje}</p>
+                <div className="bg-[#111] border border-[#2a2a2a] rounded-xl px-4 py-3 space-y-1">
+                  <p className="text-xs text-gray-500">Closest goal</p>
+                  <p className="text-sm text-white font-medium">{insight.metaNombre}</p>
+                  <p className="text-xs text-lime-400">{insight.mesesRestantes} months remaining</p>
+                </div>
+              </>
+            ) : (
+              <p className="text-sm text-gray-500">No insights available</p>
+            )}
+          </div>
+        </div>
+
             />
 
             <div className="flex flex-col gap-1.5">
