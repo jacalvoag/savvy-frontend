@@ -28,6 +28,21 @@
 
   const resetMovForm = () => {
     setMovAmount('')
+                  <p className="text-4xl font-bold text-white">
+                    {currency === 'MXN' ? 'MX$' : '$'}
+                    {totalDisplay.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
+                  </p>
+                </div>
+                {portfolio && (
+                  <div
+                    className={[
+                      'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold w-fit',
+                      portfolio.variacion >= 0
+                        ? 'bg-green-400/10 text-green-400'
+                        : 'bg-red-400/10 text-red-400',
+                    ].join(' ')}
+                  >
+                    {portfolio.variacion >= 0 ? '↑' : '↓'}
                   {Math.abs(portfolio.variacion).toFixed(1)}% vs last month
                 </div>
               )}
