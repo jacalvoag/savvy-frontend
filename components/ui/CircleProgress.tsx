@@ -13,3 +13,17 @@
           cx={size / 2}
           cy={size / 2}
           r={radius}
+            strokeDashoffset={circumference}
+          />
+        </svg>
+        {/* Center label */}
+        <span
+          className="absolute text-white font-bold"
+          style={{ fontSize: size * 0.18 }}
+        >
+          {Math.round(clamped)}%
+        </span>
+      </div>
+    )
+  }
+
