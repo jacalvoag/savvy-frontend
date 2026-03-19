@@ -13,6 +13,21 @@
           cx={size / 2}
           cy={size / 2}
           r={radius}
+          fill="none"
+          stroke="#2a2a2a"
+          strokeWidth={strokeWidth}
+        />
+        {/* Progress arc */}
+        <circle
+          ref={circleRef}
+          cx={size / 2}
+          cy={size / 2}
+          r={radius}
+          fill="none"
+          stroke="#a3e635"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
             strokeDashoffset={circumference}
           />
         </svg>

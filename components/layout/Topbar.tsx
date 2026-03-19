@@ -1,3 +1,18 @@
+'use client'
+
+import { useState, useRef, useEffect } from 'react'
+import { usePathname, useRouter } from 'next/navigation'
+import { useAuthStore } from '@/store/auth.store'
+import Avatar from '@/components/ui/Avatar'
+import type { Notification } from '@/types'
+
+const PAGE_TITLES: Record<string, string> = {
+  '/dashboard': 'Dashboard',
+  '/goals': 'Savings Hub',
+  '/settings': 'Settings',
+}
+
+interface TopbarProps {
     notifications: Notification[]
     unreadCount: number
     onMarkRead: (id: string) => void
