@@ -28,6 +28,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
       <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-transparent border border-gray-600 text-gray-500">
         Archived
       </span>
+      setBoostLoading(true)
+      setBoostError(null)
+      try {
+        const updated = await boostGoal(boostGoalId, parseFloat(boostAmount))
+        if (updated?.completada) {
+          setCompletedGoalId(boostGoalId)
+          setTimeout(() => setCompletedGoalId(null), 4000)
+        }
+        setBoostGoalId(null)
+        setBoostAmount('')
+      } catch {
+        setBoostError('Error al realizar el boost.')
+      } finally {
+        setBoostLoading(false)
+      }
                         variant="primary"
                         size="sm"
                         className="flex-1"

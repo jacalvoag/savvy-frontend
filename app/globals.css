@@ -13,3 +13,12 @@
 ::-webkit-scrollbar-thumb {
   background: #2a2a2a;
   border-radius: 999px;
+.glow-lime {
+  animation: glow-pulse 2s ease-in-out infinite;
+}
+
+/* Fade in up animation for staggered rows */
+.fade-in-up {
+  animation: fadeInUp 0.4s ease-out forwards;
+}
+
