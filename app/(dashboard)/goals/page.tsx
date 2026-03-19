@@ -43,6 +43,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
       } finally {
         setBoostLoading(false)
       }
+    }
+
+    // ── Group Handlers ─────────────────────────────────────────────────────────
+
+    const handleCreateGroup = async (e: React.FormEvent) => {
+      e.preventDefault()
+      if (!groupName || !groupMeta) { setGroupError('Completa todos los campos.'); return }
+      setGroupLoading(true)
+      setGroupError(null)
+      try {
+        await createGroup({ nombre: groupName, metaAhorro: parseFloat(groupMeta) })
+        setNewGroupOpen(false)
+        setGroupName(''); setGroupMeta('')
+      } catch {
+        setGroupError('Error al crear el grupo.')
                         variant="primary"
                         size="sm"
                         className="flex-1"
