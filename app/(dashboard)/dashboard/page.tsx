@@ -28,6 +28,21 @@
 
   const resetMovForm = () => {
     setMovAmount('')
+      setMovCategory('other')
+      setMovDesc('')
+      setMovDate(new Date().toISOString().split('T')[0])
+      setMovError(null)
+    }
+
+    const formatDate = (iso: string) =>
+      new Date(iso).toLocaleDateString('es-MX', { month: 'short', day: 'numeric' })
+
+    const recentMovements = movements.slice(0, 8)
+
+    return (
+      <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-5">
+        {/* ── Row 1: Portfolio + Performance ───────────────────── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
                   <p className="text-4xl font-bold text-white">
                     {currency === 'MXN' ? 'MX$' : '$'}
                     {totalDisplay.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}

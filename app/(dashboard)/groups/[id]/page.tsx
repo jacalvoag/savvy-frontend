@@ -58,3 +58,18 @@ function CopyButton({ text }: { text: string }) {
                   })}
                 </tbody>
               </table>
+                </p>
+              </>
+            )}
+          </div>
+
+          {/* Actions Card (Delete / Leave) */}
+          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 space-y-3">
+            <h3 className="text-sm font-semibold text-white">Group Actions</h3>
+            {isLeader ? (
+              <>
+                <p className="text-xs text-gray-500">As the group leader, you can permanently delete this group.</p>
+                <Button
+                  id="delete-group-btn"
+                  variant="danger"
+                  size="md"
