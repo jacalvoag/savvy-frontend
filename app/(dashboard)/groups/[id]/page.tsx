@@ -28,6 +28,21 @@ function CopyButton({ text }: { text: string }) {
                 <code className="font-mono text-sm text-lime-400 bg-lime-400/10 px-2 py-0.5 rounded-lg">
                   {groupDetail.inviteCode}
                 </code>
+            </div>
+            <ProgressBar value={groupDetail.porcentajeGrupal} showLabel={false} height="h-3" />
+          </div>
+        )}
+
+        {/* ── Main Grid: Leaderboard + Action Cards ──────────────── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+
+          {/* Leaderboard Table (spans 2 cols) */}
+          <div className="lg:col-span-2 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl overflow-hidden">
+            {/* Tab Toggle */}
+            <div className="flex border-b border-[#2a2a2a]">
+              {(['contributions', 'streaks'] as LeaderboardTab[]).map((t) => (
+                <button
+                  key={t}
                           ) : (
                             <span className="text-white font-semibold">{member.streakWeeks}w 🔥</span>
                           )}

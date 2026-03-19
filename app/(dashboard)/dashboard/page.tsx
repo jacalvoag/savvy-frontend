@@ -58,6 +58,21 @@
         {/* Performance Chart */}
         <div className="lg:col-span-2 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4">
           <div className="flex items-center justify-between flex-wrap gap-3">
+            <p className="text-sm text-gray-400 font-medium">Performance</p>
+            <div className="flex gap-1">
+              {PERIODS.map((p) => (
+                <button
+                  key={p}
+                  id={`period-${p.toLowerCase()}`}
+                  onClick={() => handlePeriodChange(p)}
+                  className={[
+                    'px-3 py-1 rounded-lg text-xs font-medium transition-all',
+                    period === p
+                      ? 'bg-lime-400/10 text-lime-400'
+                      : 'text-gray-500 hover:text-gray-300',
+                  ].join(' ')}
+                >
+                  {p}
                 </button>
               ))}
             </div>
