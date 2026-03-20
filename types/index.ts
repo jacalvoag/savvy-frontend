@@ -1,3 +1,18 @@
+// ─── Core Domain Types ────────────────────────────────────────────────────────
+
+export interface User {
+  id: string
+  nombre: string
+  correo: string
+  avatarUrl?: string
+  plan: string
+}
+
+export type MovementCategory =
+  | 'salary'
+  | 'groceries'
+  | 'transport'
+  | 'entertainment'
   }
 
   export interface Group {
