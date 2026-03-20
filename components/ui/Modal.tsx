@@ -1,3 +1,18 @@
+'use client'
+
+import { useEffect, useCallback } from 'react'
+import { createPortal } from 'react-dom'
+
+interface ModalProps {
+  isOpen: boolean
+  onClose: () => void
+  title?: string
+  children: React.ReactNode
+  maxWidth?: string
+}
+
+export default function Modal({
+  isOpen,
   onClose,
   title,
   children,
