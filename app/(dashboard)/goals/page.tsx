@@ -88,6 +88,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
                         onClick={() => archiveGoal(goal.id)}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <h2 className="text-xl font-bold text-white">Group Collaborations</h2>
+              <p className="text-sm text-gray-500">Save together, grow together</p>
+            </div>
+            <Button
+              id="new-group-btn"
+              variant="secondary"
+              size="md"
+              onClick={() => setNewGroupOpen(true)}
+            >
+              + Create Group
+            </Button>
+          </div>
+
+          {groupsLoading ? (
+            <div className="space-y-3">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-sm font-semibold text-white">{group.nombre}</h3>
                       <span className="text-xs text-gray-500 font-mono bg-[#111] px-2 py-0.5 rounded-lg">
