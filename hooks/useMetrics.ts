@@ -13,3 +13,12 @@
 
   const fetchInsight = useCallback(async () => {
     setInsightLoading(true)
+      portfolioLoading,
+      performanceLoading,
+      insightLoading,
+      error,
+      fetchPortfolio,
+      fetchPerformance,
+      fetchInsight,
+    }
+  }
