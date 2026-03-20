@@ -28,6 +28,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
       <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-transparent border border-gray-600 text-gray-500">
         Archived
       </span>
+    const [goalName, setGoalName] = useState('')
+    const [goalAmount, setGoalAmount] = useState('')
+    const [goalStart, setGoalStart] = useState(() => new Date().toISOString().split('T')[0])
+    const [goalEnd, setGoalEnd] = useState('')
+    const [goalLoading, setGoalLoading] = useState(false)
+    const [goalError, setGoalError] = useState<string | null>(null)
+
+    // Boost Modal
+    const [boostGoalId, setBoostGoalId] = useState<string | null>(null)
+    const [boostAmount, setBoostAmount] = useState('')
+    const [boostLoading, setBoostLoading] = useState(false)
+    const [boostError, setBoostError] = useState<string | null>(null)
+    const [completedGoalId, setCompletedGoalId] = useState<string | null>(null)
+
+    // New Group Modal
       setBoostLoading(true)
       setBoostError(null)
       try {
