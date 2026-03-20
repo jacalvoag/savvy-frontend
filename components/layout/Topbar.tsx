@@ -58,3 +58,18 @@ interface TopbarProps {
           {notifOpen && (
             <div className="absolute right-0 top-full mt-2 w-80 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl shadow-2xl z-50 overflow-hidden">
               <div className="px-4 py-3 border-b border-[#2a2a2a]">
+              onClick={() => setUserOpen((v) => !v)}
+              className="flex items-center gap-2 rounded-xl p-1 hover:bg-white/5 transition-colors"
+            >
+              <Avatar src={user?.avatarUrl} nombre={user?.nombre ?? 'U'} size="sm" />
+            </button>
+
+            {userOpen && (
+              <div className="absolute right-0 top-full mt-2 w-44 bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl shadow-2xl z-50 overflow-hidden">
+                <div className="px-3 py-2 border-b border-[#2a2a2a]">
+                  <p className="text-xs text-white font-medium truncate">{user?.nombre}</p>
+                  <p className="text-[11px] text-gray-500 truncate">{user?.correo}</p>
+                </div>
+                <button
+                  onClick={() => { setUserOpen(false); router.push('/settings') }}
+                  className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"

@@ -13,6 +13,21 @@
     const handleLogin = async (e: React.FormEvent) => {
       e.preventDefault()
       await login(loginEmail, loginPassword)
+    }
+
+    const handleRegister = async (e: React.FormEvent) => {
+      e.preventDefault()
+      await register(regName, regEmail, regPassword)
+    }
+
+    return (
+      <div className="min-h-screen flex">
+        {/* ── Left Panel ─────────────────────────────────────────── */}
+        <div className="hidden lg:flex lg:w-[42%] relative overflow-hidden flex-col">
+          {/* Gradient background */}
+          <div
+            className="absolute inset-0"
+            style={{
               background: 'linear-gradient(145deg, #ff6b35 0%, #e8420a 35%, #8b1200 70%, #1a0a0a 100%)',
             }}
           />
