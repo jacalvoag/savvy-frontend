@@ -1,3 +1,18 @@
+import Input from '@/components/ui/Input'
+import { Skeleton } from '@/components/ui/Skeleton'
+import type { Period, MovementCategory } from '@/types'
+
+// ─── Category Config ──────────────────────────────────────────────────────────
+
+const CATEGORY_CONFIG: Record<MovementCategory, { icon: string; color: string; bg: string }> = {
+  salary:       { icon: '💼', color: 'text-green-400',  bg: 'bg-green-400/10' },
+  groceries:    { icon: '🛒', color: 'text-orange-400', bg: 'bg-orange-400/10' },
+  transport:    { icon: '🚌', color: 'text-blue-400',   bg: 'bg-blue-400/10' },
+  entertainment:{ icon: '🎮', color: 'text-purple-400', bg: 'bg-purple-400/10' },
+  savings:      { icon: '💾', color: 'text-lime-400',   bg: 'bg-lime-400/10' },
+  dividends:    { icon: '📊', color: 'text-cyan-400',   bg: 'bg-cyan-400/10' },
+  subscription: { icon: '📱', color: 'text-pink-400',   bg: 'bg-pink-400/10' },
+  food:         { icon: '🍕', color: 'text-red-400',    bg: 'bg-red-400/10' },
     const { portfolio, performance, insight, portfolioLoading, performanceLoading, insightLoading, fetchPortfolio, fetchPerformance, fetchInsight } = useMetrics()
     const { movements, fetchMovements, createMovement } = useMovements()
 
