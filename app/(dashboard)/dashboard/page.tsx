@@ -13,6 +13,21 @@ const CATEGORY_CONFIG: Record<MovementCategory, { icon: string; color: string; b
   dividends:    { icon: '📊', color: 'text-cyan-400',   bg: 'bg-cyan-400/10' },
   subscription: { icon: '📱', color: 'text-pink-400',   bg: 'bg-pink-400/10' },
   food:         { icon: '🍕', color: 'text-red-400',    bg: 'bg-red-400/10' },
+}
+
+function CustomTooltip({ active, payload, label }: TooltipProps) {
+  if (!active || !payload?.length) return null
+  return (
+    <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-xl px-3 py-2 shadow-xl">
+      <p className="text-xs text-gray-400">{label}</p>
+      <p className="text-sm font-semibold text-lime-400">${payload[0].value.toLocaleString()}</p>
+    </div>
+  )
+}
+
+// ─── Dashboard Page ───────────────────────────────────────────────────────────
+
+export default function DashboardPage() {
     const { portfolio, performance, insight, portfolioLoading, performanceLoading, insightLoading, fetchPortfolio, fetchPerformance, fetchInsight } = useMetrics()
     const { movements, fetchMovements, createMovement } = useMovements()
 
