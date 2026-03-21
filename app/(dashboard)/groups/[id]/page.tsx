@@ -58,6 +58,21 @@ function CopyButton({ text }: { text: string }) {
                 <code className="font-mono text-sm text-lime-400 bg-lime-400/10 px-2 py-0.5 rounded-lg">
                   {groupDetail.inviteCode}
                 </code>
+                <CopyButton text={groupDetail.inviteCode} />
+              </div>
+            </div>
+            <div className="text-sm text-gray-500">
+              {groupDetail.miembros.length} member{groupDetail.miembros.length !== 1 ? 's' : ''}
+            </div>
+          </div>
+        ) : (
+          <p className="text-red-400 text-sm">{error ?? 'Group not found'}</p>
+        )}
+
+        {/* ── Balance Card ────────────────────────────────────────── */}
+        {groupDetail && (
+          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 space-y-4">
+            <div className="flex items-center justify-between flex-wrap gap-2">
             </div>
             <ProgressBar value={groupDetail.porcentajeGrupal} showLabel={false} height="h-3" />
           </div>
