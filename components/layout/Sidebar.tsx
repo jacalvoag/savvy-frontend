@@ -1,3 +1,18 @@
+  'use client'
+
+  import Link from 'next/link'
+  import { usePathname, useRouter } from 'next/navigation'
+  import { useState } from 'react'
+  import { useAuthStore } from '@/store/auth.store'
+  import Avatar from '@/components/ui/Avatar'
+
+  interface NavItem {
+    href: string
+    label: string
+    icon: React.ReactNode
+  }
+
+  const navItems: NavItem[] = [
   {
     href: '/dashboard',
     label: 'Dashboard',
