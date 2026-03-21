@@ -73,6 +73,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
         setGroupName(''); setGroupMeta('')
       } catch {
         setGroupError('Error al crear el grupo.')
+      } finally {
+        setGroupLoading(false)
+      }
+    }
+
+    const handleJoin = async (e: React.FormEvent) => {
+      e.preventDefault()
+      if (!inviteCode) return
+      setJoinLoading(true)
+      setJoinError(null)
+      try {
+        await joinGroup(inviteCode.trim().toUpperCase())
+        setInviteCode('')
+      } catch {
+        setJoinError('Código inválido o expirado.')
                         variant="primary"
                         size="sm"
                         className="flex-1"

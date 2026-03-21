@@ -43,3 +43,18 @@
             item.href === '/dashboard'
               ? pathname === '/dashboard'
               : pathname.startsWith(item.href)
+        {/* Desktop sidebar */}
+        <div className="hidden lg:flex h-full">
+          <SidebarContent />
+        </div>
+
+        {/* Mobile overlay sidebar */}
+        {mobileOpen && (
+          <>
+            <div
+              className="fixed inset-0 bg-black/60 z-40 lg:hidden"
+              onClick={onMobileClose}
+            />
+            <div className="fixed inset-y-0 left-0 z-50 lg:hidden flex">
+              <SidebarContent />
+            </div>
