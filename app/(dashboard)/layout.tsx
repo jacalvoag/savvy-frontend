@@ -1,3 +1,18 @@
+  'use client'
+
+  import { useEffect, useState } from 'react'
+  import { useRouter } from 'next/navigation'
+  import { useAuthStore } from '@/store/auth.store'
+  import Sidebar from '@/components/layout/Sidebar'
+  import Topbar from '@/components/layout/Topbar'
+  import { useNotifications } from '@/hooks/useNotifications'
+
+  export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+    const { accessToken } = useAuthStore()
+    const router = useRouter()
+    const [hydrated, setHydrated] = useState(false)
+    const [mobileOpen, setMobileOpen] = useState(false)
+    const { notifications, unreadCount, fetchNotifications, markAsRead } = useNotifications()
 
   // Wait for Zustand to hydrate from localStorage before checking auth
   useEffect(() => {
