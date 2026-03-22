@@ -28,3 +28,6 @@
             })
             .catch((err) => Promise.reject(err))
         }
+
+  export default api
+
