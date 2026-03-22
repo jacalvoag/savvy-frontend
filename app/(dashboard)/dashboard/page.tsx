@@ -208,6 +208,21 @@ export default function DashboardPage() {
                 {CATEGORIES.map((c) => (
                   <option key={c} value={c} className="bg-[#1c1c1c]">
                     {CATEGORY_CONFIG[c].icon} {c.charAt(0).toUpperCase() + c.slice(1)}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="mov-desc" className="text-sm font-medium text-gray-300">
+              Description <span className="text-gray-500">(optional)</span>
+            </label>
+            <textarea
+              id="mov-desc"
+              value={movDesc}
+              onChange={(e) => setMovDesc(e.target.value)}
+              placeholder="What was this for?"
+              rows={2}
               className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-2.5 text-white text-sm outline-none focus:ring-2 focus:ring-lime-400/40 focus:border-lime-400 resize-none placeholder-gray-600"
             />
           </div>
