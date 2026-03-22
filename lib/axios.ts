@@ -28,6 +28,21 @@
             })
             .catch((err) => Promise.reject(err))
         }
+            clearAuth()
+            if (typeof window !== 'undefined') {
+              window.location.href = '/login'
+            }
+            reject(err)
+          })
+          .finally(() => {
+            isRefreshing = false
+          })
+      })
+    }
+
+    return Promise.reject(error)
+  }
+)
 
   export default api
 
