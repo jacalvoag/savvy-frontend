@@ -88,6 +88,21 @@ export default function DashboardPage() {
       <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-5">
         {/* ── Row 1: Portfolio + Performance ───────────────────── */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+                  >
+                    {c}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {portfolioLoading ? (
+              <div className="space-y-2">
+                <Skeleton className="h-10 w-2/3" />
+                <Skeleton className="h-5 w-1/3" />
+              </div>
+            ) : (
+              <>
+                <div>
                   <p className="text-4xl font-bold text-white">
                     {currency === 'MXN' ? 'MX$' : '$'}
                     {totalDisplay.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}

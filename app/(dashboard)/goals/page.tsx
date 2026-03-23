@@ -148,6 +148,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
                     <Button variant="ghost" size="sm" id={`view-lb-${group.id}`}>
                       View Leaderboard →
                     </Button>
+              placeholder="Enter invite code (e.g. ABC123XYZ)"
+              maxLength={12}
+              className="flex-1 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-2.5 text-white text-sm font-mono placeholder-gray-600 outline-none focus:ring-2 focus:ring-lime-400/40 focus:border-lime-400 uppercase"
+            />
+            <Button
+              id="join-group-btn"
+              type="submit"
+              variant="primary"
+              size="md"
+              loading={joinLoading}
+            >
+              Join
+            </Button>
+          </form>
+          {joinError && <p className="text-red-400 text-xs mt-2">{joinError}</p>}
           </div>
         </section>
 
