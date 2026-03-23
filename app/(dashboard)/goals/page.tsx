@@ -43,6 +43,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
     const [completedGoalId, setCompletedGoalId] = useState<string | null>(null)
 
     // New Group Modal
+      setNewGoalOpen(false)
+      setGoalName(''); setGoalAmount(''); setGoalEnd('')
+    } catch {
+      setGoalError('Error al crear la meta.')
+    } finally {
+      setGoalLoading(false)
+    }
+  }
+
+  const handleBoost = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!boostGoalId || !boostAmount || isNaN(Number(boostAmount))) {
+      setBoostError('Ingresa un monto válido.')
+      return
+    }
       setBoostLoading(true)
       setBoostError(null)
       try {
