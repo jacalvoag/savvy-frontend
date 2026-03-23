@@ -58,6 +58,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
     const [completedGoalId, setCompletedGoalId] = useState<string | null>(null)
 
     // New Group Modal
+
+  // ── Goal Handlers ──────────────────────────────────────────────────────────
+
+  const handleCreateGoal = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!goalName || !goalAmount) { setGoalError('Completa todos los campos.'); return }
+    setGoalLoading(true)
+    setGoalError(null)
+    try {
+      await createGoal({
+        nombre: goalName,
+        montoMeta: parseFloat(goalAmount),
+        fechaInicio: goalStart,
+        fechaFin: goalEnd || undefined,
+      })
       setNewGoalOpen(false)
       setGoalName(''); setGoalAmount(''); setGoalEnd('')
     } catch {
