@@ -28,6 +28,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
       <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-transparent border border-gray-600 text-gray-500">
         Archived
       </span>
+      )
+    }
+    return (
+      <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#2a2a2a] text-gray-300">
+        Active
+      </span>
+    )
+  }
+
+  // ─── Format Date ──────────────────────────────────────────────────────────────
+
+  function formatDate(iso?: string) {
+    if (!iso) return null
+    return new Date(iso).toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' })
+  }
     const [goalName, setGoalName] = useState('')
     const [goalAmount, setGoalAmount] = useState('')
     const [goalStart, setGoalStart] = useState(() => new Date().toISOString().split('T')[0])
