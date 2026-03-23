@@ -178,3 +178,9 @@ function CopyButton({ text }: { text: string }) {
           message="You will no longer have access to this group's leaderboard or progress. Your past contributions will be kept in the group records."
           confirmLabel="Leave Group"
           cancelLabel="Stay"
+        error={actionError}
+      />
+    </div>
+  )
+}
+
