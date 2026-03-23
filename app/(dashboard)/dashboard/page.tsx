@@ -163,6 +163,21 @@ export default function DashboardPage() {
                       dataKey="value"
                       stroke="#a3e635"
                       strokeWidth={2}
+      {/* ── Row 2: Recent Movements + Smart Insight ───────────── */}
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {/* Recent Movements */}
+        <div className="lg:col-span-2 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <h2 className="text-base font-semibold text-white">Recent Movements</h2>
+            <div className="flex gap-2">
+              <Button
+                id="add-income-btn"
+                variant="secondary"
+                size="sm"
+                onClick={() => { setMovementModal('income'); resetMovForm() }}
+              >
+                + Income
+              </Button>
                           m.tipo === 'ingreso' ? 'text-green-400' : 'text-red-400'
                         }`}
                       >
