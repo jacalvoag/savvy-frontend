@@ -1,3 +1,18 @@
+'use client'
+
+import { useEffect, useRef } from 'react'
+
+interface CircleProgressProps {
+  value: number // 0-100
+  size?: number // px
+  strokeWidth?: number
+}
+
+export default function CircleProgress({
+  value,
+  size = 80,
+  strokeWidth = 7,
+}: CircleProgressProps) {
             circleRef.current.style.strokeDashoffset = String(offset)
           }
         })

@@ -28,6 +28,21 @@ function CopyButton({ text }: { text: string }) {
   )
 }
 
+        await contribute(id, parseFloat(contribAmount))
+        setContribAmount('')
+      } catch {
+        setContribError('Error al registrar contribución.')
+      }
+    }
+
+    const handleDelete = async () => {
+      setActionError(null)
+      try {
+        await deleteGroup(id)
+      } catch {
+        setActionError('Error al eliminar el grupo.')
+        throw new Error('delete failed')
+      }
     }
 
     const handleLeave = async () => {
