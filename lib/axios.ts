@@ -28,6 +28,21 @@
             })
             .catch((err) => Promise.reject(err))
         }
+        axios
+          .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/refresh`, { refreshToken })
+          .then(({ data }) => {
+            const newAccessToken: string = data.accessToken
+            if (user) {
+              setAuth(user, newAccessToken, refreshToken)
+            }
+            if (originalRequest.headers) {
+              originalRequest.headers.Authorization = `Bearer ${newAccessToken}`
+            }
+            processQueue(null, newAccessToken)
+            resolve(api(originalRequest))
+          })
+          .catch((err) => {
+            processQueue(err, null)
             clearAuth()
             if (typeof window !== 'undefined') {
               window.location.href = '/login'
