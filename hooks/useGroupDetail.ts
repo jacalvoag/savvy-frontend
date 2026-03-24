@@ -1,3 +1,18 @@
+  'use client'
+
+  import { useState, useCallback } from 'react'
+  import groupsService from '@/services/groups.service'
+  import type { GroupDetail } from '@/types'
+
+  export function useGroupDetail() {
+    const [groupDetail, setGroupDetail] = useState<GroupDetail | null>(null)
+    const [loading, setLoading] = useState(false)
+    const [contributeLoading, setContributeLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
+
+    const fetchGroupDetail = useCallback(async (id: string) => {
+      setLoading(true)
+      setError(null)
     try {
       const { data } = await groupsService.getDetail(id)
       setGroupDetail(data)
