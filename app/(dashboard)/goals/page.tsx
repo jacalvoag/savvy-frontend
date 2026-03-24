@@ -43,6 +43,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
     if (!iso) return null
     return new Date(iso).toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' })
   }
+
+// ─── Savings Hub Page ─────────────────────────────────────────────────────────
+
+export default function GoalsPage() {
+  const { goals, loading: goalsLoading, fetchGoals, createGoal, boostGoal, archiveGoal } = useGoals()
+  const {
+    groups,
+    loading: groupsLoading,
+    fetchGroups,
+    createGroup,
+    joinGroup,
+  } = useGroups()
+
+  // New Goal Modal
+  const [newGoalOpen, setNewGoalOpen] = useState(false)
     const [goalName, setGoalName] = useState('')
     const [goalAmount, setGoalAmount] = useState('')
     const [goalStart, setGoalStart] = useState(() => new Date().toISOString().split('T')[0])
