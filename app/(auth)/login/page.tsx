@@ -58,6 +58,21 @@
 
             {/* Header */}
             <div className="mb-6">
+                      : 'text-gray-400 hover:text-white',
+                  ].join(' ')}
+                >
+                  {t === 'login' ? 'Sign In' : 'Register'}
+                </button>
+              ))}
+            </div>
+
+            {/* ── Login Form ── */}
+            {tab === 'login' && (
+              <form onSubmit={handleLogin} className="flex flex-col gap-4">
+                <Input
+                  id="login-email"
+                  label="Email"
+                  type="email"
                   type="submit"
                   variant="primary"
                   size="lg"

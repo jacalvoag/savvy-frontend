@@ -43,6 +43,21 @@ interface TopbarProps {
   const handleLogout = () => {
     clearAuth()
     router.push('/login')
+  }
+
+  const formatDate = (iso: string) => {
+    return new Date(iso).toLocaleDateString('es-MX', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
+  }
+
+  return (
+    <header className="h-14 bg-[#111111] border-b border-[#1f1f1f] px-4 md:px-6 flex items-center justify-between gap-4 shrink-0">
+      {/* Left: Hamburger + title */}
+      <div className="flex items-center gap-3">
+        <button
+          onClick={onHamburger}
+          className="lg:hidden text-gray-400 hover:text-white p-1"
+          aria-label="Abrir menú"
+        >
             aria-label="Notificaciones"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
