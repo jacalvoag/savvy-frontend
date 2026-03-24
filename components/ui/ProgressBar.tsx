@@ -13,3 +13,7 @@
         {showLabel && (
           <span className="text-xs text-gray-400 shrink-0 w-9 text-right">{clamped}%</span>
         )}
+    </div>
+  )
+}
+
