@@ -28,6 +28,21 @@ export type MovementCategory =
     monto: number
     categoria: MovementCategory
     descripcion?: string
+  moneda: string
+  fecha: string
+}
+
+export interface Goal {
+  id: string
+  usuarioId: string
+  nombre: string
+  montoMeta: number
+  montoActual: number
+  fechaInicio: string
+  fechaFin?: string
+  completada: boolean
+  archivada: boolean
+  porcentaje: number // calculated by backend, do not recalculate
   }
 
   export interface Group {
