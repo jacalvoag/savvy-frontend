@@ -1,3 +1,18 @@
+'use client'
+
+interface ProgressBarProps {
+  value: number // 0-100
+  showLabel?: boolean
+  height?: string
+}
+
+export default function ProgressBar({
+  value,
+  showLabel = false,
+  height = 'h-2',
+}: ProgressBarProps) {
+  const clamped = Math.min(100, Math.max(0, value))
+
     return (
       <div className="w-full flex items-center gap-3">
         <div className={`flex-1 bg-[#2a2a2a] rounded-full overflow-hidden ${height}`}>

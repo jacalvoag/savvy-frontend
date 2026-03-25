@@ -88,6 +88,21 @@
                     type="button"
                     onClick={() => handleTabChange('register')}
                     className="text-lime-400 hover:underline"
+                  >
+                    Sign up
+                  </button>
+                </p>
+              </form>
+            )}
+
+            {/* ── Register Form ── */}
+            {tab === 'register' && (
+              <form onSubmit={handleRegister} className="flex flex-col gap-4">
+                <Input
+                  id="reg-name"
+                  label="Full Name"
+                  type="text"
+                  placeholder="John Doe"
                 value={regName}
                 onChange={(e) => setRegName(e.target.value)}
                 autoComplete="name"
