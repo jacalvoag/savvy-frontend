@@ -1,18 +1,18 @@
-    const [loginPassword, setLoginPassword] = useState('')
+  const [loginPassword, setLoginPassword] = useState('')
 
-    // Register form
-    const [regName, setRegName] = useState('')
-    const [regEmail, setRegEmail] = useState('')
-    const [regPassword, setRegPassword] = useState('')
+  // Register form
+  const [regName, setRegName] = useState('')
+  const [regEmail, setRegEmail] = useState('')
+  const [regPassword, setRegPassword] = useState('')
 
-    const handleTabChange = (t: Tab) => {
-      setTab(t)
-      setError(null)
-    }
+  const handleTabChange = (t: Tab) => {
+    setTab(t)
+    setError(null)
+  }
 
-    const handleLogin = async (e: React.FormEvent) => {
-      e.preventDefault()
-      await login(loginEmail, loginPassword)
+  const handleLogin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    await login(loginEmail, loginPassword)
     }
 
     const handleRegister = async (e: React.FormEvent) => {
@@ -118,8 +118,8 @@
                   label="Password"
                   type="password"
                   placeholder="Min 8 characters"
-        </div>
       </div>
-    )
-  }
+    </div>
+  )
+}
 

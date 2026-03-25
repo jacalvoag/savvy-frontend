@@ -163,6 +163,21 @@ export default function GoalsPage() {
                         onClick={() => archiveGoal(goal.id)}
                       >
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                      </svg>
+                    </Button>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* ── Section 2: Group Collaborations ──────────────────── */}
+      <section>
+        <div className="flex items-center justify-between mb-4">
+          <div>
               <h2 className="text-xl font-bold text-white">Group Collaborations</h2>
               <p className="text-sm text-gray-500">Save together, grow together</p>
             </div>
