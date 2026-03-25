@@ -193,6 +193,21 @@ function CopyButton({ text }: { text: string }) {
                   id="delete-group-btn"
                   variant="danger"
                   size="md"
+                  className="w-full"
+                  onClick={() => { setActionError(null); setDeleteOpen(true) }}
+                >
+                  Delete Group
+                </Button>
+              </>
+            ) : (
+              <>
+                <p className="text-xs text-gray-500">You can leave this group at any time.</p>
+                <Button
+                  id="leave-group-btn"
+                  variant="ghost"
+                  size="md"
+                  className="w-full border-red-800/50 text-red-400 hover:text-red-300 hover:bg-red-900/10"
+                  onClick={() => { setActionError(null); setLeaveOpen(true) }}
           title="Delete Group"
           message="This action cannot be undone. All members will be removed from the group and all data will be permanently deleted."
           confirmLabel="Delete Group"

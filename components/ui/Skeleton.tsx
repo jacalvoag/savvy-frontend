@@ -1,3 +1,18 @@
+  'use client'
+
+  interface SkeletonProps {
+    className?: string
+    count?: number
+  }
+
+  export function Skeleton({ className = '' }: SkeletonProps) {
+    return (
+      <div
+        className={`animate-pulse bg-[#2a2a2a] rounded-xl ${className}`}
+        aria-hidden="true"
+      />
+    )
+  }
 
 export function SkeletonCard() {
   return (
