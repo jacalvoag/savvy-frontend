@@ -58,20 +58,20 @@ function CustomTooltip({ active, payload, label }: TooltipProps) {
 // ─── Dashboard Page ───────────────────────────────────────────────────────────
 
 export default function DashboardPage() {
-    const { portfolio, performance, insight, portfolioLoading, performanceLoading, insightLoading, fetchPortfolio, fetchPerformance, fetchInsight } = useMetrics()
-    const { movements, fetchMovements, createMovement } = useMovements()
+  const { portfolio, performance, insight, portfolioLoading, performanceLoading, insightLoading, fetchPortfolio, fetchPerformance, fetchInsight } = useMetrics()
+  const { movements, fetchMovements, createMovement } = useMovements()
 
-    const [period, setPeriod] = useState<Period>('1M')
-    const [currency, setCurrency] = useState<'USD' | 'MXN'>('USD')
+  const [period, setPeriod] = useState<Period>('1M')
+  const [currency, setCurrency] = useState<'USD' | 'MXN'>('USD')
 
-    // Create movement modal state
-    const [movementModal, setMovementModal] = useState<'income' | 'expense' | null>(null)
-    const [movAmount, setMovAmount] = useState('')
-    const [movCategory, setMovCategory] = useState<MovementCategory>('other')
-    const [movDesc, setMovDesc] = useState('')
-    const [movDate, setMovDate] = useState(() => new Date().toISOString().split('T')[0])
-    const [movLoading, setMovLoading] = useState(false)
-    const [movError, setMovError] = useState<string | null>(null)
+  // Create movement modal state
+  const [movementModal, setMovementModal] = useState<'income' | 'expense' | null>(null)
+  const [movAmount, setMovAmount] = useState('')
+  const [movCategory, setMovCategory] = useState<MovementCategory>('other')
+  const [movDesc, setMovDesc] = useState('')
+  const [movDate, setMovDate] = useState(() => new Date().toISOString().split('T')[0])
+  const [movLoading, setMovLoading] = useState(false)
+  const [movError, setMovError] = useState<string | null>(null)
 
         : portfolio.total * (portfolio.rates?.MXN ?? 1)
       : 0

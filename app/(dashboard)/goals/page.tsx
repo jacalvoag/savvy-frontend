@@ -163,6 +163,21 @@ export default function GoalsPage() {
                     ? 'border-lime-400 glow-lime'
                     : 'border-[#2a2a2a]',
                 ].join(' ')}
+                      of ${goal.montoMeta.toLocaleString()} goal
+                    </p>
+                    {goal.fechaFin && (
+                      <p className="text-xs text-gray-600 mt-1">
+                        Due {formatDate(goal.fechaFin)}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Actions */}
+                {!goal.completada && !goal.archivada && (
+                  <div className="flex gap-2 mt-auto">
+                    <Button
+                      id={`boost-${goal.id}`}
                         variant="primary"
                         size="sm"
                         className="flex-1"
