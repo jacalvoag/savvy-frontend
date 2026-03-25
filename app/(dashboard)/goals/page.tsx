@@ -148,6 +148,21 @@ export default function GoalsPage() {
         setInviteCode('')
       } catch {
         setJoinError('Código inválido o expirado.')
+          <div className="bg-[#1c1c1c] border border-[#2a2a2a] border-dashed rounded-2xl p-10 text-center">
+            <p className="text-2xl mb-2">💰</p>
+            <p className="text-gray-400 text-sm">No goals yet. Create your first one!</p>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {goals.map((goal) => (
+              <div
+                key={goal.id}
+                className={[
+                  'bg-[#1c1c1c] border rounded-2xl p-5 flex flex-col gap-4 transition-all',
+                  completedGoalId === goal.id
+                    ? 'border-lime-400 glow-lime'
+                    : 'border-[#2a2a2a]',
+                ].join(' ')}
                         variant="primary"
                         size="sm"
                         className="flex-1"
@@ -193,6 +208,21 @@ export default function GoalsPage() {
 
           {groupsLoading ? (
             <div className="space-y-3">
+              {[1, 2].map((i) => <SkeletonCard key={i} />)}
+            </div>
+          ) : groups.length === 0 ? (
+            <div className="bg-[#1c1c1c] border border-[#2a2a2a] border-dashed rounded-2xl p-8 text-center">
+              <p className="text-2xl mb-2">👥</p>
+              <p className="text-gray-400 text-sm">No groups yet. Create one or join with a code!</p>
+            </div>
+          ) : (
+            <div className="flex flex-col gap-3">
+              {groups.map((group) => (
+                <div
+                  key={group.id}
+                  className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+                >
+                  <div className="flex-1 min-w-0 space-y-2">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-sm font-semibold text-white">{group.nombre}</h3>
                       <span className="text-xs text-gray-500 font-mono bg-[#111] px-2 py-0.5 rounded-lg">
