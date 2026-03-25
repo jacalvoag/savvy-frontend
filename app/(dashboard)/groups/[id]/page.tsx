@@ -118,6 +118,21 @@ function CopyButton({ text }: { text: string }) {
               {(['contributions', 'streaks'] as LeaderboardTab[]).map((t) => (
                 <button
                   key={t}
+          {loading && !groupDetail ? (
+            <div className="p-4 space-y-1">
+              {[1, 2, 3, 4].map((i) => <SkeletonRow key={i} />)}
+            </div>
+          ) : (
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="text-xs text-gray-500 border-b border-[#222]">
+                    <th className="text-left px-4 py-3 font-medium">#</th>
+                    <th className="text-left px-4 py-3 font-medium">Member</th>
+                    <th className="text-right px-4 py-3 font-medium">
+                      {lbTab === 'contributions' ? 'Contribution' : 'Streak'}
+                    </th>
+                    {lbTab === 'contributions' && (
                             'hover:bg-white/[0.02]',
                           ].join(' ')}
                           style={{ animationDelay: `${idx * 60}ms` }}

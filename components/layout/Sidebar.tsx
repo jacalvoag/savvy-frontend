@@ -73,3 +73,9 @@
             <div className="fixed inset-y-0 left-0 z-50 lg:hidden flex">
               <SidebarContent />
             </div>
+          </>
+        )}
+      </>
+    )
+  }
+
