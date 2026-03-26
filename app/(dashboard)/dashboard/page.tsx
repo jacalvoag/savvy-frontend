@@ -208,6 +208,21 @@ export default function DashboardPage() {
                       dataKey="value"
                       stroke="#a3e635"
                       strokeWidth={2}
+                      fill="url(#limeGradient)"
+                      dot={false}
+                      activeDot={{ r: 4, fill: '#a3e635', strokeWidth: 0 }}
+                    />
+                  </AreaChart>
+                </ResponsiveContainer>
+              </div>
+            ) : (
+              <div className="h-40 flex items-center justify-center">
+                <p className="text-gray-500 text-sm">No performance data for this period</p>
+              </div>
+            )}
+          </div>
+        </div>
+
       {/* ── Row 2: Recent Movements + Smart Insight ───────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
         {/* Recent Movements */}
@@ -223,6 +238,21 @@ export default function DashboardPage() {
               >
                 + Income
               </Button>
+                <Button
+                  id="add-expense-btn"
+                  variant="ghost"
+                  size="sm"
+                  onClick={() => { setMovementModal('expense'); resetMovForm() }}
+                >
+                  + Expense
+                </Button>
+              </div>
+            </div>
+
+            <div className="flex flex-col divide-y divide-[#222]">
+              {recentMovements.length === 0 ? (
+                <p className="text-gray-500 text-sm py-4 text-center">No movements yet</p>
+              ) : (
                           m.tipo === 'ingreso' ? 'text-green-400' : 'text-red-400'
                         }`}
                       >

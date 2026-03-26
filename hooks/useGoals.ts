@@ -13,3 +13,18 @@
       setLoading(false)
     }
   }, [])
+
+  const createGoal = async (data: CreateGoalData) => {
+    setError(null)
+    try {
+      const { data: newGoal } = await goalsService.create(data)
+      setGoals((prev) => [newGoal, ...prev])
+      return newGoal
+    } catch {
+      setError('Error al crear meta.')
+      throw new Error('Create failed')
+    }
+  }
+
+  const boostGoal = async (id: string, monto: number) => {
+    setError(null)
