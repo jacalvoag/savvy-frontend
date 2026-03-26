@@ -238,20 +238,20 @@ export default function DashboardPage() {
           {/* Smart Insight */}
           <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4 glow-lime relative overflow-hidden">
             {/* Subtle glow backdrop */}
-            ) : insight ? (
-              <>
-                <p className="text-sm text-gray-300 leading-relaxed">{insight.mensaje}</p>
-                <div className="bg-[#111] border border-[#2a2a2a] rounded-xl px-4 py-3 space-y-1">
-                  <p className="text-xs text-gray-500">Closest goal</p>
-                  <p className="text-sm text-white font-medium">{insight.metaNombre}</p>
-                  <p className="text-xs text-lime-400">{insight.mesesRestantes} months remaining</p>
-                </div>
-              </>
-            ) : (
-              <p className="text-sm text-gray-500">No insights available</p>
-            )}
-          </div>
+          ) : insight ? (
+            <>
+              <p className="text-sm text-gray-300 leading-relaxed">{insight.mensaje}</p>
+              <div className="bg-[#111] border border-[#2a2a2a] rounded-xl px-4 py-3 space-y-1">
+                <p className="text-xs text-gray-500">Closest goal</p>
+                <p className="text-sm text-white font-medium">{insight.metaNombre}</p>
+                <p className="text-xs text-lime-400">{insight.mesesRestantes} months remaining</p>
+              </div>
+            </>
+          ) : (
+            <p className="text-sm text-gray-500">No insights available</p>
+          )}
         </div>
+      </div>
 
         {/* ── Create Movement Modal ─────────────────────────────── */}
         <Modal

@@ -13,3 +13,17 @@
       } finally {
         setLoading(false)
       }
+  }
+
+  const removeMovement = async (id: string) => {
+    try {
+      await movementsService.remove(id)
+      setMovements((prev) => prev.filter((m) => m.id !== id))
+    } catch {
+      setError('Error al eliminar movimiento.')
+    }
+  }
+
+  return { movements, loading, error, fetchMovements, createMovement, removeMovement }
+}
+
