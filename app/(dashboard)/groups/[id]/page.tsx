@@ -148,6 +148,21 @@ function CopyButton({ text }: { text: string }) {
                             <div className="flex items-center gap-2.5">
                               <Avatar
                                 src={member.avatarUrl}
+                                nombre={member.nombre}
+                                size="sm"
+                              />
+                              <div>
+                                <p className={`font-medium ${isCurrent ? 'text-lime-400' : 'text-white'}`}>
+                                  {member.nombre}
+                                  {isCurrent && <span className="text-xs text-gray-500 ml-1">(you)</span>}
+                                </p>
+                              </div>
+                            </div>
+                          </td>
+                          {/* Value */}
+                          <td className="px-4 py-3 text-right">
+                            {lbTab === 'contributions' ? (
+                              <span className="text-white font-semibold">${member.contribucion.toLocaleString()}</span>
                           ) : (
                             <span className="text-white font-semibold">{member.streakWeeks}w 🔥</span>
                           )}

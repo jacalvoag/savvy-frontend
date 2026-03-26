@@ -148,6 +148,21 @@ export default function GoalsPage() {
         setInviteCode('')
       } catch {
         setJoinError('Código inválido o expirado.')
+          <Button
+            id="new-goal-btn"
+            variant="primary"
+            size="md"
+            onClick={() => setNewGoalOpen(true)}
+          >
+            + New Goal
+          </Button>
+        </div>
+
+        {goalsLoading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+            {[1, 2, 3].map((i) => <SkeletonCard key={i} />)}
+          </div>
+        ) : goals.length === 0 ? (
           <div className="bg-[#1c1c1c] border border-[#2a2a2a] border-dashed rounded-2xl p-10 text-center">
             <p className="text-2xl mb-2">💰</p>
             <p className="text-gray-400 text-sm">No goals yet. Create your first one!</p>
