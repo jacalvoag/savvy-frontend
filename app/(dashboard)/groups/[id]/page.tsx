@@ -103,6 +103,21 @@ function CopyButton({ text }: { text: string }) {
         {groupDetail && (
           <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 space-y-4">
             <div className="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <p className="text-xs text-gray-500 uppercase tracking-wider">Total Saved</p>
+              <p className="text-3xl font-bold text-white mt-1">
+                ${groupDetail.totalAcumulado.toLocaleString()}
+              </p>
+              <p className="text-sm text-gray-500 mt-0.5">
+                of ${groupDetail.metaAhorro.toLocaleString()} goal
+              </p>
+            </div>
+            <div className="text-right">
+              <p className="text-2xl font-bold text-lime-400">
+                {Math.round(groupDetail.porcentajeGrupal)}%
+              </p>
+              <p className="text-xs text-gray-500">Complete</p>
+            </div>
             </div>
             <ProgressBar value={groupDetail.porcentajeGrupal} showLabel={false} height="h-3" />
           </div>

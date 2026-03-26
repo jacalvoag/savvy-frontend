@@ -148,6 +148,21 @@ export default function GoalsPage() {
         setInviteCode('')
       } catch {
         setJoinError('Código inválido o expirado.')
+      } finally {
+        setJoinLoading(false)
+      }
+    }
+
+    return (
+      <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-8">
+
+        {/* ── Section 1: Individual Goals ──────────────────────── */}
+        <section>
+          <div className="flex items-center justify-between mb-4">
+            <div>
+              <h2 className="text-xl font-bold text-white">My Goals</h2>
+              <p className="text-sm text-gray-500">Track and boost your savings targets</p>
+            </div>
           <Button
             id="new-goal-btn"
             variant="primary"
@@ -268,6 +283,21 @@ export default function GoalsPage() {
                     <Button variant="ghost" size="sm" id={`view-lb-${group.id}`}>
                       View Leaderboard →
                     </Button>
+                  </Link>
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Join Group */}
+          <div className="mt-4 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5">
+            <p className="text-sm font-semibold text-white mb-3">Join a Group</p>
+            <form onSubmit={handleJoin} className="flex gap-3">
+              <input
+                id="invite-code-input"
+                type="text"
+                value={inviteCode}
+                onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
               placeholder="Enter invite code (e.g. ABC123XYZ)"
               maxLength={12}
               className="flex-1 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-2.5 text-white text-sm font-mono placeholder-gray-600 outline-none focus:ring-2 focus:ring-lime-400/40 focus:border-lime-400 uppercase"
