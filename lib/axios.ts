@@ -1,3 +1,18 @@
+import axios, { AxiosRequestConfig, InternalAxiosRequestConfig } from 'axios'
+import { useAuthStore } from '@/store/auth.store'
+
+// ─── Types ────────────────────────────────────────────────────────────────────
+
+interface QueueItem {
+  resolve: (token: string) => void
+  reject: (err: unknown) => void
+}
+
+// Augment axios config to include retry flag
+interface RetryableRequestConfig extends InternalAxiosRequestConfig {
+  _retry?: boolean
+}
+
       const { accessToken } = useAuthStore.getState()
       if (accessToken && config.headers) {
         config.headers.Authorization = `Bearer ${accessToken}`

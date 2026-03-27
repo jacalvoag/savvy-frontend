@@ -43,3 +43,18 @@
 
     const joinGroup = async (inviteCode: string) => {
       setError(null)
+      try {
+        const { data: joinedGroup } = await groupsService.join(inviteCode)
+        setGroups((prev) => [...prev, joinedGroup])
+        return joinedGroup
+      } catch {
+        setError('Código de invitación inválido o expirado.')
+        throw new Error('Join failed')
+      }
+    }
+
+    const deleteGroup = async (id: string) => {
+      setError(null)
+      try {
+        await groupsService.deleteGroup(id)
+        setGroups((prev) => prev.filter((g) => g.id !== id))
