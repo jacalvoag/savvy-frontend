@@ -58,20 +58,20 @@ function CopyButton({ text }: { text: string }) {
         setActionError('Error al eliminar el grupo.')
         throw new Error('delete failed')
       }
-    }
+  }
 
-    const handleLeave = async () => {
-      setActionError(null)
-      try {
-        await leaveGroup(id)
-      } catch {
-        setActionError('No puedes salir de este grupo.')
-        throw new Error('leave failed')
-      }
+  const handleLeave = async () => {
+    setActionError(null)
+    try {
+      await leaveGroup(id)
+    } catch {
+      setActionError('No puedes salir de este grupo.')
+      throw new Error('leave failed')
     }
+  }
 
-    return (
-      <div className="p-4 md:p-6 max-w-5xl mx-auto space-y-5">
+  return (
+    <div className="p-4 md:p-6 max-w-5xl mx-auto space-y-5">
 
         {/* ── Group Header ───────────────────────────────────────── */}
         {loading && !groupDetail ? (

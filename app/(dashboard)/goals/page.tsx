@@ -328,3 +328,18 @@ export default function GoalsPage() {
             {goalError && <p className="text-red-400 text-xs">{goalError}</p>}
             <div className="flex gap-3 mt-1">
               <Button type="button" variant="ghost" className="flex-1" onClick={() => setNewGoalOpen(false)}>Cancel</Button>
+        </form>
+      </Modal>
+
+      {/* New Group Modal */}
+      <Modal isOpen={newGroupOpen} onClose={() => setNewGroupOpen(false)} title="Create a Group">
+        <form onSubmit={handleCreateGroup} className="flex flex-col gap-4">
+          <Input id="group-name" label="Group Name" placeholder="e.g. Team Savers" value={groupName} onChange={(e) => setGroupName(e.target.value)} required />
+          <Input id="group-meta" label="Savings Goal ($)" type="number" placeholder="10000" value={groupMeta} onChange={(e) => setGroupMeta(e.target.value)} required />
+          {groupError && <p className="text-red-400 text-xs">{groupError}</p>}
+          <div className="flex gap-3 mt-1">
+            <Button type="button" variant="ghost" className="flex-1" onClick={() => setNewGroupOpen(false)}>Cancel</Button>
+            <Button id="create-group-btn" type="submit" variant="secondary" className="flex-1" loading={groupLoading}>Create Group</Button>
+          </div>
+        </form>
+      </Modal>
