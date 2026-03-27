@@ -73,6 +73,21 @@ export interface GroupDetail extends Group {
 
 export interface Notification {
   id: string
+}
+
+export interface InsightData {
+  mensaje: string
+  mesesRestantes: number
+  metaNombre: string
+}
+
+// ─── Auth Types ───────────────────────────────────────────────────────────────
+
+export interface AuthState {
+  user: User | null
+  accessToken: string | null
+  refreshToken: string | null
+  setAuth: (user: User, accessToken: string, refreshToken: string) => void
   updateUser: (partial: Partial<User>) => void
   clearAuth: () => void
 }
