@@ -43,6 +43,21 @@
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-lg bg-lime-400 flex items-center justify-center">
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <div key={s.label} className="bg-white/10 backdrop-blur-sm rounded-xl px-3 py-3 text-center">
+                  <p className="text-white font-bold text-xl">{s.value}</p>
+                  <p className="text-white/50 text-xs mt-0.5">{s.label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Footer quote */}
+          <p className="text-white/30 text-xs">
+            "The secret to getting ahead is getting started." — Mark Twain
+          </p>
+        </div>
+      </div>
+
         {/* ── Right Panel ────────────────────────────────────────── */}
         <div className="flex-1 bg-[#111111] flex items-center justify-center px-6 py-10">
           <div className="w-full max-w-sm">
@@ -58,6 +73,21 @@
 
             {/* Header */}
             <div className="mb-6">
+              <h2 className="text-2xl font-bold text-white">Welcome back</h2>
+              <p className="text-gray-500 text-sm mt-1">Sign in to your account or create a new one</p>
+            </div>
+
+            {/* Tab Toggle */}
+            <div className="flex bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl p-1 mb-6">
+              {(['login', 'register'] as Tab[]).map((t) => (
+                <button
+                  key={t}
+                  id={`tab-${t}`}
+                  onClick={() => handleTabChange(t)}
+                  className={[
+                    'flex-1 py-2 text-sm font-medium rounded-lg transition-all duration-200',
+                    tab === t
+                      ? 'bg-lime-400 text-black'
                       : 'text-gray-400 hover:text-white',
                   ].join(' ')}
                 >

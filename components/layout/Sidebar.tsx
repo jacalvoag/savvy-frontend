@@ -73,6 +73,21 @@
             item.href === '/dashboard'
               ? pathname === '/dashboard'
               : pathname.startsWith(item.href)
+
+            return (
+              <Link
+                key={`${item.href}-${item.label}`}
+                href={item.href}
+                onClick={onMobileClose}
+                className={[
+                  'flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all duration-150',
+                  'group relative',
+                  isActive
+                    ? 'bg-lime-400/10 text-lime-400 border-l-2 border-lime-400 pl-[10px]'
+                    : 'text-gray-400 hover:text-white hover:bg-white/5',
+                ].join(' ')}
+              >
+                {item.icon}
                 {item.label}
               </Link>
             )
