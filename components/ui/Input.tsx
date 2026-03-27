@@ -28,6 +28,21 @@
         <div className="relative">
           {icon && (
             <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+            'focus:ring-2 focus:ring-lime-400/40 focus:border-lime-400',
+            error ? 'border-red-500' : 'border-[#2a2a2a]',
+            icon ? 'pl-10' : '',
+            isPassword ? 'pr-10' : '',
+            disabled ? 'opacity-50 cursor-not-allowed' : '',
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        />
+        {isPassword && (
+          <button
+            type="button"
+            onClick={() => setShowPassword((v) => !v)}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-200 transition-colors"
+            tabIndex={-1}
             aria-label={showPassword ? 'Ocultar contraseña' : 'Mostrar contraseña'}
           >
             {showPassword ? (

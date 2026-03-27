@@ -28,6 +28,21 @@
             })
             .catch((err) => Promise.reject(err))
         }
+
+        originalRequest._retry = true
+        isRefreshing = true
+
+        const { refreshToken, setAuth, clearAuth, user } = useAuthStore.getState()
+
+        if (!refreshToken) {
+          clearAuth()
+          if (typeof window !== 'undefined') {
+            window.location.href = '/login'
+          }
+          return Promise.reject(error)
+        }
+
+        return new Promise((resolve, reject) => {
         axios
           .post(`${process.env.NEXT_PUBLIC_API_URL}/auth/refresh`, { refreshToken })
           .then(({ data }) => {
