@@ -28,3 +28,11 @@
       setNotifications((prev) =>
         prev.map((n) => (n.id === id ? { ...n, leida: true } : n))
       )
+      } catch {
+        // Silently fail
+      }
+    }
+
+    return { notifications, unreadCount, loading, fetchNotifications, markAsRead }
+  }
+

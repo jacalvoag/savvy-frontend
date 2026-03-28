@@ -28,6 +28,21 @@ const sizeClasses: Record<Size, string> = {
   md: 'px-4 py-2.5 text-sm rounded-xl',
   lg: 'px-6 py-3 text-base rounded-xl',
 }
+        className={[
+          'inline-flex items-center justify-center gap-2 transition-all duration-150 cursor-pointer select-none',
+          variantClasses[variant],
+          sizeClasses[size],
+          isDisabled ? 'cursor-not-allowed' : '',
+          className,
+        ]
+          .filter(Boolean)
+          .join(' ')}
+        {...props}
+      >
+        {loading && (
+          <svg
+            className="animate-spin h-4 w-4 shrink-0"
+            xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             aria-hidden="true"

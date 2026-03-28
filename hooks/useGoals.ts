@@ -1,3 +1,18 @@
+'use client'
+
+import { useState, useCallback } from 'react'
+import goalsService from '@/services/goals.service'
+import type { Goal } from '@/types'
+
+interface CreateGoalData {
+  nombre: string
+  montoMeta: number
+  fechaInicio: string
+  fechaFin?: string
+}
+
+export function useGoals() {
+  const [goals, setGoals] = useState<Goal[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 

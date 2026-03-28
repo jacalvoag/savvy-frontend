@@ -13,6 +13,21 @@
   const sizePx: Record<AvatarSize, number> = { sm: 28, md: 36, lg: 48 }
   const sizeClass: Record<AvatarSize, string> = {
     sm: 'w-7 h-7 text-xs',
+    md: 'w-9 h-9 text-sm',
+    lg: 'w-12 h-12 text-base',
+  }
+
+  function getInitials(nombre: string) {
+    return nombre
+      .split(' ')
+      .map((w) => w[0])
+      .join('')
+      .substring(0, 2)
+      .toUpperCase()
+  }
+
+  export default function Avatar({ src, nombre, size = 'md' }: AvatarProps) {
+    const px = sizePx[size]
   const cls = sizeClass[size]
 
   if (src) {
