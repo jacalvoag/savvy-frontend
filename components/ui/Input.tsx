@@ -1,3 +1,18 @@
+'use client'
+
+import React, { useState } from 'react'
+
+interface InputProps {
+  label?: string
+  placeholder?: string
+  type?: string
+  error?: string
+  icon?: React.ReactNode
+  value: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  id?: string
+  autoComplete?: string
+  required?: boolean
     disabled?: boolean
   }
 

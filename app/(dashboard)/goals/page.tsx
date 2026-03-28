@@ -133,21 +133,21 @@ export default function GoalsPage() {
         setGroupName(''); setGroupMeta('')
       } catch {
         setGroupError('Error al crear el grupo.')
-      } finally {
-        setGroupLoading(false)
-      }
+    } finally {
+      setGroupLoading(false)
     }
+  }
 
-    const handleJoin = async (e: React.FormEvent) => {
-      e.preventDefault()
-      if (!inviteCode) return
-      setJoinLoading(true)
-      setJoinError(null)
-      try {
-        await joinGroup(inviteCode.trim().toUpperCase())
-        setInviteCode('')
-      } catch {
-        setJoinError('Código inválido o expirado.')
+  const handleJoin = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!inviteCode) return
+    setJoinLoading(true)
+    setJoinError(null)
+    try {
+      await joinGroup(inviteCode.trim().toUpperCase())
+      setInviteCode('')
+    } catch {
+      setJoinError('Código inválido o expirado.')
       } finally {
         setJoinLoading(false)
       }
