@@ -343,3 +343,7 @@ export default function GoalsPage() {
           </div>
         </form>
       </Modal>
+    </div>
+  )
+}
+

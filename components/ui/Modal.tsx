@@ -43,3 +43,8 @@ export default function Modal({
         >
           {/* Header */}
           {title && (
+      </div>,
+      document.body
+    )
+  }
+
