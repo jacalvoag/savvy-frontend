@@ -13,6 +13,21 @@ interface RetryableRequestConfig extends InternalAxiosRequestConfig {
   _retry?: boolean
 }
 
+
+  // ─── Axios Instance ───────────────────────────────────────────────────────────
+
+  const api = axios.create({
+    baseURL: process.env.NEXT_PUBLIC_API_URL,
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  })
+
+  // ─── Request Interceptor ──────────────────────────────────────────────────────
+
+  api.interceptors.request.use(
+    (config: InternalAxiosRequestConfig) => {
+      // Read token directly from Zustand store (works outside React components too)
       const { accessToken } = useAuthStore.getState()
       if (accessToken && config.headers) {
         config.headers.Authorization = `Bearer ${accessToken}`

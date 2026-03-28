@@ -28,3 +28,18 @@
     setError(null)
     try {
       await groupsService.contribute(id, monto)
+        // Reload to get accurate server-side ranking
+        const { data } = await groupsService.getDetail(id)
+        setGroupDetail(data)
+        return data
+      } catch {
+        setError('Error al registrar contribución.')
+        throw new Error('Contribute failed')
+      } finally {
+        setContributeLoading(false)
+      }
+    }
+
+    return { groupDetail, loading, contributeLoading, error, fetchGroupDetail, contribute }
+  }
+

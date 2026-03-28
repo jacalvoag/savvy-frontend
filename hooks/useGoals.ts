@@ -28,3 +28,11 @@
 
   const boostGoal = async (id: string, monto: number) => {
     setError(null)
+    } catch {
+      setError('Error al archivar meta.')
+    }
+  }
+
+  return { goals, loading, error, fetchGoals, createGoal, boostGoal, archiveGoal }
+}
+
