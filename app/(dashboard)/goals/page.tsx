@@ -103,21 +103,21 @@ export default function GoalsPage() {
       setBoostError('Ingresa un monto válido.')
       return
     }
-      setBoostLoading(true)
-      setBoostError(null)
-      try {
-        const updated = await boostGoal(boostGoalId, parseFloat(boostAmount))
-        if (updated?.completada) {
-          setCompletedGoalId(boostGoalId)
-          setTimeout(() => setCompletedGoalId(null), 4000)
-        }
-        setBoostGoalId(null)
-        setBoostAmount('')
-      } catch {
-        setBoostError('Error al realizar el boost.')
-      } finally {
-        setBoostLoading(false)
+    setBoostLoading(true)
+    setBoostError(null)
+    try {
+      const updated = await boostGoal(boostGoalId, parseFloat(boostAmount))
+      if (updated?.completada) {
+        setCompletedGoalId(boostGoalId)
+        setTimeout(() => setCompletedGoalId(null), 4000)
       }
+      setBoostGoalId(null)
+      setBoostAmount('')
+    } catch {
+      setBoostError('Error al realizar el boost.')
+    } finally {
+      setBoostLoading(false)
+    }
     }
 
     // ── Group Handlers ─────────────────────────────────────────────────────────
