@@ -43,6 +43,21 @@ export default function Modal({
         >
           {/* Header */}
           {title && (
+          <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-[#2a2a2a]">
+            <h2 className="text-lg font-semibold text-white">{title}</h2>
+            <button
+              onClick={onClose}
+              className="text-gray-400 hover:text-white transition-colors p-1 rounded-lg hover:bg-white/5"
+              aria-label="Cerrar"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+        )}
+        <div className="px-6 py-5">{children}</div>
+      </div>
       </div>,
       document.body
     )

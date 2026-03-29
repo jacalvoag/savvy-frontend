@@ -43,21 +43,21 @@ interface RetryableRequestConfig extends InternalAxiosRequestConfig {
   api.interceptors.request.use(
     (config: InternalAxiosRequestConfig) => {
       // Read token directly from Zustand store (works outside React components too)
-      const { accessToken } = useAuthStore.getState()
-      if (accessToken && config.headers) {
-        config.headers.Authorization = `Bearer ${accessToken}`
-      }
-      return config
-    },
-    (error) => Promise.reject(error)
-  )
+    const { accessToken } = useAuthStore.getState()
+    if (accessToken && config.headers) {
+      config.headers.Authorization = `Bearer ${accessToken}`
+    }
+    return config
+  },
+  (error) => Promise.reject(error)
+)
 
-  // ─── Response Interceptor (Refresh Token Queue) ───────────────────────────────
+// ─── Response Interceptor (Refresh Token Queue) ───────────────────────────────
 
-  api.interceptors.response.use(
-    (response) => response,
-    async (error) => {
-      const originalRequest = error.config as RetryableRequestConfig
+api.interceptors.response.use(
+  (response) => response,
+  async (error) => {
+    const originalRequest = error.config as RetryableRequestConfig
 
       if (error.response?.status === 401 && !originalRequest._retry) {
         if (isRefreshing) {
