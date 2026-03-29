@@ -13,6 +13,21 @@ export default function CircleProgress({
   size = 80,
   strokeWidth = 7,
 }: CircleProgressProps) {
+    const clamped = Math.min(100, Math.max(0, value))
+    const radius = (size - strokeWidth) / 2
+    const circumference = 2 * Math.PI * radius
+    const offset = circumference - (clamped / 100) * circumference
+
+    const circleRef = useRef<SVGCircleElement>(null)
+
+    useEffect(() => {
+      // Animate from 0 to target on mount
+      if (circleRef.current) {
+        circleRef.current.style.strokeDashoffset = String(circumference)
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            if (circleRef.current) {
+              circleRef.current.style.transition = 'stroke-dashoffset 1s ease-out'
             circleRef.current.style.strokeDashoffset = String(offset)
           }
         })

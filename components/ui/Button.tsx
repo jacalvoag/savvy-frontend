@@ -28,6 +28,21 @@ const sizeClasses: Record<Size, string> = {
   md: 'px-4 py-2.5 text-sm rounded-xl',
   lg: 'px-6 py-3 text-base rounded-xl',
 }
+
+export default function Button({
+  variant = 'primary',
+  size = 'md',
+  loading = false,
+  disabled,
+  children,
+  className = '',
+  ...props
+}: ButtonProps) {
+  const isDisabled = disabled || loading
+
+  return (
+    <button
+      disabled={isDisabled}
         className={[
           'inline-flex items-center justify-center gap-2 transition-all duration-150 cursor-pointer select-none',
           variantClasses[variant],
