@@ -43,21 +43,21 @@ export interface Goal {
   completada: boolean
   archivada: boolean
   porcentaje: number // calculated by backend, do not recalculate
-  }
+}
 
-  export interface Group {
-    id: string
-    nombre: string
-    metaAhorro: number
-    inviteCode: string
-    liderId: string
-    createdAt: string
-  }
+export interface Group {
+  id: string
+  nombre: string
+  metaAhorro: number
+  inviteCode: string
+  liderId: string
+  createdAt: string
+}
 
-  export interface LeaderboardEntry {
-    rank: number
-    usuarioId: string
-    nombre: string
+export interface LeaderboardEntry {
+  rank: number
+  usuarioId: string
+  nombre: string
   avatarUrl?: string
   contribucion: number
   porcentaje: number

@@ -28,21 +28,21 @@ function GoalBadge({ goal }: { goal: Goal }) {
       <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-transparent border border-gray-600 text-gray-500">
         Archived
       </span>
-      )
-    }
-    return (
-      <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#2a2a2a] text-gray-300">
-        Active
-      </span>
     )
   }
+  return (
+    <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#2a2a2a] text-gray-300">
+      Active
+    </span>
+  )
+}
 
-  // ─── Format Date ──────────────────────────────────────────────────────────────
+// ─── Format Date ──────────────────────────────────────────────────────────────
 
-  function formatDate(iso?: string) {
-    if (!iso) return null
-    return new Date(iso).toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' })
-  }
+function formatDate(iso?: string) {
+  if (!iso) return null
+  return new Date(iso).toLocaleDateString('es-MX', { year: 'numeric', month: 'short', day: 'numeric' })
+}
 
 // ─── Savings Hub Page ─────────────────────────────────────────────────────────
 
@@ -253,21 +253,21 @@ export default function GoalsPage() {
 
           {groupsLoading ? (
             <div className="space-y-3">
-              {[1, 2].map((i) => <SkeletonCard key={i} />)}
-            </div>
-          ) : groups.length === 0 ? (
-            <div className="bg-[#1c1c1c] border border-[#2a2a2a] border-dashed rounded-2xl p-8 text-center">
-              <p className="text-2xl mb-2">👥</p>
-              <p className="text-gray-400 text-sm">No groups yet. Create one or join with a code!</p>
-            </div>
-          ) : (
-            <div className="flex flex-col gap-3">
-              {groups.map((group) => (
-                <div
-                  key={group.id}
-                  className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
-                >
-                  <div className="flex-1 min-w-0 space-y-2">
+            {[1, 2].map((i) => <SkeletonCard key={i} />)}
+          </div>
+        ) : groups.length === 0 ? (
+          <div className="bg-[#1c1c1c] border border-[#2a2a2a] border-dashed rounded-2xl p-8 text-center">
+            <p className="text-2xl mb-2">👥</p>
+            <p className="text-gray-400 text-sm">No groups yet. Create one or join with a code!</p>
+          </div>
+        ) : (
+          <div className="flex flex-col gap-3">
+            {groups.map((group) => (
+              <div
+                key={group.id}
+                className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
+              >
+                <div className="flex-1 min-w-0 space-y-2">
                     <div className="flex items-center gap-2 flex-wrap">
                       <h3 className="text-sm font-semibold text-white">{group.nombre}</h3>
                       <span className="text-xs text-gray-500 font-mono bg-[#111] px-2 py-0.5 rounded-lg">

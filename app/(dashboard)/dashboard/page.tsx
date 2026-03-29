@@ -343,6 +343,21 @@ export default function DashboardPage() {
 
           {movError && <p className="text-red-400 text-xs">{movError}</p>}
 
+          <div className="flex gap-3 mt-1">
+            <Button
+              type="button"
+              variant="ghost"
+              className="flex-1"
+              onClick={() => setMovementModal(null)}
+            >
+              Cancel
+            </Button>
+            <Button
+              id="mov-save-btn"
+              type="submit"
+              variant="primary"
+              className="flex-1"
+              loading={movLoading}
               >
                 Save
               </Button>
