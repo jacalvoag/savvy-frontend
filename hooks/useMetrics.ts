@@ -28,6 +28,21 @@
 
   const fetchInsight = useCallback(async () => {
     setInsightLoading(true)
+      setError(null)
+      try {
+        const { data } = await metricsService.getInsight()
+        setInsight(data)
+      } catch {
+        setError('Error al cargar insight.')
+      } finally {
+        setInsightLoading(false)
+      }
+    }, [])
+
+    return {
+      portfolio,
+      performance,
+      insight,
       portfolioLoading,
       performanceLoading,
       insightLoading,

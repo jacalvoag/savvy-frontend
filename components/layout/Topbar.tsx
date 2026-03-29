@@ -88,21 +88,21 @@ interface TopbarProps {
           {notifOpen && (
             <div className="absolute right-0 top-full mt-2 w-80 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl shadow-2xl z-50 overflow-hidden">
               <div className="px-4 py-3 border-b border-[#2a2a2a]">
-                        <p className="text-sm text-white leading-snug">{n.mensaje}</p>
-                        <p className="text-xs text-gray-500 mt-0.5">{formatDate(n.createdAt)}</p>
-                        {!n.leida && <div className="w-1.5 h-1.5 rounded-full bg-lime-400 mt-1.5" />}
-                      </button>
-                    ))
-                  )}
-                </div>
+                      <p className="text-sm text-white leading-snug">{n.mensaje}</p>
+                      <p className="text-xs text-gray-500 mt-0.5">{formatDate(n.createdAt)}</p>
+                      {!n.leida && <div className="w-1.5 h-1.5 rounded-full bg-lime-400 mt-1.5" />}
+                    </button>
+                  ))
+                )}
               </div>
-            )}
-          </div>
+            </div>
+          )}
+        </div>
 
-          {/* User Avatar Dropdown */}
-          <div className="relative" ref={userRef}>
-            <button
-              id="user-menu-btn"
+        {/* User Avatar Dropdown */}
+        <div className="relative" ref={userRef}>
+          <button
+            id="user-menu-btn"
               onClick={() => setUserOpen((v) => !v)}
               className="flex items-center gap-2 rounded-xl p-1 hover:bg-white/5 transition-colors"
             >
