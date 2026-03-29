@@ -103,6 +103,21 @@ const navItems: NavItem[] = [
               <p className="text-xs text-gray-500 truncate">{user?.plan ?? 'Free'}</p>
             </div>
             <button
+            onClick={handleLogout}
+            title="Cerrar sesión"
+            className="text-gray-500 hover:text-red-400 transition-colors p-1"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </aside>
+  )
+
+  return (
+    <>
         {/* Desktop sidebar */}
         <div className="hidden lg:flex h-full">
           <SidebarContent />

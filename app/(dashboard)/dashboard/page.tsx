@@ -253,21 +253,21 @@ export default function DashboardPage() {
               {recentMovements.length === 0 ? (
                 <p className="text-gray-500 text-sm py-4 text-center">No movements yet</p>
               ) : (
-                          m.tipo === 'ingreso' ? 'text-green-400' : 'text-red-400'
-                        }`}
-                      >
-                        {m.tipo === 'ingreso' ? '+' : '-'}${m.monto.toLocaleString()}
-                      </p>
-                    </div>
-                  )
-                })
-              )}
-            </div>
+                        m.tipo === 'ingreso' ? 'text-green-400' : 'text-red-400'
+                      }`}
+                    >
+                      {m.tipo === 'ingreso' ? '+' : '-'}${m.monto.toLocaleString()}
+                    </p>
+                  </div>
+                )
+              })
+            )}
           </div>
+        </div>
 
-          {/* Smart Insight */}
-          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4 glow-lime relative overflow-hidden">
-            {/* Subtle glow backdrop */}
+        {/* Smart Insight */}
+        <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4 glow-lime relative overflow-hidden">
+          {/* Subtle glow backdrop */}
           ) : insight ? (
             <>
               <p className="text-sm text-gray-300 leading-relaxed">{insight.mensaje}</p>

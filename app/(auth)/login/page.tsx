@@ -118,21 +118,21 @@
                   id="login-email"
                   label="Email"
                   type="email"
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  loading={loading}
-                  className="w-full mt-1"
-                >
-                  Sign In
-                </Button>
+                type="submit"
+                variant="primary"
+                size="lg"
+                loading={loading}
+                className="w-full mt-1"
+              >
+                Sign In
+              </Button>
 
-                <p className="text-center text-xs text-gray-500 mt-2">
-                  Don&#39;t have an account?{' '}
-                  <button
-                    type="button"
-                    onClick={() => handleTabChange('register')}
-                    className="text-lime-400 hover:underline"
+              <p className="text-center text-xs text-gray-500 mt-2">
+                Don&#39;t have an account?{' '}
+                <button
+                  type="button"
+                  onClick={() => handleTabChange('register')}
+                  className="text-lime-400 hover:underline"
                   >
                     Sign up
                   </button>
