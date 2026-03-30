@@ -1,17 +1,17 @@
-  'use client'
+'use client'
 
-  import { useState, useCallback } from 'react'
-  import metricsService from '@/services/metrics.service'
-  import type { PortfolioData, PerformancePoint, InsightData, Period } from '@/types'
+import { useState, useCallback } from 'react'
+import metricsService from '@/services/metrics.service'
+import type { PortfolioData, PerformancePoint, InsightData, Period } from '@/types'
 
-  export function useMetrics() {
-    const [portfolio, setPortfolio] = useState<PortfolioData | null>(null)
-    const [performance, setPerformance] = useState<PerformancePoint[]>([])
-    const [insight, setInsight] = useState<InsightData | null>(null)
+export function useMetrics() {
+  const [portfolio, setPortfolio] = useState<PortfolioData | null>(null)
+  const [performance, setPerformance] = useState<PerformancePoint[]>([])
+  const [insight, setInsight] = useState<InsightData | null>(null)
 
-    const [portfolioLoading, setPortfolioLoading] = useState(false)
-    const [performanceLoading, setPerformanceLoading] = useState(false)
-    const [insightLoading, setInsightLoading] = useState(false)
+  const [portfolioLoading, setPortfolioLoading] = useState(false)
+  const [performanceLoading, setPerformanceLoading] = useState(false)
+  const [insightLoading, setInsightLoading] = useState(false)
 
   const fetchPerformance = useCallback(async (period: Period) => {
     setPerformanceLoading(true)
