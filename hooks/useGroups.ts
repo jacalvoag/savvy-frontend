@@ -58,6 +58,21 @@
       try {
         await groupsService.deleteGroup(id)
         setGroups((prev) => prev.filter((g) => g.id !== id))
+      router.push('/goals')
+    } catch (err: unknown) {
+      const status = (err as any)?.response?.status as number | undefined
+      if (status === 403) {
+        setError('No tienes permisos para eliminar este grupo.')
+      } else {
+        setError('Error al eliminar grupo.')
+      }
+      throw err
+    }
+  }
+
+  const leaveGroup = async (id: string) => {
+    setError(null)
+    try {
         await groupsService.leaveGroup(id)
         setGroups((prev) => prev.filter((g) => g.id !== id))
         router.push('/goals')

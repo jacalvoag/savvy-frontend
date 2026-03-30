@@ -163,21 +163,21 @@ function CopyButton({ text }: { text: string }) {
                       {lbTab === 'contributions' ? 'Contribution' : 'Streak'}
                     </th>
                     {lbTab === 'contributions' && (
-                            'hover:bg-white/[0.02]',
-                          ].join(' ')}
-                          style={{ animationDelay: `${idx * 60}ms` }}
-                        >
-                          {/* Rank */}
-                          <td className="px-4 py-3">
-                            <span className={`font-bold ${isFirst ? 'text-lime-400' : 'text-gray-500'}`}>
-                              {isFirst ? '👑' : member.rank}
-                            </span>
-                          </td>
-                          {/* Member */}
-                          <td className="px-4 py-3">
-                            <div className="flex items-center gap-2.5">
-                              <Avatar
-                                src={member.avatarUrl}
+                          'hover:bg-white/[0.02]',
+                        ].join(' ')}
+                        style={{ animationDelay: `${idx * 60}ms` }}
+                      >
+                        {/* Rank */}
+                        <td className="px-4 py-3">
+                          <span className={`font-bold ${isFirst ? 'text-lime-400' : 'text-gray-500'}`}>
+                            {isFirst ? '👑' : member.rank}
+                          </span>
+                        </td>
+                        {/* Member */}
+                        <td className="px-4 py-3">
+                          <div className="flex items-center gap-2.5">
+                            <Avatar
+                              src={member.avatarUrl}
                                 nombre={member.nombre}
                                 size="sm"
                               />
