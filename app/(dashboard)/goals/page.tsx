@@ -193,6 +193,21 @@ export default function GoalsPage() {
                     ? 'border-lime-400 glow-lime'
                     : 'border-[#2a2a2a]',
                 ].join(' ')}
+              >
+                {/* Header */}
+                <div className="flex items-start justify-between gap-2">
+                  <h3 className="text-sm font-semibold text-white leading-snug">{goal.nombre}</h3>
+                  <GoalBadge goal={goal} />
+                </div>
+
+                {/* Circle Progress */}
+                <div className="flex items-center gap-4">
+                  <CircleProgress value={goal.porcentaje} size={68} strokeWidth={6} />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-lg font-bold text-white">
+                      ${goal.montoActual.toLocaleString()}
+                    </p>
+                    <p className="text-xs text-gray-500">
                       of ${goal.montoMeta.toLocaleString()} goal
                     </p>
                     {goal.fechaFin && (

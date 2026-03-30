@@ -193,21 +193,21 @@ export default function DashboardPage() {
                     <linearGradient id="limeGradient" x1="0" y1="0" x2="0" y2="1">
                       <stop offset="5%" stopColor="#a3e635" stopOpacity={0.35} />
                       <stop offset="95%" stopColor="#a3e635" stopOpacity={0} />
-                      </linearGradient>
-                    </defs>
-                    <XAxis
-                      dataKey="label"
-                      tick={{ fill: '#6b7280', fontSize: 10 }}
-                      axisLine={false}
-                      tickLine={false}
-                    />
-                    <YAxis hide />
-                    <Tooltip content={<CustomTooltip />} />
-                    <Area
-                      type="monotone"
-                      dataKey="value"
-                      stroke="#a3e635"
-                      strokeWidth={2}
+                    </linearGradient>
+                  </defs>
+                  <XAxis
+                    dataKey="label"
+                    tick={{ fill: '#6b7280', fontSize: 10 }}
+                    axisLine={false}
+                    tickLine={false}
+                  />
+                  <YAxis hide />
+                  <Tooltip content={<CustomTooltip />} />
+                  <Area
+                    type="monotone"
+                    dataKey="value"
+                    stroke="#a3e635"
+                    strokeWidth={2}
                     fill="url(#limeGradient)"
                     dot={false}
                     activeDot={{ r: 4, fill: '#a3e635', strokeWidth: 0 }}
