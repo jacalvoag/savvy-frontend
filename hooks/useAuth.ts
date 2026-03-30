@@ -1,3 +1,18 @@
+'use client'
+
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { useAuthStore } from '@/store/auth.store'
+import authService from '@/services/auth.service'
+
+export function useAuth() {
+  const { setAuth, clearAuth } = useAuthStore()
+  const router = useRouter()
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const login = async (correo: string, password: string) => {
+    setLoading(true)
       setError(null)
       try {
         const { data } = await authService.login(correo, password)
