@@ -43,6 +43,21 @@ export function useGoals() {
 
   const boostGoal = async (id: string, monto: number) => {
     setError(null)
+    try {
+      const { data: updatedGoal } = await goalsService.boost(id, monto)
+      setGoals((prev) => prev.map((g) => (g.id === id ? updatedGoal : g)))
+      return updatedGoal
+    } catch {
+      setError('Error al realizar boost.')
+      throw new Error('Boost failed')
+    }
+  }
+
+  const archiveGoal = async (id: string) => {
+    setError(null)
+    try {
+      const { data: updatedGoal } = await goalsService.archive(id)
+      setGoals((prev) => prev.map((g) => (g.id === id ? updatedGoal : g)))
     } catch {
       setError('Error al archivar meta.')
     }

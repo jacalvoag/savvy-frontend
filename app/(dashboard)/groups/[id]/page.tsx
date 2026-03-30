@@ -58,21 +58,21 @@ function CopyButton({ text }: { text: string }) {
       }
       setContribError(null)
       try {
-        await contribute(id, parseFloat(contribAmount))
-        setContribAmount('')
-      } catch {
-        setContribError('Error al registrar contribución.')
-      }
+      await contribute(id, parseFloat(contribAmount))
+      setContribAmount('')
+    } catch {
+      setContribError('Error al registrar contribución.')
     }
+  }
 
-    const handleDelete = async () => {
-      setActionError(null)
-      try {
-        await deleteGroup(id)
-      } catch {
-        setActionError('Error al eliminar el grupo.')
-        throw new Error('delete failed')
-      }
+  const handleDelete = async () => {
+    setActionError(null)
+    try {
+      await deleteGroup(id)
+    } catch {
+      setActionError('Error al eliminar el grupo.')
+      throw new Error('delete failed')
+    }
   }
 
   const handleLeave = async () => {
