@@ -43,3 +43,8 @@
       className={`${cls} rounded-full bg-lime-400 text-black font-bold flex items-center justify-center shrink-0 select-none`}
       aria-label={nombre}
     >
+      {getInitials(nombre)}
+    </div>
+  )
+}
+
