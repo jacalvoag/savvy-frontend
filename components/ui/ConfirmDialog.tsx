@@ -13,21 +13,21 @@ interface ConfirmDialogProps {
   confirmLabel?: string
   cancelLabel?: string
   error?: string | null
-  }
+}
 
-  export default function ConfirmDialog({
-    isOpen,
-    onClose,
-    onConfirm,
-    title,
-    message,
-    confirmLabel = 'Confirmar',
-    cancelLabel = 'Cancelar',
-    error,
-  }: ConfirmDialogProps) {
-    const [loading, setLoading] = useState(false)
+export default function ConfirmDialog({
+  isOpen,
+  onClose,
+  onConfirm,
+  title,
+  message,
+  confirmLabel = 'Confirmar',
+  cancelLabel = 'Cancelar',
+  error,
+}: ConfirmDialogProps) {
+  const [loading, setLoading] = useState(false)
 
-    const handleConfirm = async () => {
+  const handleConfirm = async () => {
       setLoading(true)
       try {
         await onConfirm()
