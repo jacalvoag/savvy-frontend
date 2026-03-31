@@ -283,21 +283,21 @@ export default function DashboardPage() {
         </div>
       </div>
 
-        {/* ── Create Movement Modal ─────────────────────────────── */}
-        <Modal
-          isOpen={movementModal !== null}
-          onClose={() => setMovementModal(null)}
-          title={movementModal === 'income' ? 'Add Income' : 'Add Expense'}
-        >
-          <form onSubmit={handleCreateMovement} className="flex flex-col gap-4">
-            <Input
-              id="mov-amount"
-              label="Amount"
-              type="number"
-              placeholder="0.00"
-              value={movAmount}
-              onChange={(e) => setMovAmount(e.target.value)}
-              required
+      {/* ── Create Movement Modal ─────────────────────────────── */}
+      <Modal
+        isOpen={movementModal !== null}
+        onClose={() => setMovementModal(null)}
+        title={movementModal === 'income' ? 'Add Income' : 'Add Expense'}
+      >
+        <form onSubmit={handleCreateMovement} className="flex flex-col gap-4">
+          <Input
+            id="mov-amount"
+            label="Amount"
+            type="number"
+            placeholder="0.00"
+            value={movAmount}
+            onChange={(e) => setMovAmount(e.target.value)}
+            required
           />
 
           <div className="flex flex-col gap-1.5">
@@ -358,13 +358,13 @@ export default function DashboardPage() {
               variant="primary"
               className="flex-1"
               loading={movLoading}
-              >
-                Save
-              </Button>
-            </div>
-          </form>
-        </Modal>
-      </div>
-    )
-  }
+            >
+              Save
+            </Button>
+          </div>
+        </form>
+      </Modal>
+    </div>
+  )
+}
 
