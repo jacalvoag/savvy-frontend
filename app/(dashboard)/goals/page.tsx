@@ -223,21 +223,21 @@ export default function GoalsPage() {
                   <div className="flex gap-2 mt-auto">
                     <Button
                       id={`boost-${goal.id}`}
-                        variant="primary"
-                        size="sm"
-                        className="flex-1"
-                        onClick={() => { setBoostGoalId(goal.id); setBoostAmount(''); setBoostError(null) }}
-                      >
-                        ⚡ Boost
-                      </Button>
-                      <Button
-                        id={`archive-${goal.id}`}
-                        variant="ghost"
-                        size="sm"
-                        title="Archive goal"
-                        onClick={() => archiveGoal(goal.id)}
-                      >
-                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      variant="primary"
+                      size="sm"
+                      className="flex-1"
+                      onClick={() => { setBoostGoalId(goal.id); setBoostAmount(''); setBoostError(null) }}
+                    >
+                      ⚡ Boost
+                    </Button>
+                    <Button
+                      id={`archive-${goal.id}`}
+                      variant="ghost"
+                      size="sm"
+                      title="Archive goal"
+                      onClick={() => archiveGoal(goal.id)}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
                       </svg>
                     </Button>

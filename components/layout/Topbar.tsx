@@ -13,20 +13,20 @@ const PAGE_TITLES: Record<string, string> = {
 }
 
 interface TopbarProps {
-    notifications: Notification[]
-    unreadCount: number
-    onMarkRead: (id: string) => void
-    onHamburger: () => void
-  }
+  notifications: Notification[]
+  unreadCount: number
+  onMarkRead: (id: string) => void
+  onHamburger: () => void
+}
 
-  export default function Topbar({ notifications, unreadCount, onMarkRead, onHamburger }: TopbarProps) {
-    const pathname = usePathname()
-    const router = useRouter()
-    const { user, clearAuth } = useAuthStore()
-    const [notifOpen, setNotifOpen] = useState(false)
-    const [userOpen, setUserOpen] = useState(false)
-    const notifRef = useRef<HTMLDivElement>(null)
-    const userRef = useRef<HTMLDivElement>(null)
+export default function Topbar({ notifications, unreadCount, onMarkRead, onHamburger }: TopbarProps) {
+  const pathname = usePathname()
+  const router = useRouter()
+  const { user, clearAuth } = useAuthStore()
+  const [notifOpen, setNotifOpen] = useState(false)
+  const [userOpen, setUserOpen] = useState(false)
+  const notifRef = useRef<HTMLDivElement>(null)
+  const userRef = useRef<HTMLDivElement>(null)
 
   const title = Object.entries(PAGE_TITLES).find(([key]) => pathname.startsWith(key))?.[1] ?? 'Savvy'
 

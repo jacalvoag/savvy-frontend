@@ -43,3 +43,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   }
 
   return (
+    <div className="flex h-screen overflow-hidden bg-[#0a0a0a]">
+      <Sidebar mobileOpen={mobileOpen} onMobileClose={() => setMobileOpen(false)} />
+      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+        <Topbar
+          notifications={notifications}
+          unreadCount={unreadCount}
+          onMarkRead={markAsRead}
+          onHamburger={() => setMobileOpen(true)}
+        />
+        <main className="flex-1 overflow-y-auto">
+          {children}
+        </main>
+      </div>
+    </div>
+  )
