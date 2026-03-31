@@ -148,6 +148,21 @@ function CopyButton({ text }: { text: string }) {
               {(['contributions', 'streaks'] as LeaderboardTab[]).map((t) => (
                 <button
                   key={t}
+                id={`lb-tab-${t}`}
+                onClick={() => setLbTab(t)}
+                className={[
+                  'flex-1 py-3 text-sm font-medium transition-all',
+                  lbTab === t
+                    ? 'text-lime-400 border-b-2 border-lime-400'
+                    : 'text-gray-500 hover:text-gray-300',
+                ].join(' ')}
+              >
+                {t === 'contributions' ? 'Contributions' : 'Streaks 🔥'}
+              </button>
+            ))}
+          </div>
+
+          {/* Table */}
           {loading && !groupDetail ? (
             <div className="p-4 space-y-1">
               {[1, 2, 3, 4].map((i) => <SkeletonRow key={i} />)}

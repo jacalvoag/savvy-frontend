@@ -1,18 +1,18 @@
-  'use client'
+'use client'
 
-  import { useEffect, useState } from 'react'
-  import {
-    AreaChart,
-    Area,
-    XAxis,
-    YAxis,
-    Tooltip,
-    ResponsiveContainer,
-  } from 'recharts'
-  import { useMetrics } from '@/hooks/useMetrics'
-  import { useMovements } from '@/hooks/useMovements'
-  import Button from '@/components/ui/Button'
-  import Modal from '@/components/ui/Modal'
+import { useEffect, useState } from 'react'
+import {
+  AreaChart,
+  Area,
+  XAxis,
+  YAxis,
+  Tooltip,
+  ResponsiveContainer,
+} from 'recharts'
+import { useMetrics } from '@/hooks/useMetrics'
+import { useMovements } from '@/hooks/useMovements'
+import Button from '@/components/ui/Button'
+import Modal from '@/components/ui/Modal'
 import Input from '@/components/ui/Input'
 import { Skeleton } from '@/components/ui/Skeleton'
 import type { Period, MovementCategory } from '@/types'
