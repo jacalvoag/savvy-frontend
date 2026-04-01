@@ -58,6 +58,21 @@
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-lime-400 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+              </svg>
+            </div>
+            <span className="text-white font-bold text-xl tracking-tight">Savvy</span>
+          </div>
+
+          {/* Hero */}
+          <div className="flex-1 flex flex-col justify-center">
+            <div className="space-y-4">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 text-xs text-white/80 font-medium">
+                <div className="w-1.5 h-1.5 rounded-full bg-lime-400" />
+                Financial Intelligence
+              </div>
+              <h1 className="text-4xl xl:text-5xl font-bold text-white leading-tight">
+                Control your
                 <br />
                 <span className="gradient-text">financial future</span>
               </h1>
