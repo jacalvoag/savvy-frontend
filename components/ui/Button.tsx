@@ -1,18 +1,18 @@
-  'use client'
+'use client'
 
-  import React from 'react'
+import React from 'react'
 
-  type Variant = 'primary' | 'secondary' | 'ghost' | 'danger'
-  type Size = 'sm' | 'md' | 'lg'
+type Variant = 'primary' | 'secondary' | 'ghost' | 'danger'
+type Size = 'sm' | 'md' | 'lg'
 
-  interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    variant?: Variant
-    size?: Size
-    loading?: boolean
-    children: React.ReactNode
-  }
+interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant?: Variant
+  size?: Size
+  loading?: boolean
+  children: React.ReactNode
+}
 
-  const variantClasses: Record<Variant, string> = {
+const variantClasses: Record<Variant, string> = {
   primary:
     'bg-lime-400 text-black font-semibold hover:bg-lime-300 active:bg-lime-500 disabled:bg-lime-400/50',
   secondary:

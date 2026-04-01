@@ -58,6 +58,21 @@
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-lg bg-lime-400 flex items-center justify-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-black" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <br />
+                <span className="gradient-text">financial future</span>
+              </h1>
+              <p className="text-white/60 text-base leading-relaxed max-w-xs">
+                Track your money, set savings goals, and compete with friends to build better financial habits.
+              </p>
+            </div>
+
+            {/* Stats */}
+            <div className="mt-10 grid grid-cols-3 gap-4">
+              {[
+                { label: 'Users', value: '10K+' },
+                { label: 'Saved', value: '$2M+' },
+                { label: 'Goals', value: '50K+' },
+              ].map((s) => (
                 <div key={s.label} className="bg-white/10 backdrop-blur-sm rounded-xl px-3 py-3 text-center">
                   <p className="text-white font-bold text-xl">{s.value}</p>
                   <p className="text-white/50 text-xs mt-0.5">{s.label}</p>
