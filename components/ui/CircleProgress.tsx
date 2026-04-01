@@ -58,17 +58,17 @@ export default function CircleProgress({
           strokeWidth={strokeWidth}
           strokeLinecap="round"
           strokeDasharray={circumference}
-            strokeDashoffset={circumference}
-          />
-        </svg>
-        {/* Center label */}
-        <span
-          className="absolute text-white font-bold"
-          style={{ fontSize: size * 0.18 }}
-        >
-          {Math.round(clamped)}%
-        </span>
-      </div>
-    )
-  }
+          strokeDashoffset={circumference}
+        />
+      </svg>
+      {/* Center label */}
+      <span
+        className="absolute text-white font-bold"
+        style={{ fontSize: size * 0.18 }}
+      >
+        {Math.round(clamped)}%
+      </span>
+    </div>
+  )
+}
 
