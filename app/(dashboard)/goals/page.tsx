@@ -283,21 +283,21 @@ export default function GoalsPage() {
                 className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 flex flex-col sm:flex-row items-start sm:items-center gap-4"
               >
                 <div className="flex-1 min-w-0 space-y-2">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="text-sm font-semibold text-white">{group.nombre}</h3>
-                      <span className="text-xs text-gray-500 font-mono bg-[#111] px-2 py-0.5 rounded-lg">
-                        {group.inviteCode}
-                      </span>
-                    </div>
-                    <ProgressBar value={0} height="h-1.5" />
-                    <p className="text-xs text-gray-500">
-                      Goal: ${group.metaAhorro.toLocaleString()}
-                    </p>
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <h3 className="text-sm font-semibold text-white">{group.nombre}</h3>
+                    <span className="text-xs text-gray-500 font-mono bg-[#111] px-2 py-0.5 rounded-lg">
+                      {group.inviteCode}
+                    </span>
                   </div>
-                  <Link href={`/groups/${group.id}`}>
-                    <Button variant="ghost" size="sm" id={`view-lb-${group.id}`}>
-                      View Leaderboard →
-                    </Button>
+                  <ProgressBar value={0} height="h-1.5" />
+                  <p className="text-xs text-gray-500">
+                    Goal: ${group.metaAhorro.toLocaleString()}
+                  </p>
+                </div>
+                <Link href={`/groups/${group.id}`}>
+                  <Button variant="ghost" size="sm" id={`view-lb-${group.id}`}>
+                    View Leaderboard →
+                  </Button>
                 </Link>
               </div>
             ))}
