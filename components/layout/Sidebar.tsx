@@ -103,21 +103,21 @@ export default function Sidebar({ mobileOpen, onMobileClose }: SidebarProps) {
                 ].join(' ')}
               >
                 {item.icon}
-                {item.label}
-              </Link>
-            )
-          })}
-        </nav>
+              {item.label}
+            </Link>
+          )
+        })}
+      </nav>
 
-        {/* User Footer */}
-        <div className="px-3 py-4 border-t border-[#1f1f1f]">
-          <div className="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 transition-colors">
-            <Avatar src={user?.avatarUrl} nombre={user?.nombre ?? 'U'} size="sm" />
-            <div className="flex-1 min-w-0">
-              <p className="text-sm text-white font-medium truncate">{user?.nombre ?? '—'}</p>
-              <p className="text-xs text-gray-500 truncate">{user?.plan ?? 'Free'}</p>
-            </div>
-            <button
+      {/* User Footer */}
+      <div className="px-3 py-4 border-t border-[#1f1f1f]">
+        <div className="flex items-center gap-3 px-2 py-2 rounded-xl hover:bg-white/5 transition-colors">
+          <Avatar src={user?.avatarUrl} nombre={user?.nombre ?? 'U'} size="sm" />
+          <div className="flex-1 min-w-0">
+            <p className="text-sm text-white font-medium truncate">{user?.nombre ?? '—'}</p>
+            <p className="text-xs text-gray-500 truncate">{user?.plan ?? 'Free'}</p>
+          </div>
+          <button
             onClick={handleLogout}
             title="Cerrar sesión"
             className="text-gray-500 hover:text-red-400 transition-colors p-1"
