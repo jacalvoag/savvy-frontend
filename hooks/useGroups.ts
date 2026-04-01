@@ -1,18 +1,18 @@
-  'use client'
+'use client'
 
-  import { useState, useCallback } from 'react'
-  import { useRouter } from 'next/navigation'
-  import groupsService from '@/services/groups.service'
-  import type { Group } from '@/types'
+import { useState, useCallback } from 'react'
+import { useRouter } from 'next/navigation'
+import groupsService from '@/services/groups.service'
+import type { Group } from '@/types'
 
-  interface CreateGroupData {
-    nombre: string
-    metaAhorro: number
-  }
+interface CreateGroupData {
+  nombre: string
+  metaAhorro: number
+}
 
-  export function useGroups() {
-    const [groups, setGroups] = useState<Group[]>([])
-    const [loading, setLoading] = useState(false)
+export function useGroups() {
+  const [groups, setGroups] = useState<Group[]>([])
+  const [loading, setLoading] = useState(false)
     const [error, setError] = useState<string | null>(null)
     const router = useRouter()
 

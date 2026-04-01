@@ -1,3 +1,18 @@
+  const [movements, setMovements] = useState<Movement[]>([])
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
+
+  const fetchMovements = useCallback(async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      const { data } = await movementsService.getAll()
+      setMovements(data)
+    } catch {
+      setError('Error al cargar movimientos.')
+    } finally {
+      setLoading(false)
+    }
   }, [])
 
   const createMovement = async (data: CreateMovementData) => {
