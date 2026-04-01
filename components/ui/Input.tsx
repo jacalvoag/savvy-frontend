@@ -43,6 +43,21 @@ interface InputProps {
         <div className="relative">
           {icon && (
             <div className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none">
+            {icon}
+          </div>
+        )}
+        <input
+          id={id}
+          type={inputType}
+          value={value}
+          onChange={onChange}
+          placeholder={placeholder}
+          autoComplete={autoComplete}
+          required={required}
+          disabled={disabled}
+          className={[
+            'w-full bg-[#1a1a1a] border rounded-xl px-4 py-2.5 text-white placeholder-gray-600',
+            'text-sm outline-none transition-all duration-150',
             'focus:ring-2 focus:ring-lime-400/40 focus:border-lime-400',
             error ? 'border-red-500' : 'border-[#2a2a2a]',
             icon ? 'pl-10' : '',
