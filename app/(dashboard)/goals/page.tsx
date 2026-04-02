@@ -253,21 +253,21 @@ export default function GoalsPage() {
       <section>
         <div className="flex items-center justify-between mb-4">
           <div>
-              <h2 className="text-xl font-bold text-white">Group Collaborations</h2>
-              <p className="text-sm text-gray-500">Save together, grow together</p>
-            </div>
-            <Button
-              id="new-group-btn"
-              variant="secondary"
-              size="md"
-              onClick={() => setNewGroupOpen(true)}
-            >
-              + Create Group
-            </Button>
+            <h2 className="text-xl font-bold text-white">Group Collaborations</h2>
+            <p className="text-sm text-gray-500">Save together, grow together</p>
           </div>
+          <Button
+            id="new-group-btn"
+            variant="secondary"
+            size="md"
+            onClick={() => setNewGroupOpen(true)}
+          >
+            + Create Group
+          </Button>
+        </div>
 
-          {groupsLoading ? (
-            <div className="space-y-3">
+        {groupsLoading ? (
+          <div className="space-y-3">
             {[1, 2].map((i) => <SkeletonCard key={i} />)}
           </div>
         ) : groups.length === 0 ? (

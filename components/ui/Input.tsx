@@ -13,21 +13,21 @@ interface InputProps {
   id?: string
   autoComplete?: string
   required?: boolean
-    disabled?: boolean
-  }
+  disabled?: boolean
+}
 
-  export default function Input({
-    label,
-    placeholder,
-    type = 'text',
-    error,
-    icon,
-    value,
-    onChange,
-    id,
-    autoComplete,
-    required,
-    disabled,
+export default function Input({
+  label,
+  placeholder,
+  type = 'text',
+  error,
+  icon,
+  value,
+  onChange,
+  id,
+  autoComplete,
+  required,
+  disabled,
 }: InputProps) {
   const [showPassword, setShowPassword] = useState(false)
   const isPassword = type === 'password'
