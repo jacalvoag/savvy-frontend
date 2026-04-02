@@ -28,21 +28,21 @@ const CATEGORY_CONFIG: Record<MovementCategory, { icon: string; color: string; b
   dividends:    { icon: '📊', color: 'text-cyan-400',   bg: 'bg-cyan-400/10' },
   subscription: { icon: '📱', color: 'text-pink-400',   bg: 'bg-pink-400/10' },
   food:         { icon: '🍕', color: 'text-red-400',    bg: 'bg-red-400/10' },
-    other:        { icon: '❓', color: 'text-gray-400',   bg: 'bg-gray-400/10' },
-  }
+  other:        { icon: '❓', color: 'text-gray-400',   bg: 'bg-gray-400/10' },
+}
 
-  const CATEGORIES: MovementCategory[] = [
-    'salary','groceries','transport','entertainment','savings','dividends','subscription','food','other'
-  ]
+const CATEGORIES: MovementCategory[] = [
+  'salary','groceries','transport','entertainment','savings','dividends','subscription','food','other'
+]
 
-  const PERIODS: Period[] = ['1D', '1W', '1M', '1Y']
+const PERIODS: Period[] = ['1D', '1W', '1M', '1Y']
 
-  // ─── Tooltip ─────────────────────────────────────────────────────────────────
+// ─── Tooltip ─────────────────────────────────────────────────────────────────
 
-  interface TooltipProps {
-    active?: boolean
-    payload?: Array<{ value: number }>
-    label?: string
+interface TooltipProps {
+  active?: boolean
+  payload?: Array<{ value: number }>
+  label?: string
 }
 
 function CustomTooltip({ active, payload, label }: TooltipProps) {

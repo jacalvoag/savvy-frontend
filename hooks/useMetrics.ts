@@ -13,6 +13,21 @@ export function useMetrics() {
   const [performanceLoading, setPerformanceLoading] = useState(false)
   const [insightLoading, setInsightLoading] = useState(false)
 
+  const [error, setError] = useState<string | null>(null)
+
+  const fetchPortfolio = useCallback(async () => {
+    setPortfolioLoading(true)
+    setError(null)
+    try {
+      const { data } = await metricsService.getPortfolio()
+      setPortfolio(data)
+    } catch {
+      setError('Error al cargar portfolio.')
+    } finally {
+      setPortfolioLoading(false)
+    }
+  }, [])
+
   const fetchPerformance = useCallback(async (period: Period) => {
     setPerformanceLoading(true)
     setError(null)
