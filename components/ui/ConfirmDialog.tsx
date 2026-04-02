@@ -43,20 +43,20 @@ export default function ConfirmDialog({
 
           {error && (
             <div className="bg-red-900/30 border border-red-700 rounded-xl px-4 py-3">
-              <p className="text-red-400 text-xs">{error}</p>
-            </div>
-          )}
-
-          <div className="flex gap-3 justify-end">
-            <Button variant="ghost" size="md" onClick={onClose} disabled={loading}>
-              {cancelLabel}
-            </Button>
-            <Button variant="danger" size="md" loading={loading} onClick={handleConfirm}>
-              {confirmLabel}
-            </Button>
+            <p className="text-red-400 text-xs">{error}</p>
           </div>
+        )}
+
+        <div className="flex gap-3 justify-end">
+          <Button variant="ghost" size="md" onClick={onClose} disabled={loading}>
+            {cancelLabel}
+          </Button>
+          <Button variant="danger" size="md" loading={loading} onClick={handleConfirm}>
+            {confirmLabel}
+          </Button>
         </div>
-      </Modal>
-    )
+      </div>
+    </Modal>
+  )
   }
 
