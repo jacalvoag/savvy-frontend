@@ -238,6 +238,21 @@
                 label="Password"
                 type="password"
                 placeholder="Min 8 characters"
+                value={regPassword}
+                onChange={(e) => setRegPassword(e.target.value)}
+                autoComplete="new-password"
+                required
+              />
+
+              {error && (
+                <div className="bg-red-900/30 border border-red-700 rounded-xl px-4 py-3">
+                  <p className="text-red-400 text-sm">{error}</p>
+                </div>
+              )}
+
+              <Button
+                id="register-submit"
+                type="submit"
       </div>
     </div>
   )

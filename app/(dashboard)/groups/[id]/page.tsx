@@ -223,21 +223,21 @@ function CopyButton({ text }: { text: string }) {
                   })}
                 </tbody>
               </table>
-              </div>
-            )}
-          </div>
+            </div>
+          )}
+        </div>
 
-          {/* ── Action Cards (right column) ────────────────────────── */}
-          <div className="flex flex-col gap-4">
+        {/* ── Action Cards (right column) ────────────────────────── */}
+        <div className="flex flex-col gap-4">
 
-            {/* Contribute Card */}
-            <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 space-y-3">
-              <h3 className="text-sm font-semibold text-white">Add Contribution</h3>
-              <form onSubmit={handleContribute} className="space-y-3">
-                <Input
-                  id="contrib-amount"
-                  type="number"
-                  placeholder="Amount ($)"
+          {/* Contribute Card */}
+          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 space-y-3">
+            <h3 className="text-sm font-semibold text-white">Add Contribution</h3>
+            <form onSubmit={handleContribute} className="space-y-3">
+              <Input
+                id="contrib-amount"
+                type="number"
+                placeholder="Amount ($)"
                   value={contribAmount}
                   onChange={(e) => setContribAmount(e.target.value)}
                 />
