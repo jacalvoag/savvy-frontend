@@ -13,21 +13,21 @@ interface CreateGroupData {
 export function useGroups() {
   const [groups, setGroups] = useState<Group[]>([])
   const [loading, setLoading] = useState(false)
-    const [error, setError] = useState<string | null>(null)
-    const router = useRouter()
+  const [error, setError] = useState<string | null>(null)
+  const router = useRouter()
 
-    const fetchGroups = useCallback(async () => {
-      setLoading(true)
-      setError(null)
-      try {
-        const { data } = await groupsService.getAll()
-        setGroups(data)
-      } catch {
-        setError('Error al cargar grupos.')
-      } finally {
-        setLoading(false)
-      }
-    }, [])
+  const fetchGroups = useCallback(async () => {
+    setLoading(true)
+    setError(null)
+    try {
+      const { data } = await groupsService.getAll()
+      setGroups(data)
+    } catch {
+      setError('Error al cargar grupos.')
+    } finally {
+      setLoading(false)
+    }
+  }, [])
 
   const createGroup = async (data: CreateGroupData) => {
     setError(null)
