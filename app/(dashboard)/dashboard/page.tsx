@@ -73,6 +73,21 @@ export default function DashboardPage() {
   const [movLoading, setMovLoading] = useState(false)
   const [movError, setMovError] = useState<string | null>(null)
 
+  useEffect(() => {
+    fetchPortfolio()
+    fetchPerformance('1M')
+    fetchInsight()
+    fetchMovements()
+  }, [fetchPortfolio, fetchPerformance, fetchInsight, fetchMovements])
+
+  const handlePeriodChange = (p: Period) => {
+    setPeriod(p)
+    fetchPerformance(p)
+  }
+
+  const totalDisplay = portfolio
+    ? currency === 'USD'
+      ? portfolio.total
         : portfolio.total * (portfolio.rates?.MXN ?? 1)
       : 0
 
