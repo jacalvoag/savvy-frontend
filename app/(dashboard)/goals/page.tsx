@@ -58,21 +58,21 @@ export default function GoalsPage() {
 
   // New Goal Modal
   const [newGoalOpen, setNewGoalOpen] = useState(false)
-    const [goalName, setGoalName] = useState('')
-    const [goalAmount, setGoalAmount] = useState('')
-    const [goalStart, setGoalStart] = useState(() => new Date().toISOString().split('T')[0])
-    const [goalEnd, setGoalEnd] = useState('')
-    const [goalLoading, setGoalLoading] = useState(false)
-    const [goalError, setGoalError] = useState<string | null>(null)
+  const [goalName, setGoalName] = useState('')
+  const [goalAmount, setGoalAmount] = useState('')
+  const [goalStart, setGoalStart] = useState(() => new Date().toISOString().split('T')[0])
+  const [goalEnd, setGoalEnd] = useState('')
+  const [goalLoading, setGoalLoading] = useState(false)
+  const [goalError, setGoalError] = useState<string | null>(null)
 
-    // Boost Modal
-    const [boostGoalId, setBoostGoalId] = useState<string | null>(null)
-    const [boostAmount, setBoostAmount] = useState('')
-    const [boostLoading, setBoostLoading] = useState(false)
-    const [boostError, setBoostError] = useState<string | null>(null)
-    const [completedGoalId, setCompletedGoalId] = useState<string | null>(null)
+  // Boost Modal
+  const [boostGoalId, setBoostGoalId] = useState<string | null>(null)
+  const [boostAmount, setBoostAmount] = useState('')
+  const [boostLoading, setBoostLoading] = useState(false)
+  const [boostError, setBoostError] = useState<string | null>(null)
+  const [completedGoalId, setCompletedGoalId] = useState<string | null>(null)
 
-    // New Group Modal
+  // New Group Modal
 
   // ── Goal Handlers ──────────────────────────────────────────────────────────
 
