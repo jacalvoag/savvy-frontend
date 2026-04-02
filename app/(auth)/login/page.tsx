@@ -1,18 +1,18 @@
-  'use client'
+'use client'
 
-  import { useState } from 'react'
-  import { useAuth } from '@/hooks/useAuth'
-  import Button from '@/components/ui/Button'
-  import Input from '@/components/ui/Input'
+import { useState } from 'react'
+import { useAuth } from '@/hooks/useAuth'
+import Button from '@/components/ui/Button'
+import Input from '@/components/ui/Input'
 
-  type Tab = 'login' | 'register'
+type Tab = 'login' | 'register'
 
-  export default function LoginPage() {
-    const [tab, setTab] = useState<Tab>('login')
-    const { login, register, loading, error, setError } = useAuth()
+export default function LoginPage() {
+  const [tab, setTab] = useState<Tab>('login')
+  const { login, register, loading, error, setError } = useAuth()
 
-    // Login form
-    const [loginEmail, setLoginEmail] = useState('')
+  // Login form
+  const [loginEmail, setLoginEmail] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
 
   // Register form

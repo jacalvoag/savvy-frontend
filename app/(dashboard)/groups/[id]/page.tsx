@@ -178,6 +178,21 @@ function CopyButton({ text }: { text: string }) {
                       {lbTab === 'contributions' ? 'Contribution' : 'Streak'}
                     </th>
                     {lbTab === 'contributions' && (
+                      <th className="text-right px-4 py-3 font-medium hidden sm:table-cell">Share</th>
+                    )}
+                  </tr>
+                </thead>
+                <tbody>
+                  {groupDetail?.miembros.map((member, idx) => {
+                    const isFirst = member.rank === 1
+                    const isCurrent = member.isCurrentUser
+                    return (
+                      <tr
+                        key={member.usuarioId}
+                        className={[
+                          'border-b border-[#1a1a1a] transition-colors fade-in-up',
+                          isFirst ? 'bg-lime-400/5 border-l-2 border-lime-400' : '',
+                          isCurrent && !isFirst ? 'bg-lime-400/[0.03] border border-dashed border-lime-400/30' : '',
                           'hover:bg-white/[0.02]',
                         ].join(' ')}
                         style={{ animationDelay: `${idx * 60}ms` }}
