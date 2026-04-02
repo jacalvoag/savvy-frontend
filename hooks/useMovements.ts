@@ -1,3 +1,18 @@
+'use client'
+
+import { useState, useCallback } from 'react'
+import movementsService from '@/services/movements.service'
+import type { Movement } from '@/types'
+
+interface CreateMovementData {
+  monto: number
+  tipo: string
+  categoria: string
+  descripcion?: string
+  fecha: string
+}
+
+export function useMovements() {
   const [movements, setMovements] = useState<Movement[]>([])
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
