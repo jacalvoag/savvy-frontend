@@ -73,6 +73,21 @@ export default function GoalsPage() {
   const [completedGoalId, setCompletedGoalId] = useState<string | null>(null)
 
   // New Group Modal
+  const [newGroupOpen, setNewGroupOpen] = useState(false)
+  const [groupName, setGroupName] = useState('')
+  const [groupMeta, setGroupMeta] = useState('')
+  const [groupLoading, setGroupLoading] = useState(false)
+  const [groupError, setGroupError] = useState<string | null>(null)
+
+  // Join Group
+  const [inviteCode, setInviteCode] = useState('')
+  const [joinLoading, setJoinLoading] = useState(false)
+  const [joinError, setJoinError] = useState<string | null>(null)
+
+  useEffect(() => {
+    fetchGoals()
+    fetchGroups()
+  }, [fetchGoals, fetchGroups])
 
   // ── Goal Handlers ──────────────────────────────────────────────────────────
 

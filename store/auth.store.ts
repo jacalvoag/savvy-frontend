@@ -28,7 +28,7 @@
         accessToken: state.accessToken,
         refreshToken: state.refreshToken,
       }),
-      }
-    )
+    }
   )
+)
 
