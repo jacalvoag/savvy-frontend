@@ -208,21 +208,21 @@ function CopyButton({ text }: { text: string }) {
                           <div className="flex items-center gap-2.5">
                             <Avatar
                               src={member.avatarUrl}
-                                nombre={member.nombre}
-                                size="sm"
-                              />
-                              <div>
-                                <p className={`font-medium ${isCurrent ? 'text-lime-400' : 'text-white'}`}>
-                                  {member.nombre}
-                                  {isCurrent && <span className="text-xs text-gray-500 ml-1">(you)</span>}
-                                </p>
-                              </div>
+                              nombre={member.nombre}
+                              size="sm"
+                            />
+                            <div>
+                              <p className={`font-medium ${isCurrent ? 'text-lime-400' : 'text-white'}`}>
+                                {member.nombre}
+                                {isCurrent && <span className="text-xs text-gray-500 ml-1">(you)</span>}
+                              </p>
                             </div>
-                          </td>
-                          {/* Value */}
-                          <td className="px-4 py-3 text-right">
-                            {lbTab === 'contributions' ? (
-                              <span className="text-white font-semibold">${member.contribucion.toLocaleString()}</span>
+                          </div>
+                        </td>
+                        {/* Value */}
+                        <td className="px-4 py-3 text-right">
+                          {lbTab === 'contributions' ? (
+                            <span className="text-white font-semibold">${member.contribucion.toLocaleString()}</span>
                           ) : (
                             <span className="text-white font-semibold">{member.streakWeeks}w 🔥</span>
                           )}
@@ -268,6 +268,21 @@ function CopyButton({ text }: { text: string }) {
                   Add Contribution
                 </Button>
               </form>
+          </div>
+
+          {/* Invite Card */}
+          <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 space-y-3">
+            <h3 className="text-sm font-semibold text-white">Invite Friends</h3>
+            {groupDetail && (
+              <>
+                <div className="bg-[#111] rounded-xl p-3 text-center">
+                  <code className="font-mono text-2xl text-lime-400 tracking-widest">
+                    {groupDetail.inviteCode}
+                  </code>
+                </div>
+                <CopyButton text={groupDetail.inviteCode} />
+                <p className="text-xs text-gray-500 leading-relaxed">
+                  Share this code with friends to invite them to the group
                 </p>
               </>
             )}

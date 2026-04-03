@@ -253,21 +253,21 @@ export default function DashboardPage() {
               >
                 + Income
               </Button>
-                <Button
-                  id="add-expense-btn"
-                  variant="ghost"
-                  size="sm"
-                  onClick={() => { setMovementModal('expense'); resetMovForm() }}
-                >
-                  + Expense
-                </Button>
-              </div>
+              <Button
+                id="add-expense-btn"
+                variant="ghost"
+                size="sm"
+                onClick={() => { setMovementModal('expense'); resetMovForm() }}
+              >
+                + Expense
+              </Button>
             </div>
+          </div>
 
-            <div className="flex flex-col divide-y divide-[#222]">
-              {recentMovements.length === 0 ? (
-                <p className="text-gray-500 text-sm py-4 text-center">No movements yet</p>
-              ) : (
+          <div className="flex flex-col divide-y divide-[#222]">
+            {recentMovements.length === 0 ? (
+              <p className="text-gray-500 text-sm py-4 text-center">No movements yet</p>
+            ) : (
                         m.tipo === 'ingreso' ? 'text-green-400' : 'text-red-400'
                       }`}
                     >
