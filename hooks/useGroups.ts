@@ -88,3 +88,5 @@ export function useGroups() {
     }
 
     return { groups, loading, error, fetchGroups, createGroup, joinGroup, deleteGroup, leaveGroup }
+}
+

@@ -13,21 +13,21 @@
     }
     50% {
       box-shadow: 0 0 24px 4px rgba(163, 230, 53, 0.4);
-  }
+}
 
-  * {
-    box-sizing: border-box;
-  }
+* {
+  box-sizing: border-box;
+}
 
-  html,
-  body {
-    height: 100%;
-  }
+html,
+body {
+  height: 100%;
+}
 
-  body {
-    font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-    background-color: var(--color-bg);
-    color: var(--color-text);
+body {
+  font-family: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
 }
 
 /* Scrollbar styling */
