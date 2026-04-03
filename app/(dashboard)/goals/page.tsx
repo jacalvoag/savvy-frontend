@@ -343,21 +343,36 @@ export default function GoalsPage() {
             </Button>
           </form>
           {joinError && <p className="text-red-400 text-xs mt-2">{joinError}</p>}
+        </div>
+      </section>
+
+      {/* ── Modals ────────────────────────────────────────────── */}
+
+      {/* New Goal Modal */}
+      <Modal isOpen={newGoalOpen} onClose={() => setNewGoalOpen(false)} title="New Savings Goal">
+        <form onSubmit={handleCreateGoal} className="flex flex-col gap-4">
+          <Input id="goal-name" label="Goal Name" placeholder="e.g. Emergency Fund" value={goalName} onChange={(e) => setGoalName(e.target.value)} required />
+          <Input id="goal-amount" label="Target Amount ($)" type="number" placeholder="5000" value={goalAmount} onChange={(e) => setGoalAmount(e.target.value)} required />
+          <Input id="goal-start" label="Start Date" type="date" value={goalStart} onChange={(e) => setGoalStart(e.target.value)} required />
+          <Input id="goal-end" label="End Date (optional)" type="date" value={goalEnd} onChange={(e) => setGoalEnd(e.target.value)} />
+          {goalError && <p className="text-red-400 text-xs">{goalError}</p>}
+          <div className="flex gap-3 mt-1">
+            <Button type="button" variant="ghost" className="flex-1" onClick={() => setNewGoalOpen(false)}>Cancel</Button>
+            <Button id="create-goal-btn" type="submit" variant="primary" className="flex-1" loading={goalLoading}>Create Goal</Button>
           </div>
-        </section>
+        </form>
+      </Modal>
 
-        {/* ── Modals ────────────────────────────────────────────── */}
-
-        {/* New Goal Modal */}
-        <Modal isOpen={newGoalOpen} onClose={() => setNewGoalOpen(false)} title="New Savings Goal">
-          <form onSubmit={handleCreateGoal} className="flex flex-col gap-4">
-            <Input id="goal-name" label="Goal Name" placeholder="e.g. Emergency Fund" value={goalName} onChange={(e) => setGoalName(e.target.value)} required />
-            <Input id="goal-amount" label="Target Amount ($)" type="number" placeholder="5000" value={goalAmount} onChange={(e) => setGoalAmount(e.target.value)} required />
-            <Input id="goal-start" label="Start Date" type="date" value={goalStart} onChange={(e) => setGoalStart(e.target.value)} required />
-            <Input id="goal-end" label="End Date (optional)" type="date" value={goalEnd} onChange={(e) => setGoalEnd(e.target.value)} />
-            {goalError && <p className="text-red-400 text-xs">{goalError}</p>}
-            <div className="flex gap-3 mt-1">
-              <Button type="button" variant="ghost" className="flex-1" onClick={() => setNewGoalOpen(false)}>Cancel</Button>
+      {/* Boost Modal */}
+      <Modal isOpen={boostGoalId !== null} onClose={() => setBoostGoalId(null)} title="Boost Goal">
+        <form onSubmit={handleBoost} className="flex flex-col gap-4">
+          <p className="text-sm text-gray-400">How much would you like to add to your goal?</p>
+          <Input id="boost-amount" label="Amount ($)" type="number" placeholder="100" value={boostAmount} onChange={(e) => setBoostAmount(e.target.value)} required />
+          {boostError && <p className="text-red-400 text-xs">{boostError}</p>}
+          <div className="flex gap-3 mt-1">
+            <Button type="button" variant="ghost" className="flex-1" onClick={() => setBoostGoalId(null)}>Cancel</Button>
+            <Button id="boost-confirm-btn" type="submit" variant="primary" className="flex-1" loading={boostLoading}>⚡ Boost</Button>
+          </div>
         </form>
       </Modal>
 

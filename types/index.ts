@@ -13,21 +13,21 @@ export type MovementCategory =
   | 'groceries'
   | 'transport'
   | 'entertainment'
-    | 'savings'
-    | 'dividends'
-    | 'subscription'
-    | 'food'
-    | 'other'
+  | 'savings'
+  | 'dividends'
+  | 'subscription'
+  | 'food'
+  | 'other'
 
-  export type MovementType = 'ingreso' | 'egreso'
+export type MovementType = 'ingreso' | 'egreso'
 
-  export interface Movement {
-    id: string
-    usuarioId: string
-    tipo: MovementType
-    monto: number
-    categoria: MovementCategory
-    descripcion?: string
+export interface Movement {
+  id: string
+  usuarioId: string
+  tipo: MovementType
+  monto: number
+  categoria: MovementCategory
+  descripcion?: string
   moneda: string
   fecha: string
 }
