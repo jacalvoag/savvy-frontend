@@ -13,8 +13,8 @@ const authService = {
       { nombre, correo, password }
     ),
 
-    refresh: (refreshToken: string) =>
-      api.post<{ accessToken: string }>('/auth/refresh', { refreshToken }),
-  }
+  refresh: (refreshToken: string) =>
+    api.post<{ accessToken: string }>('/auth/refresh', { refreshToken }),
+}
 
-  export default authService
+export default authService
