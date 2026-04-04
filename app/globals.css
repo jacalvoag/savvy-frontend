@@ -13,6 +13,21 @@
     }
     50% {
       box-shadow: 0 0 24px 4px rgba(163, 230, 53, 0.4);
+  }
+}
+
+:root {
+  --font-inter: 'Inter', sans-serif;
+  --color-bg: #0a0a0a;
+  --color-surface: #111111;
+  --color-card: #1c1c1c;
+  --color-card-alt: #222222;
+  --color-border: #2a2a2a;
+  --color-lime: #a3e635;
+  --color-lime-hover: #84cc16;
+  --color-text: #ffffff;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
 }
 
 * {
