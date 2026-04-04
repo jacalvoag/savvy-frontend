@@ -58,21 +58,21 @@ export default function Topbar({ notifications, unreadCount, onMarkRead, onHambu
           className="lg:hidden text-gray-400 hover:text-white p-1"
           aria-label="Abrir menú"
         >
-            <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-          <h1 className="text-white font-semibold text-base">{title}</h1>
-        </div>
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+        <h1 className="text-white font-semibold text-base">{title}</h1>
+      </div>
 
-        {/* Right: Notifications + Avatar */}
-        <div className="flex items-center gap-3">
-          {/* Notification Bell */}
-          <div className="relative" ref={notifRef}>
-            <button
-              id="notifications-btn"
-              onClick={() => setNotifOpen((v) => !v)}
-              className="relative p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
+      {/* Right: Notifications + Avatar */}
+      <div className="flex items-center gap-3">
+        {/* Notification Bell */}
+        <div className="relative" ref={notifRef}>
+          <button
+            id="notifications-btn"
+            onClick={() => setNotifOpen((v) => !v)}
+            className="relative p-2 rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-colors"
             aria-label="Notificaciones"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
