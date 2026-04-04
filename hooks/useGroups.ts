@@ -43,21 +43,21 @@ export function useGroups() {
 
   const joinGroup = async (inviteCode: string) => {
     setError(null)
-      try {
-        const { data: joinedGroup } = await groupsService.join(inviteCode)
-        setGroups((prev) => [...prev, joinedGroup])
-        return joinedGroup
-      } catch {
-        setError('Código de invitación inválido o expirado.')
-        throw new Error('Join failed')
-      }
+    try {
+      const { data: joinedGroup } = await groupsService.join(inviteCode)
+      setGroups((prev) => [...prev, joinedGroup])
+      return joinedGroup
+    } catch {
+      setError('Código de invitación inválido o expirado.')
+      throw new Error('Join failed')
     }
+  }
 
-    const deleteGroup = async (id: string) => {
-      setError(null)
-      try {
-        await groupsService.deleteGroup(id)
-        setGroups((prev) => prev.filter((g) => g.id !== id))
+  const deleteGroup = async (id: string) => {
+    setError(null)
+    try {
+      await groupsService.deleteGroup(id)
+      setGroups((prev) => prev.filter((g) => g.id !== id))
       router.push('/goals')
     } catch (err: unknown) {
       const status = (err as any)?.response?.status as number | undefined
