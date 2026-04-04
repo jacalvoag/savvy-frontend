@@ -313,6 +313,21 @@ function CopyButton({ text }: { text: string }) {
                   size="md"
                   className="w-full border-red-800/50 text-red-400 hover:text-red-300 hover:bg-red-900/10"
                   onClick={() => { setActionError(null); setLeaveOpen(true) }}
+                >
+                  Leave Group
+                </Button>
+              </>
+            )}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Confirm Dialogs ─────────────────────────────────────── */}
+
+      <ConfirmDialog
+        isOpen={deleteOpen}
+        onClose={() => setDeleteOpen(false)}
+        onConfirm={handleDelete}
         title="Delete Group"
         message="This action cannot be undone. All members will be removed from the group and all data will be permanently deleted."
         confirmLabel="Delete Group"
