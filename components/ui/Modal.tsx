@@ -43,21 +43,21 @@ export default function Modal({
       {/* Overlay */}
       <div
         className="absolute inset-0 bg-black/70 backdrop-blur-sm"
-          onClick={onClose}
-          aria-hidden="true"
-        />
-        {/* Dialog */}
-        <div
-          className={[
-            'relative w-full bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl shadow-2xl',
-            'animate-[modalIn_0.15s_ease-out]',
-            maxWidth,
-          ].join(' ')}
-          role="dialog"
-          aria-modal="true"
-        >
-          {/* Header */}
-          {title && (
+        onClick={onClose}
+        aria-hidden="true"
+      />
+      {/* Dialog */}
+      <div
+        className={[
+          'relative w-full bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl shadow-2xl',
+          'animate-[modalIn_0.15s_ease-out]',
+          maxWidth,
+        ].join(' ')}
+        role="dialog"
+        aria-modal="true"
+      >
+        {/* Header */}
+        {title && (
           <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-[#2a2a2a]">
             <h2 className="text-lg font-semibold text-white">{title}</h2>
             <button
