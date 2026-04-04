@@ -283,6 +283,21 @@ export default function DashboardPage() {
         {/* Smart Insight */}
         <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4 glow-lime relative overflow-hidden">
           {/* Subtle glow backdrop */}
+          <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-lime-400/5 blur-2xl pointer-events-none" />
+
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-lime-400/10 flex items-center justify-center text-lg">
+              🚀
+            </div>
+            <p className="text-sm font-semibold text-lime-400">Smart Insight</p>
+          </div>
+
+          {insightLoading ? (
+            <div className="space-y-2">
+              <Skeleton className="h-4 w-full" />
+              <Skeleton className="h-4 w-4/5" />
+              <Skeleton className="h-4 w-3/5" />
+            </div>
           ) : insight ? (
             <>
               <p className="text-sm text-gray-300 leading-relaxed">{insight.mensaje}</p>
