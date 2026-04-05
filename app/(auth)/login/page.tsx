@@ -133,21 +133,21 @@ export default function LoginPage() {
                   'flex-1 py-2 text-sm font-medium rounded-lg transition-all duration-200',
                   tab === t
                     ? 'bg-lime-400 text-black'
-                      : 'text-gray-400 hover:text-white',
-                  ].join(' ')}
-                >
-                  {t === 'login' ? 'Sign In' : 'Register'}
-                </button>
-              ))}
-            </div>
+                    : 'text-gray-400 hover:text-white',
+                ].join(' ')}
+              >
+                {t === 'login' ? 'Sign In' : 'Register'}
+              </button>
+            ))}
+          </div>
 
-            {/* ── Login Form ── */}
-            {tab === 'login' && (
-              <form onSubmit={handleLogin} className="flex flex-col gap-4">
-                <Input
-                  id="login-email"
-                  label="Email"
-                  type="email"
+          {/* ── Login Form ── */}
+          {tab === 'login' && (
+            <form onSubmit={handleLogin} className="flex flex-col gap-4">
+              <Input
+                id="login-email"
+                label="Email"
+                type="email"
                   placeholder="you@example.com"
                   value={loginEmail}
                   onChange={(e) => setLoginEmail(e.target.value)}
