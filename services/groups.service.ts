@@ -13,3 +13,16 @@ const groupsService = {
 
   join: (inviteCode: string) => api.post('/groups/join', { inviteCode }),
 
+  getDetail: (id: string) => api.get<GroupDetail>(`/groups/${id}`),
+
+  contribute: (id: string, monto: number) =>
+    api.patch(`/groups/${id}/contribute`, { monto }),
+
+  /** Only available to the group leader */
+  deleteGroup: (id: string) => api.delete(`/groups/${id}`),
+
+  /** Available to non-leader members */
+  leaveGroup: (id: string) => api.delete(`/groups/${id}/leave`),
+}
+
+export default groupsService
