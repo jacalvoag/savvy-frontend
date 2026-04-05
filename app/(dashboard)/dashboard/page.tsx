@@ -88,21 +88,21 @@ export default function DashboardPage() {
   const totalDisplay = portfolio
     ? currency === 'USD'
       ? portfolio.total
-        : portfolio.total * (portfolio.rates?.MXN ?? 1)
-      : 0
+      : portfolio.total * (portfolio.rates?.MXN ?? 1)
+    : 0
 
-    const handleCreateMovement = async (e: React.FormEvent) => {
-      e.preventDefault()
-      if (!movAmount || isNaN(Number(movAmount))) {
-        setMovError('Ingresa un monto válido.')
-        return
-      }
-      setMovLoading(true)
-      setMovError(null)
-      try {
-        await createMovement({
-          monto: parseFloat(movAmount),
-          tipo: movementModal === 'income' ? 'ingreso' : 'egreso',
+  const handleCreateMovement = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!movAmount || isNaN(Number(movAmount))) {
+      setMovError('Ingresa un monto válido.')
+      return
+    }
+    setMovLoading(true)
+    setMovError(null)
+    try {
+      await createMovement({
+        monto: parseFloat(movAmount),
+        tipo: movementModal === 'income' ? 'ingreso' : 'egreso',
         categoria: movCategory,
         descripcion: movDesc || undefined,
         fecha: movDate,
