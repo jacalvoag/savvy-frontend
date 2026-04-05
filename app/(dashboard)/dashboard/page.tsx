@@ -268,6 +268,21 @@ export default function DashboardPage() {
             {recentMovements.length === 0 ? (
               <p className="text-gray-500 text-sm py-4 text-center">No movements yet</p>
             ) : (
+              recentMovements.map((m) => {
+                const cfg = CATEGORY_CONFIG[m.categoria]
+                return (
+                  <div key={m.id} className="flex items-center gap-3 py-3">
+                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 ${cfg.bg}`}>
+                      {cfg.icon}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm text-white capitalize">
+                        {m.descripcion || m.categoria}
+                      </p>
+                      <p className="text-xs text-gray-500">{formatDate(m.fecha)}</p>
+                    </div>
+                    <p
+                      className={`text-sm font-semibold shrink-0 ${
                         m.tipo === 'ingreso' ? 'text-green-400' : 'text-red-400'
                       }`}
                     >

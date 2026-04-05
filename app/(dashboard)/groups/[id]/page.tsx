@@ -44,20 +44,20 @@ function CopyButton({ text }: { text: string }) {
 }
 
 
-    const isLeader = groupDetail?.liderId === user?.id
+  const isLeader = groupDetail?.liderId === user?.id
 
-    useEffect(() => {
-      fetchGroupDetail(id)
-    }, [id, fetchGroupDetail])
+  useEffect(() => {
+    fetchGroupDetail(id)
+  }, [id, fetchGroupDetail])
 
-    const handleContribute = async (e: React.FormEvent) => {
-      e.preventDefault()
-      if (!contribAmount || isNaN(Number(contribAmount)) || Number(contribAmount) < 1) {
-        setContribError('Monto mínimo: $1')
-        return
-      }
-      setContribError(null)
-      try {
+  const handleContribute = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!contribAmount || isNaN(Number(contribAmount)) || Number(contribAmount) < 1) {
+      setContribError('Monto mínimo: $1')
+      return
+    }
+    setContribError(null)
+    try {
       await contribute(id, parseFloat(contribAmount))
       setContribAmount('')
     } catch {
