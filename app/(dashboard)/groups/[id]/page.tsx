@@ -253,21 +253,21 @@ function CopyButton({ text }: { text: string }) {
                 id="contrib-amount"
                 type="number"
                 placeholder="Amount ($)"
-                  value={contribAmount}
-                  onChange={(e) => setContribAmount(e.target.value)}
-                />
-                {contribError && <p className="text-red-400 text-xs">{contribError}</p>}
-                <Button
-                  id="contrib-submit"
-                  type="submit"
-                  variant="primary"
-                  size="md"
-                  className="w-full"
-                  loading={contributeLoading}
-                >
-                  Add Contribution
-                </Button>
-              </form>
+                value={contribAmount}
+                onChange={(e) => setContribAmount(e.target.value)}
+              />
+              {contribError && <p className="text-red-400 text-xs">{contribError}</p>}
+              <Button
+                id="contrib-submit"
+                type="submit"
+                variant="primary"
+                size="md"
+                className="w-full"
+                loading={contributeLoading}
+              >
+                Add Contribution
+              </Button>
+            </form>
           </div>
 
           {/* Invite Card */}

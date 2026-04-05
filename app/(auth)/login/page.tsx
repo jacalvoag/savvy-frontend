@@ -253,6 +253,21 @@ export default function LoginPage() {
               <Button
                 id="register-submit"
                 type="submit"
+                variant="primary"
+                size="lg"
+                loading={loading}
+                className="w-full mt-1"
+              >
+                Create Account
+              </Button>
+
+              <p className="text-center text-xs text-gray-500 mt-2">
+                By creating an account you agree to our{' '}
+                <span className="text-lime-400">Terms of Service</span>
+              </p>
+            </form>
+          )}
+        </div>
       </div>
     </div>
   )
