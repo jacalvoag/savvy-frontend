@@ -28,11 +28,11 @@ export function useNotifications() {
       setNotifications((prev) =>
         prev.map((n) => (n.id === id ? { ...n, leida: true } : n))
       )
-      } catch {
-        // Silently fail
-      }
+    } catch {
+      // Silently fail
     }
-
-    return { notifications, unreadCount, loading, fetchNotifications, markAsRead }
   }
+
+  return { notifications, unreadCount, loading, fetchNotifications, markAsRead }
+}
 
