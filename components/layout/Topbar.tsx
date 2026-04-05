@@ -88,6 +88,21 @@ export default function Topbar({ notifications, unreadCount, onMarkRead, onHambu
           {notifOpen && (
             <div className="absolute right-0 top-full mt-2 w-80 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl shadow-2xl z-50 overflow-hidden">
               <div className="px-4 py-3 border-b border-[#2a2a2a]">
+                <p className="text-sm font-semibold text-white">Notificaciones</p>
+              </div>
+              <div className="max-h-72 overflow-y-auto">
+                {notifications.length === 0 ? (
+                  <p className="text-xs text-gray-500 text-center py-6">Sin notificaciones</p>
+                ) : (
+                  notifications.map((n) => (
+                    <button
+                      key={n.id}
+                      onClick={() => onMarkRead(n.id)}
+                      className={[
+                        'w-full text-left px-4 py-3 border-b border-[#222] hover:bg-white/5 transition-colors',
+                        !n.leida ? 'bg-lime-400/5' : '',
+                      ].join(' ')}
+                    >
                       <p className="text-sm text-white leading-snug">{n.mensaje}</p>
                       <p className="text-xs text-gray-500 mt-0.5">{formatDate(n.createdAt)}</p>
                       {!n.leida && <div className="w-1.5 h-1.5 rounded-full bg-lime-400 mt-1.5" />}

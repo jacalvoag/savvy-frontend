@@ -73,20 +73,20 @@ export function useGroups() {
   const leaveGroup = async (id: string) => {
     setError(null)
     try {
-        await groupsService.leaveGroup(id)
-        setGroups((prev) => prev.filter((g) => g.id !== id))
-        router.push('/goals')
-      } catch (err: unknown) {
-        const status = (err as any)?.response?.status as number | undefined
-        if (status === 403) {
-          setError('El líder no puede salir del grupo sin transferir el liderazgo.')
-        } else {
-          setError('Error al salir del grupo.')
-        }
-        throw err
+      await groupsService.leaveGroup(id)
+      setGroups((prev) => prev.filter((g) => g.id !== id))
+      router.push('/goals')
+    } catch (err: unknown) {
+      const status = (err as any)?.response?.status as number | undefined
+      if (status === 403) {
+        setError('El líder no puede salir del grupo sin transferir el liderazgo.')
+      } else {
+        setError('Error al salir del grupo.')
       }
+      throw err
     }
+  }
 
-    return { groups, loading, error, fetchGroups, createGroup, joinGroup, deleteGroup, leaveGroup }
+  return { groups, loading, error, fetchGroups, createGroup, joinGroup, deleteGroup, leaveGroup }
 }
 
