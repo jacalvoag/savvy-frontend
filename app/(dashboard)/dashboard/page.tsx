@@ -133,6 +133,21 @@ export default function DashboardPage() {
     <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-5">
       {/* ── Row 1: Portfolio + Performance ───────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+        {/* Portfolio Card */}
+        <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4">
+          <div className="flex items-center justify-between">
+            <p className="text-sm text-gray-400 font-medium">Total Portfolio</p>
+            {/* Currency toggle */}
+            <div className="flex bg-[#111] border border-[#2a2a2a] rounded-lg p-0.5 text-xs">
+              {(['USD', 'MXN'] as const).map((c) => (
+                <button
+                  key={c}
+                  id={`currency-${c.toLowerCase()}`}
+                  onClick={() => setCurrency(c)}
+                  className={[
+                    'px-2.5 py-1 rounded-md font-medium transition-all',
+                    currency === c ? 'bg-lime-400 text-black' : 'text-gray-400 hover:text-white',
+                  ].join(' ')}
                   >
                     {c}
                   </button>
