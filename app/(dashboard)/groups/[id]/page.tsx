@@ -43,6 +43,21 @@ function CopyButton({ text }: { text: string }) {
   )
 }
 
+// ─── Group Leaderboard Page ────────────────────────────────────────────────────
+
+export default function GroupLeaderboardPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = use(params)
+  const { groupDetail, loading, contributeLoading, error, fetchGroupDetail, contribute } = useGroupDetail()
+  const { deleteGroup, leaveGroup } = useGroups()
+  const { user } = useAuthStore()
+
+  const [lbTab, setLbTab] = useState<LeaderboardTab>('contributions')
+  const [contribAmount, setContribAmount] = useState('')
+  const [contribError, setContribError] = useState<string | null>(null)
+
+  const [deleteOpen, setDeleteOpen] = useState(false)
+  const [leaveOpen, setLeaveOpen] = useState(false)
+  const [actionError, setActionError] = useState<string | null>(null)
 
   const isLeader = groupDetail?.liderId === user?.id
 
