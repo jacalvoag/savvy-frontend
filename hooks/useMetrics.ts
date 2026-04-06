@@ -58,12 +58,12 @@ export function useMetrics() {
       portfolio,
       performance,
       insight,
-      portfolioLoading,
-      performanceLoading,
-      insightLoading,
-      error,
-      fetchPortfolio,
-      fetchPerformance,
-      fetchInsight,
-    }
+    portfolioLoading,
+    performanceLoading,
+    insightLoading,
+    error,
+    fetchPortfolio,
+    fetchPerformance,
+    fetchInsight,
   }
+}
