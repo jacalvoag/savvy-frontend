@@ -13,21 +13,21 @@ interface RetryableRequestConfig extends InternalAxiosRequestConfig {
   _retry?: boolean
 }
 
-  // ─── Refresh Token Queue State ────────────────────────────────────────────────
+// ─── Refresh Token Queue State ────────────────────────────────────────────────
 
-  let isRefreshing = false
-  let failedQueue: QueueItem[] = []
+let isRefreshing = false
+let failedQueue: QueueItem[] = []
 
-  const processQueue = (error: unknown, token: string | null = null) => {
-    failedQueue.forEach(({ resolve, reject }) => {
-      if (error) {
-        reject(error)
-      } else {
-        resolve(token as string)
-      }
-    })
-    failedQueue = []
-  }
+const processQueue = (error: unknown, token: string | null = null) => {
+  failedQueue.forEach(({ resolve, reject }) => {
+    if (error) {
+      reject(error)
+    } else {
+      resolve(token as string)
+    }
+  })
+  failedQueue = []
+}
 
 // ─── Axios Instance ───────────────────────────────────────────────────────────
 

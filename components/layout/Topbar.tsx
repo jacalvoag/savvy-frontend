@@ -133,5 +133,20 @@ export default function Topbar({ notifications, unreadCount, onMarkRead, onHambu
               <button
                 onClick={() => { setUserOpen(false); router.push('/settings') }}
                 className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
+              >
+                Settings
+              </button>
+              <button
+                onClick={handleLogout}
+                className="w-full text-left px-3 py-2 text-sm text-red-400 hover:text-red-300 hover:bg-white/5 transition-colors"
+              >
+                Cerrar sesión
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </header>
+  )
 }
 
