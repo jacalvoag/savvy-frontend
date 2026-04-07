@@ -73,6 +73,21 @@ export interface GroupDetail extends Group {
 
 export interface Notification {
   id: string
+  tipo: string
+  mensaje: string
+  leida: boolean
+  createdAt: string
+}
+
+export interface PortfolioData {
+  total: number
+  variacion: number
+  rates: { MXN: number; [key: string]: number }
+}
+
+export interface PerformancePoint {
+  label: string
+  value: number
 }
 
 export interface InsightData {

@@ -148,21 +148,21 @@ export default function DashboardPage() {
                     'px-2.5 py-1 rounded-md font-medium transition-all',
                     currency === c ? 'bg-lime-400 text-black' : 'text-gray-400 hover:text-white',
                   ].join(' ')}
-                  >
-                    {c}
-                  </button>
-                ))}
-              </div>
+                >
+                  {c}
+                </button>
+              ))}
             </div>
+          </div>
 
-            {portfolioLoading ? (
-              <div className="space-y-2">
-                <Skeleton className="h-10 w-2/3" />
-                <Skeleton className="h-5 w-1/3" />
-              </div>
-            ) : (
-              <>
-                <div>
+          {portfolioLoading ? (
+            <div className="space-y-2">
+              <Skeleton className="h-10 w-2/3" />
+              <Skeleton className="h-5 w-1/3" />
+            </div>
+          ) : (
+            <>
+              <div>
                 <p className="text-4xl font-bold text-white">
                   {currency === 'MXN' ? 'MX$' : '$'}
                   {totalDisplay.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
