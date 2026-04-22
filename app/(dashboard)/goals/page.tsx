@@ -19,20 +19,20 @@ function GoalBadge({ goal }: { goal: Goal }) {
   if (goal.completada) {
     return (
       <span className="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-lime-400 text-black">
-        Completed ✓
+        Completada ✓
       </span>
     )
   }
   if (goal.archivada) {
     return (
       <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-transparent border border-gray-600 text-gray-500">
-        Archived
+        Archivada
       </span>
     )
   }
   return (
     <span className="px-2.5 py-0.5 rounded-full text-xs font-medium bg-[#2a2a2a] text-gray-300">
-      Active
+      Activa
     </span>
   )
 }
@@ -171,12 +171,12 @@ export default function GoalsPage() {
   return (
     <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-8">
 
-      {/* ── Section 1: Individual Goals ──────────────────────── */}
+      {/* ── Sección 1: Metas Individuales ──────────────────────── */}
       <section>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-xl font-bold text-white">My Goals</h2>
-            <p className="text-sm text-gray-500">Track and boost your savings targets</p>
+            <h2 className="text-xl font-bold text-white">Mis Metas</h2>
+            <p className="text-sm text-gray-500">Rastrea y potencia tus objetivos de ahorro</p>
           </div>
           <Button
             id="new-goal-btn"
@@ -184,7 +184,7 @@ export default function GoalsPage() {
             size="md"
             onClick={() => setNewGoalOpen(true)}
           >
-            + New Goal
+            + Nueva Meta
           </Button>
         </div>
 
@@ -195,7 +195,7 @@ export default function GoalsPage() {
         ) : goals.length === 0 ? (
           <div className="bg-[#1c1c1c] border border-[#2a2a2a] border-dashed rounded-2xl p-10 text-center">
             <p className="text-2xl mb-2">💰</p>
-            <p className="text-gray-400 text-sm">No goals yet. Create your first one!</p>
+            <p className="text-gray-400 text-sm">Aún no tienes metas. ¡Crea tu primera!</p>
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
@@ -223,11 +223,11 @@ export default function GoalsPage() {
                       ${goal.montoActual.toLocaleString()}
                     </p>
                     <p className="text-xs text-gray-500">
-                      of ${goal.montoMeta.toLocaleString()} goal
+                      de ${goal.montoMeta.toLocaleString()} de meta
                     </p>
                     {goal.fechaFin && (
                       <p className="text-xs text-gray-600 mt-1">
-                        Due {formatDate(goal.fechaFin)}
+                        Vence {formatDate(goal.fechaFin)}
                       </p>
                     )}
                   </div>
@@ -249,7 +249,7 @@ export default function GoalsPage() {
                       id={`archive-${goal.id}`}
                       variant="ghost"
                       size="sm"
-                      title="Archive goal"
+                      title="Archivar meta"
                       onClick={() => archiveGoal(goal.id)}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -264,12 +264,12 @@ export default function GoalsPage() {
         )}
       </section>
 
-      {/* ── Section 2: Group Collaborations ──────────────────── */}
+      {/* ── Sección 2: Grupos Colaborativos ──────────────────── */}
       <section>
         <div className="flex items-center justify-between mb-4">
           <div>
-            <h2 className="text-xl font-bold text-white">Group Collaborations</h2>
-            <p className="text-sm text-gray-500">Save together, grow together</p>
+            <h2 className="text-xl font-bold text-white">Grupos Colaborativos</h2>
+            <p className="text-sm text-gray-500">Ahorren juntos, crezcan juntos</p>
           </div>
           <Button
             id="new-group-btn"
@@ -277,7 +277,7 @@ export default function GoalsPage() {
             size="md"
             onClick={() => setNewGroupOpen(true)}
           >
-            + Create Group
+            + Crear Grupo
           </Button>
         </div>
 
@@ -288,7 +288,7 @@ export default function GoalsPage() {
         ) : groups.length === 0 ? (
           <div className="bg-[#1c1c1c] border border-[#2a2a2a] border-dashed rounded-2xl p-8 text-center">
             <p className="text-2xl mb-2">👥</p>
-            <p className="text-gray-400 text-sm">No groups yet. Create one or join with a code!</p>
+            <p className="text-gray-400 text-sm">Aún no tienes grupos. ¡Crea uno o únete con un código!</p>
           </div>
         ) : (
           <div className="flex flex-col gap-3">
@@ -306,12 +306,12 @@ export default function GoalsPage() {
                   </div>
                   <ProgressBar value={0} height="h-1.5" />
                   <p className="text-xs text-gray-500">
-                    Goal: ${group.metaAhorro.toLocaleString()}
+                    Meta: ${group.metaAhorro.toLocaleString()}
                   </p>
                 </div>
                 <Link href={`/groups/${group.id}`}>
                   <Button variant="ghost" size="sm" id={`view-lb-${group.id}`}>
-                    View Leaderboard →
+                    Ver Clasificación →
                   </Button>
                 </Link>
               </div>
@@ -319,16 +319,16 @@ export default function GoalsPage() {
           </div>
         )}
 
-        {/* Join Group */}
+        {/* Unirse a un Grupo */}
         <div className="mt-4 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5">
-          <p className="text-sm font-semibold text-white mb-3">Join a Group</p>
+          <p className="text-sm font-semibold text-white mb-3">Unirse a un Grupo</p>
           <form onSubmit={handleJoin} className="flex gap-3">
             <input
               id="invite-code-input"
               type="text"
               value={inviteCode}
               onChange={(e) => setInviteCode(e.target.value.toUpperCase())}
-              placeholder="Enter invite code (e.g. ABC123XYZ)"
+              placeholder="Ingresa el código de invitación (ej. ABC123XYZ)"
               maxLength={12}
               className="flex-1 bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-2.5 text-white text-sm font-mono placeholder-gray-600 outline-none focus:ring-2 focus:ring-lime-400/40 focus:border-lime-400 uppercase"
             />
@@ -339,56 +339,55 @@ export default function GoalsPage() {
               size="md"
               loading={joinLoading}
             >
-              Join
+              Unirse
             </Button>
           </form>
           {joinError && <p className="text-red-400 text-xs mt-2">{joinError}</p>}
         </div>
       </section>
 
-      {/* ── Modals ────────────────────────────────────────────── */}
+      {/* ── Modales ────────────────────────────────────────────── */}
 
-      {/* New Goal Modal */}
-      <Modal isOpen={newGoalOpen} onClose={() => setNewGoalOpen(false)} title="New Savings Goal">
+      {/* Modal Nueva Meta */}
+      <Modal isOpen={newGoalOpen} onClose={() => setNewGoalOpen(false)} title="Nueva Meta de Ahorro">
         <form onSubmit={handleCreateGoal} className="flex flex-col gap-4">
-          <Input id="goal-name" label="Goal Name" placeholder="e.g. Emergency Fund" value={goalName} onChange={(e) => setGoalName(e.target.value)} required />
-          <Input id="goal-amount" label="Target Amount ($)" type="number" placeholder="5000" value={goalAmount} onChange={(e) => setGoalAmount(e.target.value)} required />
-          <Input id="goal-start" label="Start Date" type="date" value={goalStart} onChange={(e) => setGoalStart(e.target.value)} required />
-          <Input id="goal-end" label="End Date (optional)" type="date" value={goalEnd} onChange={(e) => setGoalEnd(e.target.value)} />
+          <Input id="goal-name" label="Nombre de la Meta" placeholder="ej. Fondo de Emergencia" value={goalName} onChange={(e) => setGoalName(e.target.value)} required />
+          <Input id="goal-amount" label="Monto Objetivo ($)" type="number" placeholder="5000" value={goalAmount} onChange={(e) => setGoalAmount(e.target.value)} required />
+          <Input id="goal-start" label="Fecha de Inicio" type="date" value={goalStart} onChange={(e) => setGoalStart(e.target.value)} required />
+          <Input id="goal-end" label="Fecha de Fin (opcional)" type="date" value={goalEnd} onChange={(e) => setGoalEnd(e.target.value)} />
           {goalError && <p className="text-red-400 text-xs">{goalError}</p>}
           <div className="flex gap-3 mt-1">
-            <Button type="button" variant="ghost" className="flex-1" onClick={() => setNewGoalOpen(false)}>Cancel</Button>
-            <Button id="create-goal-btn" type="submit" variant="primary" className="flex-1" loading={goalLoading}>Create Goal</Button>
+            <Button type="button" variant="ghost" className="flex-1" onClick={() => setNewGoalOpen(false)}>Cancelar</Button>
+            <Button id="create-goal-btn" type="submit" variant="primary" className="flex-1" loading={goalLoading}>Crear Meta</Button>
           </div>
         </form>
       </Modal>
 
-      {/* Boost Modal */}
-      <Modal isOpen={boostGoalId !== null} onClose={() => setBoostGoalId(null)} title="Boost Goal">
+      {/* Modal Boost */}
+      <Modal isOpen={boostGoalId !== null} onClose={() => setBoostGoalId(null)} title="Potenciar Meta">
         <form onSubmit={handleBoost} className="flex flex-col gap-4">
-          <p className="text-sm text-gray-400">How much would you like to add to your goal?</p>
-          <Input id="boost-amount" label="Amount ($)" type="number" placeholder="100" value={boostAmount} onChange={(e) => setBoostAmount(e.target.value)} required />
+          <p className="text-sm text-gray-400">¿Cuánto quieres agregar a tu meta?</p>
+          <Input id="boost-amount" label="Monto ($)" type="number" placeholder="100" value={boostAmount} onChange={(e) => setBoostAmount(e.target.value)} required />
           {boostError && <p className="text-red-400 text-xs">{boostError}</p>}
           <div className="flex gap-3 mt-1">
-            <Button type="button" variant="ghost" className="flex-1" onClick={() => setBoostGoalId(null)}>Cancel</Button>
+            <Button type="button" variant="ghost" className="flex-1" onClick={() => setBoostGoalId(null)}>Cancelar</Button>
             <Button id="boost-confirm-btn" type="submit" variant="primary" className="flex-1" loading={boostLoading}>⚡ Boost</Button>
           </div>
         </form>
       </Modal>
 
-      {/* New Group Modal */}
-      <Modal isOpen={newGroupOpen} onClose={() => setNewGroupOpen(false)} title="Create a Group">
+      {/* Modal Nuevo Grupo */}
+      <Modal isOpen={newGroupOpen} onClose={() => setNewGroupOpen(false)} title="Crear un Grupo">
         <form onSubmit={handleCreateGroup} className="flex flex-col gap-4">
-          <Input id="group-name" label="Group Name" placeholder="e.g. Team Savers" value={groupName} onChange={(e) => setGroupName(e.target.value)} required />
-          <Input id="group-meta" label="Savings Goal ($)" type="number" placeholder="10000" value={groupMeta} onChange={(e) => setGroupMeta(e.target.value)} required />
+          <Input id="group-name" label="Nombre del Grupo" placeholder="ej. Ahorradores del Equipo" value={groupName} onChange={(e) => setGroupName(e.target.value)} required />
+          <Input id="group-meta" label="Meta de Ahorro ($)" type="number" placeholder="10000" value={groupMeta} onChange={(e) => setGroupMeta(e.target.value)} required />
           {groupError && <p className="text-red-400 text-xs">{groupError}</p>}
           <div className="flex gap-3 mt-1">
-            <Button type="button" variant="ghost" className="flex-1" onClick={() => setNewGroupOpen(false)}>Cancel</Button>
-            <Button id="create-group-btn" type="submit" variant="secondary" className="flex-1" loading={groupLoading}>Create Group</Button>
+            <Button type="button" variant="ghost" className="flex-1" onClick={() => setNewGroupOpen(false)}>Cancelar</Button>
+            <Button id="create-group-btn" type="submit" variant="secondary" className="flex-1" loading={groupLoading}>Crear Grupo</Button>
           </div>
         </form>
       </Modal>
     </div>
   )
 }
-

@@ -8,8 +8,8 @@ import type { Notification } from '@/types'
 
 const PAGE_TITLES: Record<string, string> = {
   '/dashboard': 'Dashboard',
-  '/goals': 'Savings Hub',
-  '/settings': 'Settings',
+  '/goals': 'Centro de Ahorro',
+  '/settings': 'Configuración',
 }
 
 interface TopbarProps {
@@ -30,7 +30,7 @@ export default function Topbar({ notifications, unreadCount, onMarkRead, onHambu
 
   const title = Object.entries(PAGE_TITLES).find(([key]) => pathname.startsWith(key))?.[1] ?? 'Savvy'
 
-  // Close dropdowns on outside click
+  // Cerrar dropdowns al hacer clic fuera
   useEffect(() => {
     const handler = (e: MouseEvent) => {
       if (notifRef.current && !notifRef.current.contains(e.target as Node)) setNotifOpen(false)
@@ -51,7 +51,7 @@ export default function Topbar({ notifications, unreadCount, onMarkRead, onHambu
 
   return (
     <header className="h-14 bg-[#111111] border-b border-[#1f1f1f] px-4 md:px-6 flex items-center justify-between gap-4 shrink-0">
-      {/* Left: Hamburger + title */}
+      {/* Izquierda: Hamburger + título */}
       <div className="flex items-center gap-3">
         <button
           onClick={onHamburger}
@@ -65,9 +65,9 @@ export default function Topbar({ notifications, unreadCount, onMarkRead, onHambu
         <h1 className="text-white font-semibold text-base">{title}</h1>
       </div>
 
-      {/* Right: Notifications + Avatar */}
+      {/* Derecha: Notificaciones + Avatar */}
       <div className="flex items-center gap-3">
-        {/* Notification Bell */}
+        {/* Campana de Notificaciones */}
         <div className="relative" ref={notifRef}>
           <button
             id="notifications-btn"
@@ -114,7 +114,7 @@ export default function Topbar({ notifications, unreadCount, onMarkRead, onHambu
           )}
         </div>
 
-        {/* User Avatar Dropdown */}
+        {/* Dropdown Avatar de Usuario */}
         <div className="relative" ref={userRef}>
           <button
             id="user-menu-btn"
@@ -134,7 +134,7 @@ export default function Topbar({ notifications, unreadCount, onMarkRead, onHambu
                 onClick={() => { setUserOpen(false); router.push('/settings') }}
                 className="w-full text-left px-3 py-2 text-sm text-gray-300 hover:text-white hover:bg-white/5 transition-colors"
               >
-                Settings
+                Configuración
               </button>
               <button
                 onClick={handleLogout}
@@ -149,4 +149,3 @@ export default function Topbar({ notifications, unreadCount, onMarkRead, onHambu
     </header>
   )
 }
-

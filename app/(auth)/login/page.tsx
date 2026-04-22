@@ -37,7 +37,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen flex">
-      {/* ── Left Panel ─────────────────────────────────────────── */}
+      {/* ── Panel Izquierdo ─────────────────────────────────────────── */}
       <div className="hidden lg:flex lg:w-[42%] relative overflow-hidden flex-col">
         {/* Gradient background */}
         <div
@@ -69,24 +69,24 @@ export default function LoginPage() {
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-3 py-1.5 text-xs text-white/80 font-medium">
                 <div className="w-1.5 h-1.5 rounded-full bg-lime-400" />
-                Financial Intelligence
+                Inteligencia Financiera
               </div>
               <h1 className="text-4xl xl:text-5xl font-bold text-white leading-tight">
-                Control your
+                Controla tu
                 <br />
-                <span className="gradient-text">financial future</span>
+                <span className="gradient-text">futuro financiero</span>
               </h1>
               <p className="text-white/60 text-base leading-relaxed max-w-xs">
-                Track your money, set savings goals, and compete with friends to build better financial habits.
+                Registra tu dinero, establece metas de ahorro y compite con amigos para crear mejores hábitos financieros.
               </p>
             </div>
 
             {/* Stats */}
             <div className="mt-10 grid grid-cols-3 gap-4">
               {[
-                { label: 'Users', value: '10K+' },
-                { label: 'Saved', value: '$2M+' },
-                { label: 'Goals', value: '50K+' },
+                { label: 'Usuarios', value: '10K+' },
+                { label: 'Ahorrado', value: '$2M+' },
+                { label: 'Metas', value: '50K+' },
               ].map((s) => (
                 <div key={s.label} className="bg-white/10 backdrop-blur-sm rounded-xl px-3 py-3 text-center">
                   <p className="text-white font-bold text-xl">{s.value}</p>
@@ -98,12 +98,12 @@ export default function LoginPage() {
 
           {/* Footer quote */}
           <p className="text-white/30 text-xs">
-            "The secret to getting ahead is getting started." — Mark Twain
+            &quot;El secreto para avanzar es comenzar.&quot; — Mark Twain
           </p>
         </div>
       </div>
 
-      {/* ── Right Panel ────────────────────────────────────────── */}
+      {/* ── Panel Derecho ────────────────────────────────────────── */}
       <div className="flex-1 bg-[#111111] flex items-center justify-center px-6 py-10">
         <div className="w-full max-w-sm">
           {/* Mobile logo */}
@@ -118,8 +118,8 @@ export default function LoginPage() {
 
           {/* Header */}
           <div className="mb-6">
-            <h2 className="text-2xl font-bold text-white">Welcome back</h2>
-            <p className="text-gray-500 text-sm mt-1">Sign in to your account or create a new one</p>
+            <h2 className="text-2xl font-bold text-white">Bienvenido de nuevo</h2>
+            <p className="text-gray-500 text-sm mt-1">Inicia sesión o crea una cuenta nueva</p>
           </div>
 
           {/* Tab Toggle */}
@@ -136,19 +136,19 @@ export default function LoginPage() {
                     : 'text-gray-400 hover:text-white',
                 ].join(' ')}
               >
-                {t === 'login' ? 'Sign In' : 'Register'}
+                {t === 'login' ? 'Iniciar Sesión' : 'Registrarse'}
               </button>
             ))}
           </div>
 
-          {/* ── Login Form ── */}
+          {/* ── Formulario de Login ── */}
           {tab === 'login' && (
             <form onSubmit={handleLogin} className="flex flex-col gap-4">
               <Input
                 id="login-email"
-                label="Email"
+                label="Correo electrónico"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="tu@ejemplo.com"
                 value={loginEmail}
                 onChange={(e) => setLoginEmail(e.target.value)}
                 autoComplete="email"
@@ -161,7 +161,7 @@ export default function LoginPage() {
               />
               <Input
                 id="login-password"
-                label="Password"
+                label="Contraseña"
                 type="password"
                 placeholder="••••••••"
                 value={loginPassword}
@@ -184,30 +184,30 @@ export default function LoginPage() {
                 loading={loading}
                 className="w-full mt-1"
               >
-                Sign In
+                Iniciar Sesión
               </Button>
 
               <p className="text-center text-xs text-gray-500 mt-2">
-                Don&#39;t have an account?{' '}
+                ¿No tienes cuenta?{' '}
                 <button
                   type="button"
                   onClick={() => handleTabChange('register')}
                   className="text-lime-400 hover:underline"
                 >
-                  Sign up
+                  Regístrate
                 </button>
               </p>
             </form>
           )}
 
-          {/* ── Register Form ── */}
+          {/* ── Formulario de Registro ── */}
           {tab === 'register' && (
             <form onSubmit={handleRegister} className="flex flex-col gap-4">
               <Input
                 id="reg-name"
-                label="Full Name"
+                label="Nombre completo"
                 type="text"
-                placeholder="John Doe"
+                placeholder="Juan Pérez"
                 value={regName}
                 onChange={(e) => setRegName(e.target.value)}
                 autoComplete="name"
@@ -220,9 +220,9 @@ export default function LoginPage() {
               />
               <Input
                 id="reg-email"
-                label="Email"
+                label="Correo electrónico"
                 type="email"
-                placeholder="you@example.com"
+                placeholder="tu@ejemplo.com"
                 value={regEmail}
                 onChange={(e) => setRegEmail(e.target.value)}
                 autoComplete="email"
@@ -235,9 +235,9 @@ export default function LoginPage() {
               />
               <Input
                 id="reg-password"
-                label="Password"
+                label="Contraseña"
                 type="password"
-                placeholder="Min 8 characters"
+                placeholder="Mínimo 8 caracteres"
                 value={regPassword}
                 onChange={(e) => setRegPassword(e.target.value)}
                 autoComplete="new-password"
@@ -258,12 +258,12 @@ export default function LoginPage() {
                 loading={loading}
                 className="w-full mt-1"
               >
-                Create Account
+                Crear Cuenta
               </Button>
 
               <p className="text-center text-xs text-gray-500 mt-2">
-                By creating an account you agree to our{' '}
-                <span className="text-lime-400">Terms of Service</span>
+                Al crear una cuenta aceptas nuestros{' '}
+                <span className="text-lime-400">Términos de Servicio</span>
               </p>
             </form>
           )}
@@ -272,4 +272,3 @@ export default function LoginPage() {
     </div>
   )
 }
-

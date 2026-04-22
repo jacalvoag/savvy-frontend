@@ -30,13 +30,13 @@ function CopyButton({ text }: { text: string }) {
       className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#2a2a2a] hover:bg-[#333] text-gray-300 hover:text-white text-xs font-medium transition-all"
     >
       {copied ? (
-        <>✓ Copied!</>
+        <>✓ ¡Copiado!</>
       ) : (
         <>
           <svg xmlns="http://www.w3.org/2000/svg" className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
           </svg>
-          Copy
+          Copiar
         </>
       )}
     </button>
@@ -76,7 +76,7 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
       await contribute(id, parseFloat(contribAmount))
       setContribAmount('')
     } catch {
-      setContribError('Error al registrar contribución.')
+      setContribError('Error al registrar la contribución.')
     }
   }
 
@@ -103,7 +103,7 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
   return (
     <div className="p-4 md:p-6 max-w-5xl mx-auto space-y-5">
 
-      {/* ── Group Header ───────────────────────────────────────── */}
+      {/* ── Encabezado del Grupo ───────────────────────────────── */}
       {loading && !groupDetail ? (
         <div className="space-y-3">
           <Skeleton className="h-8 w-64" />
@@ -114,7 +114,7 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
           <div>
             <h1 className="text-2xl font-bold text-white">{groupDetail.nombre}</h1>
             <div className="flex items-center gap-2 mt-1">
-              <span className="text-xs text-gray-500">Invite code:</span>
+              <span className="text-xs text-gray-500">Código de invitación:</span>
               <code className="font-mono text-sm text-lime-400 bg-lime-400/10 px-2 py-0.5 rounded-lg">
                 {groupDetail.inviteCode}
               </code>
@@ -122,41 +122,41 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
             </div>
           </div>
           <div className="text-sm text-gray-500">
-            {groupDetail.miembros.length} member{groupDetail.miembros.length !== 1 ? 's' : ''}
+            {groupDetail.miembros.length} miembro{groupDetail.miembros.length !== 1 ? 's' : ''}
           </div>
         </div>
       ) : (
-        <p className="text-red-400 text-sm">{error ?? 'Group not found'}</p>
+        <p className="text-red-400 text-sm">{error ?? 'Grupo no encontrado'}</p>
       )}
 
-      {/* ── Balance Card ────────────────────────────────────────── */}
+      {/* ── Tarjeta de Balance ────────────────────────────────── */}
       {groupDetail && (
         <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 space-y-4">
           <div className="flex items-center justify-between flex-wrap gap-2">
             <div>
-              <p className="text-xs text-gray-500 uppercase tracking-wider">Total Saved</p>
+              <p className="text-xs text-gray-500 uppercase tracking-wider">Total Ahorrado</p>
               <p className="text-3xl font-bold text-white mt-1">
                 ${groupDetail.totalAcumulado.toLocaleString()}
               </p>
               <p className="text-sm text-gray-500 mt-0.5">
-                of ${groupDetail.metaAhorro.toLocaleString()} goal
+                de ${groupDetail.metaAhorro.toLocaleString()} de meta
               </p>
             </div>
             <div className="text-right">
               <p className="text-2xl font-bold text-lime-400">
                 {Math.round(groupDetail.porcentajeGrupal)}%
               </p>
-              <p className="text-xs text-gray-500">Complete</p>
+              <p className="text-xs text-gray-500">Completado</p>
             </div>
           </div>
           <ProgressBar value={groupDetail.porcentajeGrupal} showLabel={false} height="h-3" />
         </div>
       )}
 
-      {/* ── Main Grid: Leaderboard + Action Cards ──────────────── */}
+      {/* ── Grid Principal: Clasificación + Acciones ──────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
 
-        {/* Leaderboard Table (spans 2 cols) */}
+        {/* Tabla de Clasificación (ocupa 2 columnas) */}
         <div className="lg:col-span-2 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl overflow-hidden">
           {/* Tab Toggle */}
           <div className="flex border-b border-[#2a2a2a]">
@@ -172,12 +172,12 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                     : 'text-gray-500 hover:text-gray-300',
                 ].join(' ')}
               >
-                {t === 'contributions' ? 'Contributions' : 'Streaks 🔥'}
+                {t === 'contributions' ? 'Contribuciones' : 'Rachas 🔥'}
               </button>
             ))}
           </div>
 
-          {/* Table */}
+          {/* Tabla */}
           {loading && !groupDetail ? (
             <div className="p-4 space-y-1">
               {[1, 2, 3, 4].map((i) => <SkeletonRow key={i} />)}
@@ -188,12 +188,12 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                 <thead>
                   <tr className="text-xs text-gray-500 border-b border-[#222]">
                     <th className="text-left px-4 py-3 font-medium">#</th>
-                    <th className="text-left px-4 py-3 font-medium">Member</th>
+                    <th className="text-left px-4 py-3 font-medium">Miembro</th>
                     <th className="text-right px-4 py-3 font-medium">
-                      {lbTab === 'contributions' ? 'Contribution' : 'Streak'}
+                      {lbTab === 'contributions' ? 'Contribución' : 'Racha'}
                     </th>
                     {lbTab === 'contributions' && (
-                      <th className="text-right px-4 py-3 font-medium hidden sm:table-cell">Share</th>
+                      <th className="text-right px-4 py-3 font-medium hidden sm:table-cell">Porcentaje</th>
                     )}
                   </tr>
                 </thead>
@@ -212,13 +212,13 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                         ].join(' ')}
                         style={{ animationDelay: `${idx * 60}ms` }}
                       >
-                        {/* Rank */}
+                        {/* Posición */}
                         <td className="px-4 py-3">
                           <span className={`font-bold ${isFirst ? 'text-lime-400' : 'text-gray-500'}`}>
                             {isFirst ? '👑' : member.rank}
                           </span>
                         </td>
-                        {/* Member */}
+                        {/* Miembro */}
                         <td className="px-4 py-3">
                           <div className="flex items-center gap-2.5">
                             <Avatar
@@ -229,20 +229,20 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                             <div>
                               <p className={`font-medium ${isCurrent ? 'text-lime-400' : 'text-white'}`}>
                                 {member.nombre}
-                                {isCurrent && <span className="text-xs text-gray-500 ml-1">(you)</span>}
+                                {isCurrent && <span className="text-xs text-gray-500 ml-1">(tú)</span>}
                               </p>
                             </div>
                           </div>
                         </td>
-                        {/* Value */}
+                        {/* Valor */}
                         <td className="px-4 py-3 text-right">
                           {lbTab === 'contributions' ? (
                             <span className="text-white font-semibold">${member.contribucion.toLocaleString()}</span>
                           ) : (
-                            <span className="text-white font-semibold">{member.streakWeeks}w 🔥</span>
+                            <span className="text-white font-semibold">{member.streakWeeks}sem 🔥</span>
                           )}
                         </td>
-                        {/* Share (contributions tab only) */}
+                        {/* Porcentaje (solo en contribuciones) */}
                         {lbTab === 'contributions' && (
                           <td className="px-4 py-3 text-right hidden sm:table-cell">
                             <span className="text-lime-400 text-xs font-medium">{member.porcentaje.toFixed(1)}%</span>
@@ -257,17 +257,17 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
           )}
         </div>
 
-        {/* ── Action Cards (right column) ────────────────────────── */}
+        {/* ── Tarjetas de Acción (columna derecha) ──────────────── */}
         <div className="flex flex-col gap-4">
 
-          {/* Contribute Card */}
+          {/* Tarjeta Contribuir */}
           <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 space-y-3">
-            <h3 className="text-sm font-semibold text-white">Add Contribution</h3>
+            <h3 className="text-sm font-semibold text-white">Agregar Contribución</h3>
             <form onSubmit={handleContribute} className="space-y-3">
               <Input
                 id="contrib-amount"
                 type="number"
-                placeholder="Amount ($)"
+                placeholder="Monto ($)"
                 value={contribAmount}
                 onChange={(e) => setContribAmount(e.target.value)}
               />
@@ -280,14 +280,14 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                 className="w-full"
                 loading={contributeLoading}
               >
-                Add Contribution
+                Agregar Contribución
               </Button>
             </form>
           </div>
 
-          {/* Invite Card */}
+          {/* Tarjeta Invitar */}
           <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 space-y-3">
-            <h3 className="text-sm font-semibold text-white">Invite Friends</h3>
+            <h3 className="text-sm font-semibold text-white">Invitar Amigos</h3>
             {groupDetail && (
               <>
                 <div className="bg-[#111] rounded-xl p-3 text-center">
@@ -297,18 +297,18 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                 </div>
                 <CopyButton text={groupDetail.inviteCode} />
                 <p className="text-xs text-gray-500 leading-relaxed">
-                  Share this code with friends to invite them to the group
+                  Comparte este código con tus amigos para invitarlos al grupo
                 </p>
               </>
             )}
           </div>
 
-          {/* Actions Card (Delete / Leave) */}
+          {/* Tarjeta Acciones del Grupo */}
           <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-5 space-y-3">
-            <h3 className="text-sm font-semibold text-white">Group Actions</h3>
+            <h3 className="text-sm font-semibold text-white">Acciones del Grupo</h3>
             {isLeader ? (
               <>
-                <p className="text-xs text-gray-500">As the group leader, you can permanently delete this group.</p>
+                <p className="text-xs text-gray-500">Como líder del grupo, puedes eliminarlo permanentemente.</p>
                 <Button
                   id="delete-group-btn"
                   variant="danger"
@@ -316,12 +316,12 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                   className="w-full"
                   onClick={() => { setActionError(null); setDeleteOpen(true) }}
                 >
-                  Delete Group
+                  Eliminar Grupo
                 </Button>
               </>
             ) : (
               <>
-                <p className="text-xs text-gray-500">You can leave this group at any time.</p>
+                <p className="text-xs text-gray-500">Puedes salir de este grupo en cualquier momento.</p>
                 <Button
                   id="leave-group-btn"
                   variant="ghost"
@@ -329,7 +329,7 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                   className="w-full border-red-800/50 text-red-400 hover:text-red-300 hover:bg-red-900/10"
                   onClick={() => { setActionError(null); setLeaveOpen(true) }}
                 >
-                  Leave Group
+                  Salir del Grupo
                 </Button>
               </>
             )}
@@ -337,16 +337,16 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
         </div>
       </div>
 
-      {/* ── Confirm Dialogs ─────────────────────────────────────── */}
+      {/* ── Diálogos de Confirmación ───────────────────────────── */}
 
       <ConfirmDialog
         isOpen={deleteOpen}
         onClose={() => setDeleteOpen(false)}
         onConfirm={handleDelete}
-        title="Delete Group"
-        message="This action cannot be undone. All members will be removed from the group and all data will be permanently deleted."
-        confirmLabel="Delete Group"
-        cancelLabel="Cancel"
+        title="Eliminar Grupo"
+        message="Esta acción no se puede deshacer. Todos los miembros serán removidos del grupo y todos los datos se eliminarán permanentemente."
+        confirmLabel="Eliminar Grupo"
+        cancelLabel="Cancelar"
         error={actionError}
       />
 
@@ -354,13 +354,12 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
         isOpen={leaveOpen}
         onClose={() => setLeaveOpen(false)}
         onConfirm={handleLeave}
-        title="Leave Group"
-        message="You will no longer have access to this group's leaderboard or progress. Your past contributions will be kept in the group records."
-        confirmLabel="Leave Group"
-        cancelLabel="Stay"
+        title="Salir del Grupo"
+        message="Ya no tendrás acceso a la clasificación ni al progreso del grupo. Tus contribuciones anteriores se conservarán en los registros del grupo."
+        confirmLabel="Salir del Grupo"
+        cancelLabel="Quedarse"
         error={actionError}
       />
     </div>
   )
 }
-

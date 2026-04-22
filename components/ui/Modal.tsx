@@ -46,7 +46,7 @@ export default function Modal({
         onClick={onClose}
         aria-hidden="true"
       />
-      {/* Dialog */}
+      {/* Diálogo */}
       <div
         className={[
           'relative w-full bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl shadow-2xl',
@@ -56,7 +56,7 @@ export default function Modal({
         role="dialog"
         aria-modal="true"
       >
-        {/* Header */}
+        {/* Encabezado */}
         {title && (
           <div className="flex items-center justify-between px-6 pt-5 pb-4 border-b border-[#2a2a2a]">
             <h2 className="text-lg font-semibold text-white">{title}</h2>
@@ -77,4 +77,3 @@ export default function Modal({
     document.body
   )
 }
-

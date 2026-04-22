@@ -20,15 +20,27 @@ import type { Period, MovementCategory } from '@/types'
 // ─── Category Config ──────────────────────────────────────────────────────────
 
 const CATEGORY_CONFIG: Record<MovementCategory, { icon: string; color: string; bg: string }> = {
-  salary:       { icon: '💼', color: 'text-green-400',  bg: 'bg-green-400/10' },
-  groceries:    { icon: '🛒', color: 'text-orange-400', bg: 'bg-orange-400/10' },
-  transport:    { icon: '🚌', color: 'text-blue-400',   bg: 'bg-blue-400/10' },
-  entertainment:{ icon: '🎮', color: 'text-purple-400', bg: 'bg-purple-400/10' },
-  savings:      { icon: '💾', color: 'text-lime-400',   bg: 'bg-lime-400/10' },
-  dividends:    { icon: '📊', color: 'text-cyan-400',   bg: 'bg-cyan-400/10' },
-  subscription: { icon: '📱', color: 'text-pink-400',   bg: 'bg-pink-400/10' },
-  food:         { icon: '🍕', color: 'text-red-400',    bg: 'bg-red-400/10' },
-  other:        { icon: '❓', color: 'text-gray-400',   bg: 'bg-gray-400/10' },
+  salary:       { icon: '', color: 'text-green-400',  bg: 'bg-green-400/10' },
+  groceries:    { icon: '', color: 'text-orange-400', bg: 'bg-orange-400/10' },
+  transport:    { icon: '', color: 'text-blue-400',   bg: 'bg-blue-400/10' },
+  entertainment:{ icon: '', color: 'text-purple-400', bg: 'bg-purple-400/10' },
+  savings:      { icon: '', color: 'text-lime-400',   bg: 'bg-lime-400/10' },
+  dividends:    { icon: '', color: 'text-cyan-400',   bg: 'bg-cyan-400/10' },
+  subscription: { icon: '', color: 'text-pink-400',   bg: 'bg-pink-400/10' },
+  food:         { icon: '', color: 'text-red-400',    bg: 'bg-red-400/10' },
+  other:        { icon: '', color: 'text-gray-400',   bg: 'bg-gray-400/10' },
+}
+
+const CATEGORY_LABELS: Record<MovementCategory, string> = {
+  salary: 'Salario',
+  groceries: 'Supermercado',
+  transport: 'Transporte',
+  entertainment: 'Entretenimiento',
+  savings: 'Ahorro',
+  dividends: 'Dividendos',
+  subscription: 'Suscripción',
+  food: 'Comida',
+  other: 'Otro',
 }
 
 const CATEGORIES: MovementCategory[] = [
@@ -131,12 +143,12 @@ export default function DashboardPage() {
 
   return (
     <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-5">
-      {/* ── Row 1: Portfolio + Performance ───────────────────── */}
+      {/* ── Fila 1: Portfolio + Rendimiento ───────────────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        {/* Portfolio Card */}
+        {/* Tarjeta Portfolio */}
         <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <p className="text-sm text-gray-400 font-medium">Total Portfolio</p>
+            <p className="text-sm text-gray-400 font-medium">Portfolio Total</p>
             {/* Currency toggle */}
             <div className="flex bg-[#111] border border-[#2a2a2a] rounded-lg p-0.5 text-xs">
               {(['USD', 'MXN'] as const).map((c) => (
@@ -178,22 +190,21 @@ export default function DashboardPage() {
                   ].join(' ')}
                 >
                   {portfolio.variacion >= 0 ? '↑' : '↓'}
-                  {Math.abs(portfolio.variacion).toFixed(1)}% vs last month
+                  {Math.abs(portfolio.variacion).toFixed(1)}% vs mes anterior
                 </div>
               )}
             </>
           )}
 
-          {/* Mini donut or info */}
           <div className="mt-auto pt-2 border-t border-[#2a2a2a]">
-            <p className="text-xs text-gray-500">Updated just now</p>
+            <p className="text-xs text-gray-500">Actualizado ahora mismo</p>
           </div>
         </div>
 
-        {/* Performance Chart */}
+        {/* Gráfico de Rendimiento */}
         <div className="lg:col-span-2 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4">
           <div className="flex items-center justify-between flex-wrap gap-3">
-            <p className="text-sm text-gray-400 font-medium">Performance</p>
+            <p className="text-sm text-gray-400 font-medium">Rendimiento</p>
             <div className="flex gap-1">
               {PERIODS.map((p) => (
                 <button
@@ -247,18 +258,18 @@ export default function DashboardPage() {
             </div>
           ) : (
             <div className="h-40 flex items-center justify-center">
-              <p className="text-gray-500 text-sm">No performance data for this period</p>
+              <p className="text-gray-500 text-sm">Sin datos de rendimiento para este periodo</p>
             </div>
           )}
         </div>
       </div>
 
-      {/* ── Row 2: Recent Movements + Smart Insight ───────────── */}
+      {/* ── Fila 2: Movimientos Recientes + Insight ───────────── */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
-        {/* Recent Movements */}
+        {/* Movimientos Recientes */}
         <div className="lg:col-span-2 bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-semibold text-white">Recent Movements</h2>
+            <h2 className="text-base font-semibold text-white">Movimientos Recientes</h2>
             <div className="flex gap-2">
               <Button
                 id="add-income-btn"
@@ -266,7 +277,7 @@ export default function DashboardPage() {
                 size="sm"
                 onClick={() => { setMovementModal('income'); resetMovForm() }}
               >
-                + Income
+                + Ingreso
               </Button>
               <Button
                 id="add-expense-btn"
@@ -274,14 +285,14 @@ export default function DashboardPage() {
                 size="sm"
                 onClick={() => { setMovementModal('expense'); resetMovForm() }}
               >
-                + Expense
+                + Egreso
               </Button>
             </div>
           </div>
 
           <div className="flex flex-col divide-y divide-[#222]">
             {recentMovements.length === 0 ? (
-              <p className="text-gray-500 text-sm py-4 text-center">No movements yet</p>
+              <p className="text-gray-500 text-sm py-4 text-center">Aún no hay movimientos</p>
             ) : (
               recentMovements.map((m) => {
                 const cfg = CATEGORY_CONFIG[m.categoria]
@@ -292,7 +303,7 @@ export default function DashboardPage() {
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-sm text-white capitalize">
-                        {m.descripcion || m.categoria}
+                        {m.descripcion || CATEGORY_LABELS[m.categoria]}
                       </p>
                       <p className="text-xs text-gray-500">{formatDate(m.fecha)}</p>
                     </div>
@@ -310,16 +321,15 @@ export default function DashboardPage() {
           </div>
         </div>
 
-        {/* Smart Insight */}
+        {/* Insight Inteligente */}
         <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4 glow-lime relative overflow-hidden">
-          {/* Subtle glow backdrop */}
           <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-lime-400/5 blur-2xl pointer-events-none" />
 
           <div className="flex items-center gap-2.5">
             <div className="w-9 h-9 rounded-xl bg-lime-400/10 flex items-center justify-center text-lg">
               🚀
             </div>
-            <p className="text-sm font-semibold text-lime-400">Smart Insight</p>
+            <p className="text-sm font-semibold text-lime-400">Insight Inteligente</p>
           </div>
 
           {insightLoading ? (
@@ -332,27 +342,27 @@ export default function DashboardPage() {
             <>
               <p className="text-sm text-gray-300 leading-relaxed">{insight.mensaje}</p>
               <div className="bg-[#111] border border-[#2a2a2a] rounded-xl px-4 py-3 space-y-1">
-                <p className="text-xs text-gray-500">Closest goal</p>
+                <p className="text-xs text-gray-500">Meta más cercana</p>
                 <p className="text-sm text-white font-medium">{insight.metaNombre}</p>
-                <p className="text-xs text-lime-400">{insight.mesesRestantes} months remaining</p>
+                <p className="text-xs text-lime-400">{insight.mesesRestantes} meses restantes</p>
               </div>
             </>
           ) : (
-            <p className="text-sm text-gray-500">No insights available</p>
+            <p className="text-sm text-gray-500">Sin insights disponibles</p>
           )}
         </div>
       </div>
 
-      {/* ── Create Movement Modal ─────────────────────────────── */}
+      {/* ── Modal Crear Movimiento ─────────────────────────────── */}
       <Modal
         isOpen={movementModal !== null}
         onClose={() => setMovementModal(null)}
-        title={movementModal === 'income' ? 'Add Income' : 'Add Expense'}
+        title={movementModal === 'income' ? 'Agregar Ingreso' : 'Agregar Egreso'}
       >
         <form onSubmit={handleCreateMovement} className="flex flex-col gap-4">
           <Input
             id="mov-amount"
-            label="Amount"
+            label="Monto"
             type="number"
             placeholder="0.00"
             value={movAmount}
@@ -362,7 +372,7 @@ export default function DashboardPage() {
 
           <div className="flex flex-col gap-1.5">
             <label htmlFor="mov-category" className="text-sm font-medium text-gray-300">
-              Category
+              Categoría
             </label>
             <select
               id="mov-category"
@@ -372,7 +382,7 @@ export default function DashboardPage() {
             >
               {CATEGORIES.map((c) => (
                 <option key={c} value={c} className="bg-[#1c1c1c]">
-                  {CATEGORY_CONFIG[c].icon} {c.charAt(0).toUpperCase() + c.slice(1)}
+                  {CATEGORY_CONFIG[c].icon} {CATEGORY_LABELS[c]}
                 </option>
               ))}
             </select>
@@ -380,13 +390,13 @@ export default function DashboardPage() {
 
           <div className="flex flex-col gap-1.5">
             <label htmlFor="mov-desc" className="text-sm font-medium text-gray-300">
-              Description <span className="text-gray-500">(optional)</span>
+              Descripción <span className="text-gray-500">(opcional)</span>
             </label>
             <textarea
               id="mov-desc"
               value={movDesc}
               onChange={(e) => setMovDesc(e.target.value)}
-              placeholder="What was this for?"
+              placeholder="¿Para qué fue este movimiento?"
               rows={2}
               className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-2.5 text-white text-sm outline-none focus:ring-2 focus:ring-lime-400/40 focus:border-lime-400 resize-none placeholder-gray-600"
             />
@@ -394,7 +404,7 @@ export default function DashboardPage() {
 
           <Input
             id="mov-date"
-            label="Date"
+            label="Fecha"
             type="date"
             value={movDate}
             onChange={(e) => setMovDate(e.target.value)}
@@ -410,7 +420,7 @@ export default function DashboardPage() {
               className="flex-1"
               onClick={() => setMovementModal(null)}
             >
-              Cancel
+              Cancelar
             </Button>
             <Button
               id="mov-save-btn"
@@ -419,7 +429,7 @@ export default function DashboardPage() {
               className="flex-1"
               loading={movLoading}
             >
-              Save
+              Guardar
             </Button>
           </div>
         </form>
@@ -427,4 +437,3 @@ export default function DashboardPage() {
     </div>
   )
 }
-
