@@ -10,6 +10,7 @@ import Input from '@/components/ui/Input'
 import ProgressBar from '@/components/ui/ProgressBar'
 import CircleProgress from '@/components/ui/CircleProgress'
 import Avatar from '@/components/ui/Avatar'
+import ConfirmDialog from '@/components/ui/ConfirmDialog'
 import { SkeletonCard } from '@/components/ui/Skeleton'
 import type { Goal } from '@/types'
 
@@ -47,7 +48,7 @@ function formatDate(iso?: string) {
 // ─── Savings Hub Page ─────────────────────────────────────────────────────────
 
 export default function GoalsPage() {
-  const { goals, loading: goalsLoading, fetchGoals, createGoal, boostGoal, archiveGoal } = useGoals()
+  const { goals, loading: goalsLoading, fetchGoals, createGoal, updateGoal, boostGoal, archiveGoal, deleteGoal } = useGoals()
   const {
     groups,
     loading: groupsLoading,
@@ -64,6 +65,19 @@ export default function GoalsPage() {
   const [goalEnd, setGoalEnd] = useState('')
   const [goalLoading, setGoalLoading] = useState(false)
   const [goalError, setGoalError] = useState<string | null>(null)
+
+  // Edit Goal Modal
+  const [editGoalId, setEditGoalId] = useState<string | null>(null)
+  const [editGoalName, setEditGoalName] = useState('')
+  const [editGoalAmount, setEditGoalAmount] = useState('')
+  const [editGoalEnd, setEditGoalEnd] = useState('')
+  const [editLoading, setEditLoading] = useState(false)
+  const [editError, setEditError] = useState<string | null>(null)
+
+  // Delete Goal Modal
+  const [deleteGoalId, setDeleteGoalId] = useState<string | null>(null)
+  const [deleteLoading, setDeleteLoading] = useState(false)
+  const [deleteError, setDeleteError] = useState<string | null>(null)
 
   // Boost Modal
   const [boostGoalId, setBoostGoalId] = useState<string | null>(null)
@@ -135,6 +149,47 @@ export default function GoalsPage() {
     }
   }
 
+  const handleEditGoal = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!editGoalId) return
+    setEditLoading(true)
+    setEditError(null)
+    try {
+      await updateGoal(editGoalId, {
+        nombre: editGoalName,
+        montoMeta: parseFloat(editGoalAmount),
+        fechaFin: editGoalEnd || undefined,
+      })
+      setEditGoalId(null)
+    } catch {
+      setEditError('Error al actualizar la meta.')
+    } finally {
+      setEditLoading(false)
+    }
+  }
+
+  const handleDeleteGoal = async () => {
+    if (!deleteGoalId) return
+    setDeleteLoading(true)
+    setDeleteError(null)
+    try {
+      await deleteGoal(deleteGoalId)
+      setDeleteGoalId(null)
+    } catch {
+      setDeleteError('Error al eliminar la meta.')
+    } finally {
+      setDeleteLoading(false)
+    }
+  }
+
+  const openEditModal = (goal: Goal) => {
+    setEditGoalId(goal.id)
+    setEditGoalName(goal.nombre)
+    setEditGoalAmount(goal.montoMeta.toString())
+    setEditGoalEnd(goal.fechaFin ? goal.fechaFin.split('T')[0] : '')
+    setEditError(null)
+  }
+
   // ── Group Handlers ─────────────────────────────────────────────────────────
 
   const handleCreateGroup = async (e: React.FormEvent) => {
@@ -167,6 +222,8 @@ export default function GoalsPage() {
       setJoinLoading(false)
     }
   }
+
+  
 
   return (
     <div className="p-4 md:p-6 max-w-7xl mx-auto space-y-8">
@@ -246,14 +303,25 @@ export default function GoalsPage() {
                       ⚡ Boost
                     </Button>
                     <Button
-                      id={`archive-${goal.id}`}
+                      id={`edit-${goal.id}`}
                       variant="ghost"
                       size="sm"
-                      title="Archivar meta"
-                      onClick={() => archiveGoal(goal.id)}
+                      title="Editar meta"
+                      onClick={() => openEditModal(goal)}
                     >
                       <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </Button>
+                    <Button
+                      id={`delete-${goal.id}`}
+                      variant="ghost"
+                      size="sm"
+                      title="Eliminar meta"
+                      onClick={() => { setDeleteGoalId(goal.id); setDeleteError(null) }}
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
                       </svg>
                     </Button>
                   </div>
@@ -388,6 +456,33 @@ export default function GoalsPage() {
           </div>
         </form>
       </Modal>
+
+
+      {/* Modal Editar Meta */}
+      <Modal isOpen={editGoalId !== null} onClose={() => setEditGoalId(null)} title="Editar Meta">
+        <form onSubmit={handleEditGoal} className="flex flex-col gap-4">
+          <Input id="edit-goal-name" label="Nombre de la Meta" placeholder="ej. Fondo de Emergencia" value={editGoalName} onChange={(e) => setEditGoalName(e.target.value)} required />
+          <Input id="edit-goal-amount" label="Monto Objetivo ($)" type="number" placeholder="5000" value={editGoalAmount} onChange={(e) => setEditGoalAmount(e.target.value)} required />
+          <Input id="edit-goal-end" label="Fecha de Fin (opcional)" type="date" value={editGoalEnd} onChange={(e) => setEditGoalEnd(e.target.value)} />
+          {editError && <p className="text-red-400 text-xs">{editError}</p>}
+          <div className="flex gap-3 mt-1">
+            <Button type="button" variant="ghost" className="flex-1" onClick={() => setEditGoalId(null)}>Cancelar</Button>
+            <Button id="save-edit-goal-btn" type="submit" variant="primary" className="flex-1" loading={editLoading}>Guardar Cambios</Button>
+          </div>
+        </form>
+      </Modal>
+
+      {/* Modal Eliminar Meta */}
+      <ConfirmDialog
+        isOpen={deleteGoalId !== null}
+        onClose={() => setDeleteGoalId(null)}
+        onConfirm={handleDeleteGoal}
+        title="Eliminar Meta"
+        message="¿Estás seguro de que deseas eliminar esta meta? Esta acción no se puede deshacer."
+        confirmLabel="Eliminar Meta"
+        cancelLabel="Cancelar"
+        error={deleteError}
+      />
     </div>
   )
 }

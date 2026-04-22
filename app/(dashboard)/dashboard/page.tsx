@@ -15,7 +15,8 @@ import Button from '@/components/ui/Button'
 import Modal from '@/components/ui/Modal'
 import Input from '@/components/ui/Input'
 import { Skeleton } from '@/components/ui/Skeleton'
-import type { Period, MovementCategory } from '@/types'
+import type { Period, MovementCategory, Movement } from '@/types'
+
 
 // ─── Category Config ──────────────────────────────────────────────────────────
 
@@ -144,7 +145,7 @@ function CustomTooltip({ active, payload, label }: TooltipProps) {
 
 export default function DashboardPage() {
   const { portfolio, performance, insight, portfolioLoading, performanceLoading, insightLoading, fetchPortfolio, fetchPerformance, fetchInsight } = useMetrics()
-  const { movements, fetchMovements, createMovement } = useMovements()
+  const { movements, fetchMovements, createMovement, updateMovement, removeMovement } = useMovements()
 
   const [period, setPeriod] = useState<Period>('1M')
   const [currency, setCurrency] = useState<'USD' | 'MXN'>('USD')
@@ -158,6 +159,15 @@ export default function DashboardPage() {
   const [movDate, setMovDate] = useState(() => new Date().toISOString().split('T')[0])
   const [movLoading, setMovLoading] = useState(false)
   const [movError, setMovError] = useState<string | null>(null)
+
+  // Edit Movement Modal
+  const [editMovementId, setEditMovementId] = useState<string | null>(null)
+  const [editMovAmount, setEditMovAmount] = useState('')
+  const [editMovCategory, setEditMovCategory] = useState<MovementCategory>('other')
+  const [editMovDesc, setEditMovDesc] = useState('')
+  const [editMovDate, setEditMovDate] = useState('')
+  const [editMovLoading, setEditMovLoading] = useState(false)
+  const [editMovError, setEditMovError] = useState<string | null>(null)
 
   useEffect(() => {
     setMounted(true)
@@ -199,11 +209,55 @@ export default function DashboardPage() {
       })
       setMovementModal(null)
       resetMovForm()
+      fetchPortfolio()
+      fetchInsight()
     } catch {
       setMovError('Error al guardar el movimiento.')
     } finally {
       setMovLoading(false)
     }
+  }
+
+  const handleEditMovement = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!editMovementId || !editMovAmount || isNaN(Number(editMovAmount))) {
+      setEditMovError('Ingresa un monto válido.')
+      return
+    }
+    setEditMovLoading(true)
+    setEditMovError(null)
+    try {
+      await updateMovement(editMovementId, {
+        monto: parseFloat(editMovAmount),
+        categoria: editMovCategory,
+        descripcion: editMovDesc || undefined,
+        fecha: editMovDate,
+      })
+      setEditMovementId(null)
+      fetchPortfolio()
+      fetchInsight()
+    } catch {
+      setEditMovError('Error al actualizar el movimiento.')
+    } finally {
+      setEditMovLoading(false)
+    }
+  }
+
+  const handleDeleteMovement = async (id: string) => {
+    if (confirm('¿Eliminar este movimiento?')) {
+      await removeMovement(id)
+      fetchPortfolio() // ← AGREGAR ESTA LÍNEA
+      fetchInsight()
+    }
+  }
+
+  const openEditMovement = (m: Movement) => {
+    setEditMovementId(m.id)
+    setEditMovAmount(m.monto.toString())
+    setEditMovCategory(m.categoria)
+    setEditMovDesc(m.descripcion || '')
+    setEditMovDate(m.fecha.split('T')[0])
+    setEditMovError(null)
   }
 
   const resetMovForm = () => {
@@ -374,7 +428,7 @@ export default function DashboardPage() {
               recentMovements.map((m) => {
                 const cfg = CATEGORY_CONFIG[m.categoria]
                 return (
-                  <div key={m.id} className="flex items-center gap-3 py-3">
+                  <div key={m.id} className="flex items-center gap-3 py-3 group">
                     <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${cfg.bg} ${cfg.color}`}>
                       {cfg.icon}
                     </div>
@@ -391,6 +445,26 @@ export default function DashboardPage() {
                     >
                       {m.tipo === 'ingreso' ? '+' : '-'}${m.monto.toLocaleString()}
                     </p>
+                    <div className="opacity-0 group-hover:opacity-100 transition-opacity flex gap-1">
+                      <button
+                        onClick={() => openEditMovement(m)}
+                        className="p-1 hover:bg-white/10 rounded text-gray-400 hover:text-white"
+                        title="Editar"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                        </svg>
+                      </button>
+                      <button
+                        onClick={() => handleDeleteMovement(m.id)}
+                        className="p-1 hover:bg-white/10 rounded text-gray-400 hover:text-red-400"
+                        title="Eliminar"
+                      >
+                        <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                        </svg>
+                      </button>
+                    </div>
                   </div>
                 )
               })
@@ -507,6 +581,83 @@ export default function DashboardPage() {
               variant="primary"
               className="flex-1"
               loading={movLoading}
+            >
+              Guardar
+            </Button>
+          </div>
+        </form>
+      </Modal>
+
+      {/* Modal Editar Movimiento */}
+      <Modal
+        isOpen={editMovementId !== null}
+        onClose={() => setEditMovementId(null)}
+        title="Editar Movimiento"
+      >
+        <form onSubmit={handleEditMovement} className="flex flex-col gap-4">
+          <Input
+            id="edit-mov-amount"
+            label="Monto"
+            type="number"
+            placeholder="0.00"
+            value={editMovAmount}
+            onChange={(e) => setEditMovAmount(e.target.value)}
+            required
+          />
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="edit-mov-category" className="text-sm font-medium text-gray-300">
+              Categoría
+            </label>
+            <select
+              id="edit-mov-category"
+              value={editMovCategory}
+              onChange={(e) => setEditMovCategory(e.target.value as MovementCategory)}
+              className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-2.5 text-white text-sm outline-none focus:ring-2 focus:ring-lime-400/40 focus:border-lime-400"
+            >
+              {CATEGORIES.map((c) => (
+                <option key={c} value={c} className="bg-[#1c1c1c]">
+                  {CATEGORY_LABELS[c]}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="edit-mov-desc" className="text-sm font-medium text-gray-300">
+              Descripción <span className="text-gray-500">(opcional)</span>
+            </label>
+            <textarea
+              id="edit-mov-desc"
+              value={editMovDesc}
+              onChange={(e) => setEditMovDesc(e.target.value)}
+              placeholder="¿Para qué fue este movimiento?"
+              rows={2}
+              className="w-full bg-[#1a1a1a] border border-[#2a2a2a] rounded-xl px-4 py-2.5 text-white text-sm outline-none focus:ring-2 focus:ring-lime-400/40 focus:border-lime-400 resize-none placeholder-gray-600"
+            />
+          </div>
+          <Input
+            id="edit-mov-date"
+            label="Fecha"
+            type="date"
+            value={editMovDate}
+            onChange={(e) => setEditMovDate(e.target.value)}
+            required
+          />
+          {editMovError && <p className="text-red-400 text-xs">{editMovError}</p>}
+          <div className="flex gap-3 mt-1">
+            <Button
+              type="button"
+              variant="ghost"
+              className="flex-1"
+              onClick={() => setEditMovementId(null)}
+            >
+              Cancelar
+            </Button>
+            <Button
+              id="save-edit-mov-btn"
+              type="submit"
+              variant="primary"
+              className="flex-1"
+              loading={editMovLoading}
             >
               Guardar
             </Button>

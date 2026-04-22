@@ -49,10 +49,27 @@ export function useMovements() {
     try {
       await movementsService.remove(id)
       setMovements((prev) => prev.filter((m) => m.id !== id))
+      await fetchMovements()
     } catch {
       setError('Error al eliminar movimiento.')
     }
   }
 
-  return { movements, loading, error, fetchMovements, createMovement, removeMovement }
+  const updateMovement = async (id: string, data: Partial<CreateMovementData>) => {
+    setLoading(true)
+    setError(null)
+    try {
+      const { data: updatedMovement } = await movementsService.update(id, data)
+      setMovements((prev) => prev.map((m) => (m.id === id ? updatedMovement : m)))
+      await fetchMovements()
+      return updatedMovement
+    } catch {
+      setError('Error al actualizar movimiento.')
+      throw new Error('Update failed')
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  return { movements, loading, error, fetchMovements, createMovement, updateMovement, removeMovement }
 }

@@ -14,6 +14,9 @@ const movementsService = {
 
   create: (data: CreateMovementData) => api.post<Movement>('/movements', data),
 
+  update: (id: string, data: Partial<CreateMovementData>) => 
+    api.patch<Movement>(`/movements/${id}`, data),
+
   remove: (id: string) => api.delete(`/movements/${id}`),
 }
 

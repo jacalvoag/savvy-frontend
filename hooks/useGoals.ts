@@ -27,7 +27,7 @@ export function useGoals() {
     } finally {
       setLoading(false)
     }
-  }, []) // ← Array de dependencias vacío
+  }, [])
 
   const createGoal = async (data: CreateGoalData) => {
     setError(null)
@@ -38,6 +38,19 @@ export function useGoals() {
     } catch {
       setError('Error al crear meta.')
       throw new Error('Create failed')
+    }
+  }
+
+  const updateGoal = async (id: string, data: Partial<CreateGoalData>) => {
+    setError(null)
+    try {
+      const { data: updatedGoal } = await goalsService.update(id, data)
+      setGoals((prev) => prev.map((g) => (g.id === id ? updatedGoal : g)))
+      await fetchGoals()
+      return updatedGoal
+    } catch {
+      setError('Error al actualizar meta.')
+      throw new Error('Update failed')
     }
   }
 
@@ -63,5 +76,17 @@ export function useGoals() {
     }
   }
 
-  return { goals, loading, error, fetchGoals, createGoal, boostGoal, archiveGoal }
+  const deleteGoal = async (id: string) => {
+    setError(null)
+    try {
+      await goalsService.delete(id)
+      setGoals((prev) => prev.filter((g) => g.id !== id))
+      await fetchGoals()
+    } catch {
+      setError('Error al eliminar meta.')
+      throw new Error('Delete failed')
+    }
+  }
+
+  return { goals, loading, error, fetchGoals, createGoal, updateGoal, boostGoal, archiveGoal, deleteGoal }
 }
