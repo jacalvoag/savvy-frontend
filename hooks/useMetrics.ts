@@ -26,7 +26,7 @@ export function useMetrics() {
     } finally {
       setPortfolioLoading(false)
     }
-  }, [])
+  }, []) // ← Array de dependencias vacío
 
   const fetchPerformance = useCallback(async (period: Period) => {
     setPerformanceLoading(true)
@@ -39,7 +39,7 @@ export function useMetrics() {
     } finally {
       setPerformanceLoading(false)
     }
-  }, [])
+  }, []) // ← Array de dependencias vacío
 
   const fetchInsight = useCallback(async () => {
     setInsightLoading(true)
@@ -52,7 +52,7 @@ export function useMetrics() {
     } finally {
       setInsightLoading(false)
     }
-  }, [])
+  }, []) // ← Array de dependencias vacío
 
   return {
     portfolio,

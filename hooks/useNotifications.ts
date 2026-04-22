@@ -20,7 +20,7 @@ export function useNotifications() {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, []) // ← Array de dependencias vacío
 
   const markAsRead = async (id: string) => {
     try {
@@ -35,4 +35,3 @@ export function useNotifications() {
 
   return { notifications, unreadCount, loading, fetchNotifications, markAsRead }
 }
-

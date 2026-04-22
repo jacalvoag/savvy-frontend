@@ -27,7 +27,7 @@ export function useGoals() {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, []) // ← Array de dependencias vacío
 
   const createGoal = async (data: CreateGoalData) => {
     setError(null)
@@ -65,4 +65,3 @@ export function useGoals() {
 
   return { goals, loading, error, fetchGoals, createGoal, boostGoal, archiveGoal }
 }
-

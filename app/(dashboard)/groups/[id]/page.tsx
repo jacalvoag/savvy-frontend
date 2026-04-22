@@ -214,8 +214,17 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                       >
                         {/* Posición */}
                         <td className="px-4 py-3">
-                          <span className={`font-bold ${isFirst ? 'text-lime-400' : 'text-gray-500'}`}>
-                            {isFirst ? '👑' : member.rank}
+                          <span className={`font-bold flex items-center gap-1 ${isFirst ? 'text-lime-400' : 'text-gray-500'}`}>
+                            {isFirst ? (
+                              <>
+                                <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                                  <path d="M12 2l2.5 6.5L21 10l-5 5 1.5 7-5.5-3.5L6.5 22 8 15 3 10l6.5-1.5z"/>
+                                </svg>
+                                1
+                              </>
+                            ) : (
+                              member.rank
+                            )}
                           </span>
                         </td>
                         {/* Miembro */}
@@ -239,14 +248,24 @@ export default function GroupLeaderboardPage({ params }: { params: Promise<{ id:
                           {lbTab === 'contributions' ? (
                             <span className="text-white font-semibold">${member.contribucion.toLocaleString()}</span>
                           ) : (
-                            <span className="text-white font-semibold">{member.streakWeeks}sem 🔥</span>
+                            <span className="text-white font-semibold flex items-center gap-1">
+                              {member.streakWeeks}sem
+                              <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 2c-.8 1.2-2 2.5-2 4 0 1.5 1 2.5 2 3 0-1.5.5-2 1.5-3 .5 1 1.5 2 1.5 4 0 2.5-2 4-4 4-3 0-5-2.5-5-6 0-4 3-7 6-9z"/>
+                              </svg>
+                            </span>
                           )}
                         </td>
                         {/* Porcentaje (solo en contribuciones) */}
-                        {lbTab === 'contributions' && (
-                          <td className="px-4 py-3 text-right hidden sm:table-cell">
-                            <span className="text-lime-400 text-xs font-medium">{member.porcentaje.toFixed(1)}%</span>
-                          </td>
+                        {lbTab === 'contributions' ? (
+                          <span className="text-white font-semibold">${member.contribucion.toLocaleString()}</span>
+                        ) : (
+                          <span className="text-white font-semibold flex items-center gap-1">
+                            {member.streakWeeks}sem
+                            <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 24 24">
+                              <path d="M12 2c-.8 1.2-2 2.5-2 4 0 1.5 1 2.5 2 3 0-1.5.5-2 1.5-3 .5 1 1.5 2 1.5 4 0 2.5-2 4-4 4-3 0-5-2.5-5-6 0-4 3-7 6-9z"/>
+                            </svg>
+                          </span>
                         )}
                       </tr>
                     )

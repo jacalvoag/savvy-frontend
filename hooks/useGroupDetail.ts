@@ -21,7 +21,7 @@ export function useGroupDetail() {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, []) // ← Array de dependencias vacío
 
   const contribute = async (id: string, monto: number) => {
     setContributeLoading(true)
@@ -42,4 +42,3 @@ export function useGroupDetail() {
 
   return { groupDetail, loading, contributeLoading, error, fetchGroupDetail, contribute }
 }
-

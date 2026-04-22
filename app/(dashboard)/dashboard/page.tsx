@@ -19,16 +19,89 @@ import type { Period, MovementCategory } from '@/types'
 
 // ─── Category Config ──────────────────────────────────────────────────────────
 
-const CATEGORY_CONFIG: Record<MovementCategory, { icon: string; color: string; bg: string }> = {
-  salary:       { icon: '', color: 'text-green-400',  bg: 'bg-green-400/10' },
-  groceries:    { icon: '', color: 'text-orange-400', bg: 'bg-orange-400/10' },
-  transport:    { icon: '', color: 'text-blue-400',   bg: 'bg-blue-400/10' },
-  entertainment:{ icon: '', color: 'text-purple-400', bg: 'bg-purple-400/10' },
-  savings:      { icon: '', color: 'text-lime-400',   bg: 'bg-lime-400/10' },
-  dividends:    { icon: '', color: 'text-cyan-400',   bg: 'bg-cyan-400/10' },
-  subscription: { icon: '', color: 'text-pink-400',   bg: 'bg-pink-400/10' },
-  food:         { icon: '', color: 'text-red-400',    bg: 'bg-red-400/10' },
-  other:        { icon: '', color: 'text-gray-400',   bg: 'bg-gray-400/10' },
+const CATEGORY_CONFIG: Record<MovementCategory, { icon: React.ReactNode; color: string; bg: string }> = {
+  salary: {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    color: 'text-green-400',
+    bg: 'bg-green-400/10',
+  },
+  groceries: {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+    ),
+    color: 'text-orange-400',
+    bg: 'bg-orange-400/10',
+  },
+  transport: {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+      </svg>
+    ),
+    color: 'text-blue-400',
+    bg: 'bg-blue-400/10',
+  },
+  entertainment: {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+    ),
+    color: 'text-purple-400',
+    bg: 'bg-purple-400/10',
+  },
+  savings: {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+      </svg>
+    ),
+    color: 'text-lime-400',
+    bg: 'bg-lime-400/10',
+  },
+  dividends: {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+      </svg>
+    ),
+    color: 'text-cyan-400',
+    bg: 'bg-cyan-400/10',
+  },
+  subscription: {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+    ),
+    color: 'text-pink-400',
+    bg: 'bg-pink-400/10',
+  },
+  food: {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+      </svg>
+    ),
+    color: 'text-red-400',
+    bg: 'bg-red-400/10',
+  },
+  other: {
+    icon: (
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+      </svg>
+    ),
+    color: 'text-gray-400',
+    bg: 'bg-gray-400/10',
+  },
 }
 
 const CATEGORY_LABELS: Record<MovementCategory, string> = {
@@ -298,7 +371,7 @@ export default function DashboardPage() {
                 const cfg = CATEGORY_CONFIG[m.categoria]
                 return (
                   <div key={m.id} className="flex items-center gap-3 py-3">
-                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center text-base shrink-0 ${cfg.bg}`}>
+                    <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${cfg.bg} ${cfg.color}`}>
                       {cfg.icon}
                     </div>
                     <div className="flex-1 min-w-0">
@@ -326,8 +399,10 @@ export default function DashboardPage() {
           <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-lime-400/5 blur-2xl pointer-events-none" />
 
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 rounded-xl bg-lime-400/10 flex items-center justify-center text-lg">
-              🚀
+            <div className="w-9 h-9 rounded-xl bg-lime-400/10 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5 text-lime-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
             </div>
             <p className="text-sm font-semibold text-lime-400">Insight Inteligente</p>
           </div>
@@ -382,7 +457,7 @@ export default function DashboardPage() {
             >
               {CATEGORIES.map((c) => (
                 <option key={c} value={c} className="bg-[#1c1c1c]">
-                  {CATEGORY_CONFIG[c].icon} {CATEGORY_LABELS[c]}
+                  {CATEGORY_LABELS[c]}
                 </option>
               ))}
             </select>

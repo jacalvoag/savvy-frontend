@@ -28,7 +28,7 @@ export function useMovements() {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, []) // ← Array de dependencias vacío
 
   const createMovement = async (data: CreateMovementData) => {
     setLoading(true)
@@ -56,4 +56,3 @@ export function useMovements() {
 
   return { movements, loading, error, fetchMovements, createMovement, removeMovement }
 }
-

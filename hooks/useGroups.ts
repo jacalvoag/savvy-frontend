@@ -27,7 +27,7 @@ export function useGroups() {
     } finally {
       setLoading(false)
     }
-  }, [])
+  }, []) // ← Array de dependencias vacío
 
   const createGroup = async (data: CreateGroupData) => {
     setError(null)
@@ -89,4 +89,3 @@ export function useGroups() {
 
   return { groups, loading, error, fetchGroups, createGroup, joinGroup, deleteGroup, leaveGroup }
 }
-
