@@ -194,6 +194,10 @@ export default function DashboardPage() {
       })
       setMovementModal(null)
       resetMovForm()
+      // Refresh metrics so portfolio total, chart and insight reflect the new movement
+      fetchPortfolio()
+      fetchPerformance(period)
+      fetchInsight()
     } catch {
       setMovError('Error al guardar el movimiento.')
     } finally {
