@@ -148,6 +148,7 @@ export default function DashboardPage() {
 
   const [period, setPeriod] = useState<Period>('1M')
   const [currency, setCurrency] = useState<'USD' | 'MXN'>('USD')
+  const [mounted, setMounted] = useState(false)
 
   // Create movement modal state
   const [movementModal, setMovementModal] = useState<'income' | 'expense' | null>(null)
@@ -157,6 +158,10 @@ export default function DashboardPage() {
   const [movDate, setMovDate] = useState(() => new Date().toISOString().split('T')[0])
   const [movLoading, setMovLoading] = useState(false)
   const [movError, setMovError] = useState<string | null>(null)
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   useEffect(() => {
     fetchPortfolio()
@@ -194,10 +199,6 @@ export default function DashboardPage() {
       })
       setMovementModal(null)
       resetMovForm()
-      // Refresh metrics so portfolio total, chart and insight reflect the new movement
-      fetchPortfolio()
-      fetchPerformance(period)
-      fetchInsight()
     } catch {
       setMovError('Error al guardar el movimiento.')
     } finally {
@@ -226,7 +227,6 @@ export default function DashboardPage() {
         <div className="bg-[#1c1c1c] border border-[#2a2a2a] rounded-2xl p-6 flex flex-col gap-4">
           <div className="flex items-center justify-between">
             <p className="text-sm text-gray-400 font-medium">Portfolio Total</p>
-            {/* Currency toggle */}
             <div className="flex bg-[#111] border border-[#2a2a2a] rounded-lg p-0.5 text-xs">
               {(['USD', 'MXN'] as const).map((c) => (
                 <button
@@ -303,8 +303,8 @@ export default function DashboardPage() {
 
           {performanceLoading ? (
             <Skeleton className="h-40 w-full" />
-          ) : performance.length > 0 ? (
-            <div className="h-40">
+          ) : performance.length > 0 && mounted ? (
+            <div className="h-40 min-h-[160px]">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart data={performance} margin={{ top: 4, right: 4, bottom: 0, left: 0 }}>
                   <defs>
